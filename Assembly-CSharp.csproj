@@ -59,6 +59,7 @@
     <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/RotationScript.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets/StreamingAssets/Vuforia/IsRoom.xml" />
     <None Include="Assets/ithappy/Platformer_13_Steampunk/Render_Pipeline_Convert/Documentation.txt" />
     <None Include="Assets/ithappy/Platformer_13_Steampunk/Render_Pipeline_Convert/Render_Pipeline_Instructions_Unity_6.txt" />
   </ItemGroup>
@@ -607,6 +608,18 @@
       <HintPath>Library/PackageCache/com.unity.collections@12999e356c23/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Vuforia.Unity.Wrapper">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Wrapper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64/Runtime/Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Vuforia.Unity.Engine">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
       <Private>False</Private>
@@ -1124,6 +1137,7 @@
     <ProjectReference Include="Unity.XR.ARAnalytics.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj" />
     <ProjectReference Include="Unity.XR.CoreUtils.Editor.csproj" />
+    <ProjectReference Include="VuforiaScripts.csproj" />
     <ProjectReference Include="UnityEditor.UI.Analytics.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
     <ProjectReference Include="Unity.XR.Management.csproj" />
@@ -1193,6 +1207,7 @@
     <ProjectReference Include="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />
     <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
     <ProjectReference Include="Unity.Collections.Editor.csproj" />
+    <ProjectReference Include="VuforiaEditorScripts.csproj" />
     <ProjectReference Include="Unity.ShaderGraph.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.Shared.csproj" />
     <ProjectReference Include="Unity.InputSystem.csproj" />

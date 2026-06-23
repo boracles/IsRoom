@@ -722,10 +722,10 @@
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Views/Properties/CommentTextArea.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Views/Labels/LabelsTab.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Configuration/TeamEdition/TeamEditionConfigurationWindow.cs" />
-    <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/UI/FindEditorWindow.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/UVCSToolbar/PopupWindow/ControlledPopupWindow.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Views/BranchExplorer/Menu/BranchExplorerViewBranchMenuOperations.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Views/Changesets/ChangesetsViewMenu.cs" />
+    <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/UI/FindEditorWindow.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Configuration/ConfigurePartialWorkspace.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Hub/ParseArguments.cs" />
     <Compile Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Editor/Views/DownloadPlasticExeDialog.cs" />

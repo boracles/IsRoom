@@ -50,14 +50,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
+    <Compile Include="Assets/Editor/Migration/AddVuforiaEnginePackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.zh-Hans.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/webcamprofiles.xml" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/images.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/i3.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/guihelp.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/workspaceserver.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/commontypes.es.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/macos/readme_SDK.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/semantic.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/TextMateSharp/TextMateSharpPlastic.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/TextMateSharp/TextMateSharpPlastic.Grammars.dll" />
@@ -72,6 +75,7 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/commontypes.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/semantic.zh-Hant.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/android/readme_SDK.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/xdiff.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/basecommands.en.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/workspaceserver.zh-Hans.txt" />
@@ -79,6 +83,7 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/TextMateSharp/Onigwrap/libonigwrap/win-arm64/libonigwrap.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/clientcommon.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.en.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/lumin/license_3rdpartynotice.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/guihelp.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/configurehelper.ko.txt" />
@@ -87,6 +92,7 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/commontypes.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/differences.ko.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.ko.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/windows/readme_SDK.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/commontypes.zh-Hans.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/images.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/mergetool.zh-Hant.txt" />
@@ -96,10 +102,12 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/basecommands.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/TextMateSharp/Onigwrap/OnigwrapPlastic.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/android/license_3rdpartynotice.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/images.zh-Hans.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/images.en.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/differences.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/differences.zh-Hans.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/windows/license_3rdpartynotice.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/plastic-gui.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/log4netPlastic.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/lz4x64Plastic.dll" />
@@ -110,8 +118,10 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/plastic-gui.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/xdiff.zh-Hans.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.ja.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/lumin/readme_SDK.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/workspaceserver.ko.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/semantic.ko.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/macos/license_3rdpartynotice.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/unityplastic.dll" />
@@ -119,9 +129,11 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/images.ko.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/guihelp.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/mergetool.es.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/uwp/readme_SDK.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/configurehelper.en.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/common.en.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/clientcommon.ko.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/ios/readme_SDK.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/TextMateSharp/Onigwrap/libonigwrap/win-x86/libonigwrap.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/mergetool.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/FileSystemWatcherLicense.txt" />
@@ -131,6 +143,7 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/guihelp.en.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/guihelp.zh-Hans.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/workspaceserver.en.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Editor/Vuforia.Unity.Editor.XML" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/workspaceserver.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/basecommands.es.txt" />
     <None Include="Library/PackageCache/com.unity.postprocessing@141166b789e3/PostProcessing/Shaders/Editor/CurveGrid.shader" />
@@ -150,13 +163,16 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/common.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/i3.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/semantic.en.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/uwp/license_3rdpartynotice.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.zh-Hant.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/differences.zh-Hant.txt" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Editor/EditorResources/Licenses/ios/license_3rdpartynotice.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/commontypes.ko.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/basecommands.ja.txt" />
     <None Include="Library/PackageCache/com.unity.postprocessing@141166b789e3/PostProcessing/Shaders/Editor/Trackball.shader" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/TextMateSharp/Onigwrap/libonigwrap/win-x64/libonigwrap.dll" />
     <None Include="Library/PackageCache/com.unity.postprocessing@141166b789e3/PostProcessing/Shaders/Editor/ConvertToLog.shader" />
+    <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Editor/Vuforia.Unity.Editor.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/zlib64Plastic.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/differences.ja.txt" />
@@ -786,6 +802,22 @@
       <HintPath>Library/PackageCache/com.unity.collections@12999e356c23/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Vuforia.Unity.Wrapper">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Wrapper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Vuforia.Unity.Editor">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Editor/Vuforia.Unity.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64/Runtime/Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Vuforia.Unity.Engine">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
       <Private>False</Private>
@@ -1318,6 +1350,7 @@
     <ProjectReference Include="Unity.XR.ARAnalytics.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj" />
     <ProjectReference Include="Unity.XR.CoreUtils.Editor.csproj" />
+    <ProjectReference Include="VuforiaScripts.csproj" />
     <ProjectReference Include="UnityEditor.UI.Analytics.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
     <ProjectReference Include="Unity.XR.Management.csproj" />
@@ -1387,6 +1420,7 @@
     <ProjectReference Include="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />
     <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
     <ProjectReference Include="Unity.Collections.Editor.csproj" />
+    <ProjectReference Include="VuforiaEditorScripts.csproj" />
     <ProjectReference Include="Unity.ShaderGraph.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.Shared.csproj" />
     <ProjectReference Include="Unity.InputSystem.csproj" />

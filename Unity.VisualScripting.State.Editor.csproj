@@ -78,8 +78,8 @@
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/Plugin/Migrations/Migration_1_5_1_to_1_5_2.cs" />
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/Plugin/BoltState.cs" />
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/Analytics/StateMacroSavedEvent.cs" />
-    <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/States/SuperStateWidget.cs" />
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/Transitions/FlowStateTransitionDescriptor.cs" />
+    <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/States/SuperStateWidget.cs" />
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/Plugin/Changelogs/Changelog_1_2_3.cs" />
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/Plugin/BoltStateResources.cs" />
     <Compile Include="Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Editor/VisualScripting.State/States/FlowStateEditor.cs" />
@@ -744,6 +744,22 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Library/PackageCache/com.unity.collections@12999e356c23/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Vuforia.Unity.Wrapper">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Wrapper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Vuforia.Unity.Editor">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Editor/Vuforia.Unity.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64/Runtime/Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Vuforia.Unity.Engine">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Engine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
