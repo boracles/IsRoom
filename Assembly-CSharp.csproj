@@ -130,6 +130,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Projection/ParticleSheetProjection.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/Circle_Around_ParticlePDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Bloom/Bloom.cs" />
+    <Compile Include="Assets/02_Scripts/RefreshURPCameraRenderType.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/PDM_Demo_GRASS.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/ImageToParticles.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/TurbulenceControl_PDM.cs" />
