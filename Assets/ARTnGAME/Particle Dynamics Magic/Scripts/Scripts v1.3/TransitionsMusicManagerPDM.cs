@@ -754,8 +754,7 @@ public class TransitionsMusicManagerPDM : MonoBehaviour {
 
 		ICE_Script.Scale_factor = Mathf.Lerp(ICE_Script.Scale_factor, (packagedData * amplitude) + startScale,16f*Time.deltaTime);
 
-		ICE_Script.Start_size = 0.4f*(packagedData * amplitude) + Start_particle_audio_size -1.0f;		
-
+		ICE_Script.Start_size = Start_particle_audio_size + 0.02f * packagedData;
 		if( Time.fixedTime - interpolation_time > toggle_interpolation_time){
 			SPLINE_Script.Interpolate_steps = Random.Range(1+(int)(packagedData * amplitude)-5,20)*(int)This_audio.volume ;
 
