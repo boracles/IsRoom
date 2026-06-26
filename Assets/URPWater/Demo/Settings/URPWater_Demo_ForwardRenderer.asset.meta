@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0bbf3e380f4cc4052af116eab12a89c5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 184590
+  packageName: URP Water
+  packageVersion: 1.2.2
+  assetPath: Assets/URPWater/Demo/Settings/URPWater_Demo_ForwardRenderer.asset
+  uploadId: 762218

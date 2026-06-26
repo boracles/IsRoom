@@ -40,6 +40,7 @@ Material:
   disabledShaderPasses:
   - MOTIONVECTORS
   - DepthOnly
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -101,7 +102,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7e1e4e3e1cc1c0049ae58e96dbda421a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex2:
@@ -218,7 +219,7 @@ Material:
     - _worldBase: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 0.44059035, b: 0, a: 0.27058825}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.44059032, b: 0, a: 0.27058825}
     - _ConeColor: {r: 1, g: 1, b: 1, a: 0}
     - _Diffuse: {r: 0.9019608, g: 0.7019608, b: 0.3764706, a: 1}
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}

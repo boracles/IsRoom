@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Fog/Editor/FogEditor.cs" />
+    <Compile Include="Assets/URPWater/Editor/URPWaterEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Editor/PlaceParticleFREEFORMEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Vignette/Editor/VignetteEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Editor/WallEditor.cs" />
