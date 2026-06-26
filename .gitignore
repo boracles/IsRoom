@@ -41,4 +41,5 @@ local.properties
 [Oo]bj/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-[Mm]emoryCaptures/
+[Mm]emoryCaptures/*.tgz
+Assets/Editor/Migration/*.tgz
