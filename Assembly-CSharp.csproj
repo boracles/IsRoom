@@ -93,6 +93,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/PerlinPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/WallScroller.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Dynamic Spline Creation/SplineToTarget.cs" />
+    <Compile Include="Assets/02_Scripts/AudioFollowTarget.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_CITY.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Shadows/ParticleShadowsPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Batching/ControlCombineChildrenPDM.cs" />
