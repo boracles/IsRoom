@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 8d1c979c2d9b26f4a94d97366e3c4791
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/PrefabWizard/Effects20/Prefabs/CAT_C
+    - AnimatedTexture.prefab
+  uploadId: 678762

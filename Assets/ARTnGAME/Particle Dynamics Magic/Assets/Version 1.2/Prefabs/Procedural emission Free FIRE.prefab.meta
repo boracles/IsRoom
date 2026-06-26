@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 20e4fc47604b3ec49a4c6f7796e4ceef
+labels:
+- Dynamic
+- Emission
+- Mesh
+- Particles
+- Procedural
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 1.2/Prefabs/Procedural
+    emission Free FIRE.prefab
+  uploadId: 678762

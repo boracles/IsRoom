@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fef15445223b54f3eb3564a48fa0c520
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant
+    Spray/Kvant/Spray/Scripts/BulkMesh.cs
+  uploadId: 678762

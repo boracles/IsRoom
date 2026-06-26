@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: cc4be11374466f2438a2f8fe61acad09
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: tricycle
+    100002: //RootNode
+    100004: tricycle_pedal_L1
+    100006: tricycle_pedal_L2
+    100008: tricycle_pedal_R1
+    100010: tricycle_pedal_R2
+    100012: tricycle_steering_bar
+    100014: tricycle_wheel_front
+    100016: tricycle_wheel_LB
+    100018: tricycle_wheel_RB
+    400000: tricycle
+    400002: //RootNode
+    400004: tricycle_pedal_L1
+    400006: tricycle_pedal_L2
+    400008: tricycle_pedal_R1
+    400010: tricycle_pedal_R2
+    400012: tricycle_steering_bar
+    400014: tricycle_wheel_front
+    400016: tricycle_wheel_LB
+    400018: tricycle_wheel_RB
+    2100000: tricycle
+    2300000: tricycle
+    2300002: tricycle_pedal_L1
+    2300004: tricycle_pedal_L2
+    2300006: tricycle_pedal_R1
+    2300008: tricycle_pedal_R2
+    2300010: tricycle_steering_bar
+    2300012: tricycle_wheel_front
+    2300014: tricycle_wheel_LB
+    2300016: tricycle_wheel_RB
+    3300000: tricycle
+    3300002: tricycle_pedal_L1
+    3300004: tricycle_pedal_L2
+    3300006: tricycle_pedal_R1
+    3300008: tricycle_pedal_R2
+    3300010: tricycle_steering_bar
+    3300012: tricycle_wheel_front
+    3300014: tricycle_wheel_LB
+    3300016: tricycle_wheel_RB
+    4300000: tricycle
+    4300002: tricycle_steering_bar
+    4300004: tricycle_wheel_front
+    4300006: tricycle_pedal_L1
+    4300008: tricycle_pedal_R1
+    4300010: tricycle_pedal_R2
+    4300012: tricycle_pedal_L2
+    4300014: tricycle_wheel_RB
+    4300016: tricycle_wheel_LB
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tricycle
+    second: {fileID: 2100000, guid: 3979245bb1e2fcf41bdaa42cebe79c1e, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/models/props/tricycle/tricycle_parts.fbx
+  uploadId: 672089

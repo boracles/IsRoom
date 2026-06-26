@@ -24,8 +24,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <NoWarn>0169;USG0001</NoWarn>
-    <DefineConstants>UNITY_6000_3_15;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_AUDIO_SCRIPTABLE_PIPELINE;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_ACCESSIBILITY_SCREEN_READER;ENABLE_ACCESSIBILITY_SETTINGS;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;ENABLE_RUNTIME_GI;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;PLATFORM_SUPPORTS_INSIGHTS_IDFA;PLATFORM_SUPPORTS_INSIGHTS_DEVICE_INFO;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_ETC_COMPRESSION;UNITY_IPHONE_API;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;ENABLE_INSIGHTS_PLATFORM_SPECIFIC_RESOURCES;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;PLATFORM_IOS;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_CLOUD_SERVICES_ENGINE_DIAGNOSTICS;ENABLE_FIREBASE_IDENTIFIERS;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;UNITY_XR_ARKIT_LOADER_ENABLED;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <DefineConstants>UNITY_6000_3_15;UNITY_6000_3;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_6000_1_OR_NEWER;UNITY_6000_2_OR_NEWER;UNITY_6000_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_AUDIO_SCRIPTABLE_PIPELINE;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_UNITY_CONSENT;ENABLE_UNITY_CLOUD_IDENTIFIERS;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_ACCESSIBILITY_SCREEN_READER;ENABLE_ACCESSIBILITY_SETTINGS;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;ENABLE_RUNTIME_GI;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;PLATFORM_SUPPORTS_INSIGHTS_IDFA;PLATFORM_SUPPORTS_INSIGHTS_DEVICE_INFO;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_ETC_COMPRESSION;UNITY_IPHONE_API;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;ENABLE_INSIGHTS_PLATFORM_SPECIFIC_RESOURCES;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;PLATFORM_IOS;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_CLOUD_SERVICES_ENGINE_DIAGNOSTICS;ENABLE_FIREBASE_IDENTIFIERS;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;TEXTCORE_FONT_ENGINE_1_6_OR_NEWER;UNITY_XR_ARKIT_LOADER_ENABLED;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoStandardLibraries>true</NoStandardLibraries>
@@ -49,19 +49,193 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.3.15f1/Unity.app/Contents/Resources/BuildPipeline/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/CubeFaceImageTracker.cs" />
-    <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/OscillateScale.cs" />
-    <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/Rnd_Animation.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Splines/SplinerP.cs" />
+    <Compile Include="Assets/Grandpas_Attic/scripts/CursorLock.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/Circle_Around_Particle.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/SmoothLookAtPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/ImageToParticlesDYNAMIC.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/PDM_Demo_TURBULENCE.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Projection/GameobjectProjection.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SkinnedMesh/SKinnedGAmeobjEmit.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/PlaceGameobjectFREEFORM.cs" />
+    <Compile Include="Assets/Grandpas_Attic/scripts/SimpleCameraController.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/LightningBolt_FREE_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.2/Blasts/BlastControlLegacyPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Mesh Emission Masked/SKinColoredMaskedCol.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/PDM_Demo_V20.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SA Scripts/CombineChildrenPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/CharacterController/FirstPersonControllerPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/City Building/CycleGameObjectAfter_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SkinnedMesh/SKinnedPArticleEmit_StaticNonPrefab.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/Control_WIND.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/BlastOnImpactPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/ChainLightning_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/DeferredAO/DeferredAO.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Splines/PlaceParticleOnSpline.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/SplineCollisions/ColliderMessagePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.6/Scripts/PlaceParticleFlowOnSpline.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Ribbons/RibbonsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/AttractParticles.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/AnimateTrailTexturePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/BlobyConnection/BlobyConnectionAuraPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.2/Blasts/BlastControlPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/ChainLightningShuriken_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/CharacterController/ThirdPersonControllerPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/CycleGameObject_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/LOD_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/Light_EffectsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/Make_appear_PDM.cs" />
+    <Compile Include="Assets/02_Scripts/CubeFaceImageTracker.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_MOBILE.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/DecalOnCollisionsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/LightningBoltPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/PerlinPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/WallScroller.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Dynamic Spline Creation/SplineToTarget.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_CITY.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Shadows/ParticleShadowsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Batching/ControlCombineChildrenPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SkinnedMesh/SKinColoredParticles.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/MouseOrbitPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Scripts/BulkMesh.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/BIRDY_Feather_control_Const.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.2/ProceduralShapingPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/VolumeParticlesPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.5/Scripts/RaycasterPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/SA/GameScore.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.7/Put_item_in_PDM_Batch_pool.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/ProceduralNoisePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/LookAtMainCameraPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/CycleObjectSize_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Terrain/PlaceParticleSheetOnGround.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SA Scripts/MeshCombineUtilityPDM.cs" />
+    <Compile Include="Assets/Grandpas_Attic/scripts/FPSControllerSimple.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_Intro.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Particle2DCollisionsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Demos/MoveItemStraightPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/FreezeBurnControlPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/TimedObjectDestructorPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/MoveItemOverGround.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Wall.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Changed/Freeze/FreezeBurnBlastPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/TransitionsMusicManagerPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/ParticlePropagationPDM.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
-    <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/BlendShapeAnimator.cs" />
-    <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/OscillateRotation.cs" />
-    <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/OscillatePosition.cs" />
-    <Compile Include="Assets/ithappy/Platformer_13_Steampunk/Scripts/RotationScript.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/AI/FlockCollisionsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/SAs/Character Controllers/Scripts/MouseLookPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Splines/PlaceGameobjectOnSpline.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/FractalTexturePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/SKinColoredMasked.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Projection/ParticleSheetProjection.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/Circle_Around_ParticlePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Bloom/Bloom.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/PDM_Demo_GRASS.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/ImageToParticles.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/TurbulenceControl_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/CharacterController/ThirdPersonCameraPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/ParticleCollisionsPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/Blobs/MCBlobPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Scripts/FireFluidSim.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/PDM_Demo_NEBULA.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/SimplexNoisePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/SmoothLookAtPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/Ice_Grow_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/ShieldRipplePDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/DestroyOnImpactPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.7/Provide_Transition_Target_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_Scripts.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/SmoothFollowPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Loom/Loom.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/PDM_Demo_CASTING.cs" />
+    <Compile Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Scripts/SmokeFluidSim.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Terrain/PlaceParticleOnGround.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Fog/Fog.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Demos/PDM_Demo_PROPAGATION.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.7/FreezeBurnControl_DUAL_SHADER_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/ScaleItemPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Scripts/BulkMesh.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/DisableAttractorPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/Make_explode_PDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/BIRDY_Feather_control.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_PHOENIX.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Vignette/Vignette.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/PaintPropagation/PlaceParticleFREEFORM.cs" />
+    <Compile Include="Assets/Grandpas_Attic/scripts/CrouchArea.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Spray.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/DragTransformPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/CycleShieldUVs.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/DragRigidbodyPDM.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/ColorSuite/ColorSuite.cs" />
+    <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Projection/ParticlePROJECTION.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ApplyImpulse.compute" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ApplyAdvection.compute" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction 2a.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/ABParticleAdditiveBlendMixPDM.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeVorticity.compute" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/SimplexNoiseExt3D.cginc" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 1.5/Materials/LightWrapping 1.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeDivergence.compute" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/OpaqueSM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.2/Fish/SnowShaderSM2_FISH.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/ABParticleAdditiveBlendMix2PDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 1.5/Materials/VertexColorRounding 1.shader" />
+    <None Include="Assets/Grandpas_Attic/shaders/CustomBranch.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction 3 MainTex.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Fog/Shader/Fog.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Unlit 2.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction 2.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/BlobyConnection/ABParticleAdditiveBlendMix2_BLOB_PDM.shader" />
     <None Include="Assets/StreamingAssets/Vuforia/IsRoom.xml" />
-    <None Include="Assets/ithappy/Platformer_13_Steampunk/Render_Pipeline_Convert/Documentation.txt" />
-    <None Include="Assets/ithappy/Platformer_13_Steampunk/Render_Pipeline_Convert/Render_Pipeline_Instructions_Unity_6.txt" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/DissolvePDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/BlobyConnection/ABParticleAdditiveBlendMix2_BLOB_PDM 1.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/Kernel.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/Unity4/TranspDiffuseShadowedFPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/ABParticleBlendMixPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/LightWrappingPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/Unity4/TranspDiffuseForShadowedFPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/Unity4/TranspDiffuseShadowedEPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/FeathersV20.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Vignette/Shader/Vignette.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/NOTES.txt" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/DeferredAO/Shader/DeferredAO.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/ABParticleAdditiveBlendPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Bloom/Shader/Bloom.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeObstacles.compute" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeProjection.compute" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Common.cginc" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction 1.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeConfinement.compute" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/Debug.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/Refraction 3 MainTex 1.shader" />
+    <None Include="Assets/Grandpas_Attic/shaders/CustomDecal.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/TEM/PDM_Particle_Shader_Add_Blend.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.2/Fish/SnowShaderSM3_FISH.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/Unity4/TranspDiffuseShadowedPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/ColorSuite/Shader/ColorSuite.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/TEM/PDM_Glow_Shader_Add_Blend.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Unlit.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ApplyBuoyancy.compute" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/Surface.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/SimplexNoiseGrad3D.cginc" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/PARTICLE DYNAMIC MAGIC Beta 3 WIP NOTES.txt" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Debug.shader" />
+    <None Include="Assets/Grandpas_Attic/shaders/CustomGlass.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/SmokeRayCast.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationV20.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationV21.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/Additive ANGRYBOTS PDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Kernel.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/LICENSE.txt" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Opaque.shader" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeJacobi.compute" />
+    <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/FireRayCast.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationWindyPDM.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationV21VERT.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Unlit 1.shader" />
+    <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/TEM/PDM_Water_Shader_Add_Blend.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -592,6 +766,10 @@
       <HintPath>Library/PackageCache/com.unity.ext.nunit@d8c07649098d/net40/unity-custom/nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Vuforia.Unity.Wrapper">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Wrapper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.IO.Hashing">
       <HintPath>Library/PackageCache/com.unity.collections@12999e356c23/Unity.Collections.Tests/System.IO.Hashing/System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
@@ -600,24 +778,20 @@
       <HintPath>Library/PackageCache/com.unity.visualscripting@8bed5ad90189/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library/PackageCache/com.unity.collections@12999e356c23/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Vuforia.Unity.Wrapper">
-      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Wrapper.dll</HintPath>
+    <Reference Include="Vuforia.Unity.Engine">
+      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Engine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64/Runtime/Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Vuforia.Unity.Engine">
-      <HintPath>Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Runtime/Vuforia.Unity.Engine.dll</HintPath>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library/PackageCache/com.unity.collections@12999e356c23/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">

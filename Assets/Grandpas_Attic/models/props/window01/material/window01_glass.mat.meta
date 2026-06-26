@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fd8ac2d6d6e74974d9e8182808b0218f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/models/props/window01/material/window01_glass.mat
+  uploadId: 672089

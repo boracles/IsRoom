@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: 5e4cd44401bdaa743b11d56d997acd53
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bicycle_back_wheel
+    100002: bicycle_base
+    100004: bicycle_front
+    100006: bicycle_front_wheel
+    100008: bicycle_pedal_left
+    100010: bicycle_pedal_right
+    100012: //RootNode
+    100014: pedals
+    400000: bicycle_back_wheel
+    400002: bicycle_base
+    400004: bicycle_front
+    400006: bicycle_front_wheel
+    400008: bicycle_pedal_left
+    400010: bicycle_pedal_right
+    400012: //RootNode
+    400014: pedals
+    2100000: bicycle
+    2300000: bicycle_back_wheel
+    2300002: bicycle_base
+    2300004: bicycle_front
+    2300006: bicycle_front_wheel
+    2300008: bicycle_pedal_left
+    2300010: bicycle_pedal_right
+    2300012: pedals
+    3300000: bicycle_back_wheel
+    3300002: bicycle_base
+    3300004: bicycle_front
+    3300006: bicycle_front_wheel
+    3300008: bicycle_pedal_left
+    3300010: bicycle_pedal_right
+    3300012: pedals
+    4300000: bicycle_base
+    4300002: pedals
+    4300004: bicycle_pedal_left
+    4300006: bicycle_pedal_right
+    4300008: bicycle_front
+    4300010: bicycle_front_wheel
+    4300012: bicycle_back_wheel
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bicycle
+    second: {fileID: 2100000, guid: d4607a31ac6c33b4596a5ba49156ee60, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/models/props/bicycle/bicycle_separated.fbx
+  uploadId: 672089

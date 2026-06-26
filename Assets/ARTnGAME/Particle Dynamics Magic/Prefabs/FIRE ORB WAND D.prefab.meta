@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 82f459f76bbac4c4aa4b8fdc6c7b5269
+labels:
+- Dynamic
+- Effect
+- Fire
+- Particles
+- Wooden
+- Wand
+- Attractor
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Prefabs/FIRE ORB WAND D.prefab
+  uploadId: 678762

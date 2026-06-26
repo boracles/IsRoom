@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2d73859f53cee5c4a900faa35dc4ac1b
+labels:
+- Dynamic
+- Effect
+- Magic
+- Particles
+- Vortex
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Prefabs/FIRE VORTEX.prefab
+  uploadId: 678762

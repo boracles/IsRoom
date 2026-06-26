@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &141129266711209989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2892568273575085653}
+    m_Modifications:
+    - target: {fileID: 4604761135390546905, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_Name
+      value: attic_door_painted_v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1163
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604761135390771193, guid: b6f48f2851abab541a7920b52c5c7a5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b6f48f2851abab541a7920b52c5c7a5b, type: 3}
+--- !u!1001 &3787556056745219875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2068398724608429398, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_Name
+      value: dusty_attic_wall_3x4m_door_with_painted_door_v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7b4b14b39381c548add6c28157880c7, type: 3}
+--- !u!4 &2892568273575085653 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2068398724608921974, guid: b7b4b14b39381c548add6c28157880c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3787556056745219875}
+  m_PrefabAsset: {fileID: 0}

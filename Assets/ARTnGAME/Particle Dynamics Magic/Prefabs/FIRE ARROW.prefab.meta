@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 67d0f9fdb36af814b9b3688f0e9ea5c9
+labels:
+- Effect
+- Fire
+- Particles
+- Arrow
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Prefabs/FIRE ARROW.prefab
+  uploadId: 678762

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9ccf25d32cd381547bc834429c7faf05
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/SimplexNoisePDM.cs
+  uploadId: 678762

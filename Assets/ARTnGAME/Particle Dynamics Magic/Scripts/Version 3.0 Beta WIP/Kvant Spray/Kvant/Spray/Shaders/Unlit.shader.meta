@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fc11471c70ec2478f80b9434bf45d6c1
+timeCreated: 1432364505
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant
+    Spray/Kvant/Spray/Shaders/Unlit.shader
+  uploadId: 678762

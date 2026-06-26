@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5d9536e863c678448a606e7289c23484
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/FreezeBurnControlPDM.cs
+  uploadId: 678762

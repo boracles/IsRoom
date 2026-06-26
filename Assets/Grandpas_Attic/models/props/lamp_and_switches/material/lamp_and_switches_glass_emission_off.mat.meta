@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d4ed625a7b98474478748930aacf9d60
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/models/props/lamp_and_switches/material/lamp_and_switches_glass_emission_off.mat
+  uploadId: 672089

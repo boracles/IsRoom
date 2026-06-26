@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 57301862623e6d14e9ffe5e986b58603
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/DissolvePDM.shader
+  uploadId: 678762

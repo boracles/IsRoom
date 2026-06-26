@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d7f9e4b36d4474781935eb3ae5ba30d3
+timeCreated: 1433330680
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant
+    Wall/Shaders/Kernel.shader
+  uploadId: 678762

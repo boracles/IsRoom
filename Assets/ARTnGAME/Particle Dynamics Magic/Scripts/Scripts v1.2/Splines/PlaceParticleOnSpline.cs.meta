@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 45bd54603e5ad724d85944f60784580a
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Splines/PlaceParticleOnSpline.cs
+  uploadId: 678762

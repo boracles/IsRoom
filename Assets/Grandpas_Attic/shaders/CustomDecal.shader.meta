@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9be9fe41659cd704d8703d606357283f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/shaders/CustomDecal.shader
+  uploadId: 672089

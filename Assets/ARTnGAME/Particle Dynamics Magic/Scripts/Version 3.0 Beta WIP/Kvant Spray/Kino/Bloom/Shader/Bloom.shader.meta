@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5a711a01011934ebcb58ef5ad52159d6
+timeCreated: 1435809878
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant
+    Spray/Kino/Bloom/Shader/Bloom.shader
+  uploadId: 678762

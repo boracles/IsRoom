@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 840bde84c3221b74daddc4d744bbd7cf
+labels:
+- Dynamic
+- Effect
+- Interactive
+- Particles
+- Splines
+- Physics
+- Phoenix
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 1.2/Prefabs/FLYING
+    PHOENIX.prefab
+  uploadId: 678762

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 527a4c33209d9a04ab330cd2ecaea058
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/BIRDY_Feather_control_Const.cs
+  uploadId: 678762

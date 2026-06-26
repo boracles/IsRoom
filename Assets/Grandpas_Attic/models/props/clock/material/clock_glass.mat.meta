@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b0a55628006ffb04383e621a0b361712
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/models/props/clock/material/clock_glass.mat
+  uploadId: 672089

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 1f8e0c73c48d9ab4484d2adb6559cefc
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationWindyPDM.shader
+  uploadId: 678762

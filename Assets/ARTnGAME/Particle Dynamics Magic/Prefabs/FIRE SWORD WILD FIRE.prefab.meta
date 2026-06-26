@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 23e5ad39fcdb3c4449b46efbad14f90a
+labels:
+- Dynamic
+- Effect
+- Fire
+- Particles
+- Sword
+- Attractor
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Prefabs/FIRE SWORD WILD FIRE.prefab
+  uploadId: 678762

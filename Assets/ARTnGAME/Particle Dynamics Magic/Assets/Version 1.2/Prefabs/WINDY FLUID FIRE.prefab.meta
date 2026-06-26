@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: beed23afb8600004293e23034acd1e65
+labels:
+- Attractor
+- Dynamic
+- Emission
+- Particles
+- Turbulence
+- Vortex
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 1.2/Prefabs/WINDY
+    FLUID FIRE.prefab
+  uploadId: 678762

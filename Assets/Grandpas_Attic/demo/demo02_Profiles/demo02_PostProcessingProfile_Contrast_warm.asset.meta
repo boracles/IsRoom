@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ca5fc756d5c563e4ebcb332c3fe05b51
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163717
+  packageName: Grandpa's Attic - Modular Attic & Props Pack
+  packageVersion: 1.1
+  assetPath: Assets/Grandpas_Attic/demo/demo02_Profiles/demo02_PostProcessingProfile_Contrast_warm.asset
+  uploadId: 672089

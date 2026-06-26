@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: bc11bf4e6f30c46d98811ebcbab0bf98
+timeCreated: 1435500000
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant
+    Spray/DeferredAO/Editor/DeferredAOEditor.cs
+  uploadId: 678762

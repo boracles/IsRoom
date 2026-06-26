@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: bc71cda4045d72443b229ff89d487c4b
+labels:
+- Dynamic
+- Effect
+- Magic
+- Particles
+- Orb
+- Wand
+- Wooden
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16175
+  packageName: 'Particle Dynamic Magic 2: Decal, Spline, AI Particles & dynamics'
+  packageVersion: 3.2
+  assetPath: Assets/ARTnGAME/Particle Dynamics Magic/Prefabs/MAGIC ORB WAND C.prefab
+  uploadId: 678762
