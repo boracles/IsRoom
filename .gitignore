@@ -43,3 +43,4 @@ local.properties
 [Uu]ser[Ss]ettings/
 [Mm]emoryCaptures/*.tgz
 Assets/Editor/Migration/*.tgz
+Packages/*.tgz
