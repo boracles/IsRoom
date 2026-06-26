@@ -78,6 +78,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/AttractParticles.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Helper/AnimateTrailTexturePDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/BlobyConnection/BlobyConnectionAuraPDM.cs" />
+    <Compile Include="Assets/02_Scripts/ParticleDistanceSizeClamp.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.2/Blasts/BlastControlPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/ChainLightningShuriken_PDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/CharacterController/ThirdPersonControllerPDM.cs" />
