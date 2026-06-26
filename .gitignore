@@ -44,3 +44,4 @@ local.properties
 [Mm]emoryCaptures/*.tgz
 Assets/Editor/Migration/*.tgz
 Packages/*.tgz
+Assets/ARTnGAME/Particle Dynamics Magic/DEMOS/
