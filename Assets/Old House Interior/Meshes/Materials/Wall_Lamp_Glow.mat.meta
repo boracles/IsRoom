@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 995efec84d5f81b478dd601d4d938ce1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315517
+  packageName: HQ Old House Interior (Modular)
+  packageVersion: 1.0
+  assetPath: Assets/Old House Interior/Meshes/Materials/Wall_Lamp_Glow.mat
+  uploadId: 745419

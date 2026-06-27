@@ -186,6 +186,7 @@
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction 2a.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/ABParticleAdditiveBlendMixPDM.shader" />
     <None Include="Assets/URPWater/Shaders/VFX/URPWaterMask.shader" />
+    <None Include="Assets/Old House Interior/Shaders/Standard_2sided.shader" />
     <None Include="Assets/URPWater/Shaders/HLSL/URPWaterDebugRT.shader" />
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeVorticity.compute" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/SimplexNoiseExt3D.cginc" />
@@ -266,6 +267,7 @@
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeJacobi.compute" />
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/FireRayCast.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationWindyPDM.shader" />
+    <None Include="Assets/Old House Interior/How To Activate Post Processing.txt" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/VegetationV21VERT.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Unlit 1.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/TEM/PDM_Water_Shader_Add_Blend.shader" />

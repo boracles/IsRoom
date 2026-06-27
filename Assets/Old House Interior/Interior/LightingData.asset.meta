@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 48a197bb6eb72244282b288fb3827824
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315517
+  packageName: HQ Old House Interior (Modular)
+  packageVersion: 1.0
+  assetPath: Assets/Old House Interior/Interior/LightingData.asset
+  uploadId: 745419
