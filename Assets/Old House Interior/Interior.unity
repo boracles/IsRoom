@@ -3047,6 +3047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curtains (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6595697306858592624, guid: 669d3058eef30924e9d0530c8c2fd7fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6770548964985935457, guid: 669d3058eef30924e9d0530c8c2fd7fe, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2320434

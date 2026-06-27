@@ -54,12 +54,14 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/Entities/DecalEntityManager.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/ScreenSpaceLensFlare.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/History/RawColorHistory.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLight.Settings.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RTHandleUtils.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/ScreenSpace/DecalScreenSpaceRenderPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/VolumeRequiresRendererFeatures.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalCameraHistory.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ForwardLights.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/FrameData/UniversalCameraData.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsTranslucentShadowMapFeature.Legacy.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/GBufferPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Tiling/LightMinMaxZJob.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ShadowUtils.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/SpaceFillingCurves.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Tiling/TilingJob.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Debug/DebugDisplaySettingsMaterial.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsOcclusionDepthFeature.Legacy.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/StencilCrossFadeRenderPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Settings/URPDefaultVolumeProfileSetting.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RenderPipelineResources/UniversalRenderPipelineRuntimeTerrainShaders.cs" />
@@ -77,6 +80,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Data/UniversalRenderPipelineAsset.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/History/StpHistory.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/PaniniProjection.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightDirectionalSync.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalRenderPipelineGlobalSettings.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/DBuffer/DBufferDepthCopyPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/FrameData/UniversalResourceData.cs" />
@@ -109,6 +113,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/History/RawDepthHistory.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/PostProcessPassRenderGraph.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/FullScreenPassRendererFeature.migration.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsRenderFeature.Legacy.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalRenderPipelineRenderGraph.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RenderPipelineResources/Renderer2DResources.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/WhiteBalance.cs" />
@@ -120,6 +125,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RenderGraph/RenderGraphGraphicsAutomatedTests.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Memory/BuddyAllocator.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/LiftGammaGain.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsTranslucentShadowMapFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/AdditionalLightsShadowAtlasLayout.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Deprecated.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/ColorGradingLutPass.cs" />
@@ -128,6 +134,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/VFXGraph/Utility/PropertyBinders/URPCameraBinder.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RenderPipelineResources/UniversalRenderPipelineEditorMaterials.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/Entities/DecalUpdateCachedSystem.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLight.Particles.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheCore/SurfaceCacheRenderPipelineResources.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/Vignette.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/OnTilePostProcessFeature.cs" />
@@ -139,6 +146,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RenderingUtils.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/SampleCount.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Debug/UniversalRenderPipelineDebugDisplaySettings.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsDepthPrePassFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/FilmGrain.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Settings/URPReflectionProbeSettings.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/MotionBlur.cs" />
@@ -147,13 +155,17 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/Entities/DecalChunk.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Tiling/TileSize.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/XRDepthMotionPass.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsTranslucency.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/DrawSkyboxPass.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightProfile.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/LightCookieManager.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/ScreenSpaceShadows.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLight.ShaderParams.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ShaderBitArray.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/FrameData/UniversalRenderingData.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ScriptableRendererFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalRendererDebug.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLight.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/TransparentSettingsPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/XR/XRSystemUniversal.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/DecalPreviewPass.cs" />
@@ -168,11 +180,13 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ForwardRendererData.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/FrameData/UniversalResourceBase.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/DrawScreenSpaceUIPass.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsRenderFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Data/PostProcessData.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Debug/DebugDisplaySettingsCommon.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ShaderData.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalRenderPipeline.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/DrawObjectsPass.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/Misc.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/ColorCurves.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalRendererRenderGraph.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/NativeRenderPass.cs" />
@@ -188,9 +202,11 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/DisallowMultipleRendererFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/AssemblyInfo.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/Entities/DecalSkipCulledSystem.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsDepthPrePassFeature.Legacy.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalRendererData.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ShadowCulling.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/LensDistortion.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLightsOcclusionDepthFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/XROcclusionMeshPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ReflectionProbeManager.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/DepthNormalOnlyPass.cs" />
@@ -203,6 +219,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/OnTilePostProcessResource.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Tiling/InclusiveRange.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/UniversalAdditionalLightData.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLight.Shadows.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheGlobalIlluminationRendererFeature.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/FullScreenPassRendererFeature_OldGUID.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/ScriptableRenderer.cs" />
@@ -227,6 +244,7 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/NoAllocUtils.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/DBuffer/DecalForwardEmissivePass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Decal/DecalDrawErrorRenderPass.cs" />
+    <Compile Include="Assets/VolumetricLights/Scripts/VolumetricLight.Mesh.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Passes/CopyDepthPass.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/RenderObjects.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/Overrides/ChannelMixer.cs" />
@@ -259,6 +277,7 @@
     <None Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheCore/UniformEstimation.hlsl" />
     <None Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheCore/RestirCandidateTemporal.hlsl" />
     <None Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/VFXGraph/Shaders/VFXCommon.hlsl" />
+    <None Include="Assets/VolumetricLights/Scripts/VolumetricLights.asmref" />
     <None Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheCore/Eviction.compute" />
     <None Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheCore/IrradianceCompression.hlsl" />
     <None Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Runtime/RendererFeatures/SurfaceCacheGI/SurfaceCacheCore/RestirSpatial.compute" />
