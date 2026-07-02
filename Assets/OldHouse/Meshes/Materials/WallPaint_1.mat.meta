@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 117a28f889329064bb612fa13eb90ff3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315517
+  packageName: HQ Old House Interior (Modular)
+  packageVersion: 1.0
+  assetPath: Assets/Old House Interior/Meshes/Materials/WallPaint_1.mat
+  uploadId: 745419

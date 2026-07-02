@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 89feea042e22d5f48881d2313915945d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315517
+  packageName: HQ Old House Interior (Modular)
+  packageVersion: 1.0
+  assetPath: Assets/Old House Interior/Meshes/Materials/Kitchen_tabletop.mat
+  uploadId: 745419
