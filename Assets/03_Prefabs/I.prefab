@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 337361991744013850}
   - component: {fileID: 812523285295563393}
   - component: {fileID: 1116682204119431535}
-  - component: {fileID: 7583402411841351036}
+  - component: {fileID: 1707848906451283115}
+  - component: {fileID: 1469091285962701519}
   m_Layer: 0
   m_Name: I
   m_TagString: Grass
@@ -31,10 +32,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 454.79114, y: 35.761745, z: -38.690956}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalScale: {x: 0.03, y: 0.030000014, z: 0.030000014}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 169542060346100765}
   - {fileID: 5407474162539298313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   CHANGE_FACTOR: 0
   Deactivate_after: 0
   seconds: 1
---- !u!114 &7583402411841351036
+--- !u!114 &1707848906451283115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,140 +145,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 805066122919282108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5efabd7da6181c54096f96be0bc9becb, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ed47640ccff4344b2791e908693c6f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  mouseOverColor: {r: 0.6886792, g: 0.6382461, b: 0.5165094, a: 1}
-  Colorize: 1
---- !u!1 &1910638667383544077
-GameObject:
+  m_EditorClassIdentifier: Assembly-CSharp::VoiceHoldInput
+  useMicrophone: 1
+  sampleWindow: 128
+  volumeMultiplier: 30
+--- !u!114 &1469091285962701519
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 169542060346100765}
-  - component: {fileID: 932755902239833583}
-  m_Layer: 0
-  m_Name: AUDIO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &169542060346100765
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910638667383544077}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -170.17639, y: -231.61984, z: 492.25778}
-  m_LocalScale: {x: 33.333336, y: 33.333336, z: 33.333336}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5675193757169852590}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &932755902239833583
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910638667383544077}
+  m_GameObject: {fileID: 805066122919282108}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 2814f2768a07c2f4da504dccf80398e1, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.264
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 50
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d9c3a06e8f3481d893ac0528675fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIPerformerI
+  voiceInput: {fileID: 1707848906451283115}
+  iRenderer: {fileID: 1309460228434831065}
+  absorbParticle: {fileID: 0}
+  emitParticle: {fileID: 0}
+  stairDoorPosition: {fileID: 0}
+  waveDoorPosition: {fileID: 0}
+  shadowDoorPosition: {fileID: 0}
+  touchPosition: {fileID: 0}
+  moveSpeed: 5
+  floatingSpeed: 1.5
+  floatingAmount: 0.03
+  voiceScaleAmount: 0.35
 --- !u!1 &6281011319473728399
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +192,7 @@ GameObject:
   - component: {fileID: 7303913160894640689}
   - component: {fileID: 2753688979542826364}
   m_Layer: 0
-  m_Name: MAINPARTICLE
+  m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 6281011319473728399}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.3, y: 0, z: 1.6351471}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5747,7 +5643,7 @@ MonoBehaviour:
   Start_color: {r: 0.9150943, g: 0.8678415, b: 0.58272517, a: 0}
   detail: 500
   amplitude: 0.05
-  Audio_source: {fileID: 1910638667383544077}
+  Audio_source: {fileID: 0}
   toggle_interpolation_time: 0.2
   dancing_splines: 0
   Switch_particle: 0
