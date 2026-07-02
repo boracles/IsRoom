@@ -12,6 +12,11 @@ public class RoomStepController : MonoBehaviour
     public AIPerformerI performerI;
     public VoiceHoldInput voiceInput;
 
+    [Header("Piece Spawn Points")]
+    public Transform stairPieceSpawn;
+    public Transform wavePieceSpawn;
+    public Transform shadowPieceSpawn;
+
     [Header("Audio")]
     public AudioSource sfxSource;
     public AudioSource voiceSource;
@@ -158,22 +163,43 @@ public class RoomStepController : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, currentRoom.piecePrefabs.Length);
         GameObject selectedPrefab = currentRoom.piecePrefabs[randomIndex];
 
-        Vector3 spawnPosition = transform.position;
+        Transform spawnPoint = GetSpawnPoint(currentRoom.roomType);
 
-        if (currentRoom.pieceSpawnPoint != null)
-        {
-            spawnPosition = currentRoom.pieceSpawnPoint.position;
-        }
+        Vector3 spawnPosition = spawnPoint != null
+            ? spawnPoint.position
+            : transform.position;
+
+        Quaternion spawnRotation = spawnPoint != null
+            ? spawnPoint.rotation
+            : Quaternion.identity;
 
         GameObject piece = Instantiate(
             selectedPrefab,
             spawnPosition,
-            Quaternion.identity
+            spawnRotation
         );
 
         piece.name = $"{currentRoom.roomType}_Piece_{randomIndex}";
 
         return piece;
+    }
+
+    private Transform GetSpawnPoint(RoomType roomType)
+    {
+        switch (roomType)
+        {
+            case RoomType.Stair:
+                return stairPieceSpawn;
+
+            case RoomType.Wave:
+                return wavePieceSpawn;
+
+            case RoomType.Shadow:
+                return shadowPieceSpawn;
+
+            default:
+                return null;
+        }
     }
 
     private float GetClipLength(AudioClip clip)

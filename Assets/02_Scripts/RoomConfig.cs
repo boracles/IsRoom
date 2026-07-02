@@ -18,9 +18,6 @@ public class RoomConfig : ScriptableObject
     [Header("Piece")]
     public GameObject[] piecePrefabs;
 
-    [Header("Spawn")]
-    public Transform pieceSpawnPoint;
-
     [Header("I Visual")]
     public Color iParticleColor = Color.yellow;
 }

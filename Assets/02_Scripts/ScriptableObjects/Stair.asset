@@ -23,5 +23,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  pieceSpawnPoint: {fileID: 0}
-  iParticleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  iParticleColor: {r: 0.13203098, g: 0.4056604, b: 0.2174337, a: 1}

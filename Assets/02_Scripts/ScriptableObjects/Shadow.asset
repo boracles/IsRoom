@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Shadow
   m_EditorClassIdentifier: Assembly-CSharp::RoomConfig
   roomType: 0
-  questionText: 
+  questionText: "\uB2F9\uC2E0 \uC548\uC5D0\uC11C \uC544\uC9C1 \uB9D0\uD558\uC9C0
+    \uBABB\uD55C \uAC83\uC740 \uBB34\uC5C7\uC778\uAC00\uC694?"
   firstToneClip: {fileID: 0}
   questionVoiceClip: {fileID: 0}
   releaseClip: {fileID: 0}
   createPieceClip: {fileID: 0}
-  piecePrefabs: []
-  pieceSpawnPoint: {fileID: 0}
-  iParticleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  piecePrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  iParticleColor: {r: 0.7169812, g: 0.44256333, b: 0.20630117, a: 1}

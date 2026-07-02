@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Wave
   m_EditorClassIdentifier: Assembly-CSharp::RoomConfig
   roomType: 0
-  questionText: 
+  questionText: "\uB2F9\uC2E0 \uC548\uC5D0\uC11C \uD30C\uB3C4\uCC98\uB7FC \uBC00\uB824\uC640
+    \uB098\uB97C \uB4A4\uB36E\uB294 \uAC10\uC815\uC740 \uBB34\uC5C7\uC778\uAC00\uC694?"
   firstToneClip: {fileID: 0}
   questionVoiceClip: {fileID: 0}
   releaseClip: {fileID: 0}
   createPieceClip: {fileID: 0}
-  piecePrefabs: []
-  pieceSpawnPoint: {fileID: 0}
-  iParticleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  piecePrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  iParticleColor: {r: 0.11672304, g: 0.3983824, b: 0.5754717, a: 1}
