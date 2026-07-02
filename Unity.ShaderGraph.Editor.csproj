@@ -572,8 +572,8 @@
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Nodes/Input/Texture/Texture3DAssetNode.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Generation/Contexts/TargetPropertyGUIContext.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Nodes/Math/Trigonometry/ArccosineNode.cs" />
-    <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Attributes/BuiltinKeywordAttribute.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Drawing/Colors/CustomColorData.cs" />
+    <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Attributes/BuiltinKeywordAttribute.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Drawing/EdgeConnectorListener.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/ContextData.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Graphs/GraphDataReadOnly.cs" />

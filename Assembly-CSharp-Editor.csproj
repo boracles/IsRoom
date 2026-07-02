@@ -49,6 +49,7 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.3.15f1/Unity.app/Contents/Resources/BuildPipeline/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/LiquidVolumePro/Editor/LiquidVolumeEditor.cs" />
     <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Fog/Editor/FogEditor.cs" />
     <Compile Include="Assets/URPWater/Editor/URPWaterEditor.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Changed/PrefabManager/Editor/PDM_Prefab_Manager_20.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Editor/WallMaterialEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Editor/Tags.cs" />
+    <Compile Include="Assets/LiquidVolumePro/Editor/LiquidVolumeEditorStyles.cs" />
     <Compile Include="Assets/VolumetricLights/Editor/MenuIntegration.cs" />
     <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightsTranslucencyEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Bloom/Editor/BloomEditor.cs" />
@@ -99,6 +101,7 @@
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/semantic.ja.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/semantic.zh-Hans.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/clientcommon.ja.txt" />
+    <None Include="Assets/LiquidVolumePro/Editor/Resources/ParentTexPreview.shader" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/configurehelper.zh-Hans.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/xdiff.en.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/workspaceserver.ja.txt" />
@@ -204,6 +207,7 @@
     <None Include="Library/PackageCache/com.unity.postprocessing@141166b789e3/PostProcessing/Shaders/Editor/ConvertToLog.shader" />
     <None Include="Library/PackageCache/com.ptc.vuforia.engine@58134fb7b422/Vuforia/Plugins/Managed/Editor/Vuforia.Unity.Editor.dll" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/zlib64Plastic.dll" />
+    <None Include="Assets/LiquidVolumePro/Editor/Resources/DepthTexPreview.shader" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/cm-help.es.txt" />
     <None Include="Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/Lib/Editor/Localization/differences.ja.txt" />
   </ItemGroup>
@@ -1398,6 +1402,7 @@
     <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
     <ProjectReference Include="PPv2URPConverters.csproj" />
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
+    <ProjectReference Include="Unity.VSCode.Editor.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.Shared.csproj" />
     <ProjectReference Include="Unity.XR.ARKit.FaceTracking.csproj" />
     <ProjectReference Include="Unity.RenderPipelines.Universal.2D.Runtime.csproj" />

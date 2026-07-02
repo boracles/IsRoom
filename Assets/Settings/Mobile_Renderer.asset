@@ -68,7 +68,8 @@ MonoBehaviour:
   - {fileID: 1967220844162514223}
   - {fileID: -8445690305413566912}
   - {fileID: 70068716598853242}
-  m_RendererFeatureMap: 023407685e7b30d32ffd0c5beff84c1b402edd166ae1ca8a7afebd6220eff800
+  - {fileID: 1832575108486960827}
+  m_RendererFeatureMap: 023407685e7b30d32ffd0c5beff84c1b402edd166ae1ca8a7afebd6220eff800bb96960d5a9d6e19
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -111,6 +112,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ScreenSpaceShadows
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd, type: 3}
+--- !u!114 &1832575108486960827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f939cab223f84584adf64c5cf11de56, type: 3}
+  m_Name: Liquid Volume Depth PrePass
+  m_EditorClassIdentifier: Assembly-CSharp::LiquidVolumeFX.LiquidVolumeDepthPrePassRenderFeature
+  m_Active: 1
+  shader: {fileID: 4800000, guid: c3dd22b145db8426c8431df2f8e416b1, type: 3}
+  interleavedRendering: 0
+  renderPassEvent: 450
 --- !u!114 &1967220844162514223
 MonoBehaviour:
   m_ObjectHideFlags: 0
