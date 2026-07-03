@@ -85,6 +85,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SkinnedMesh/SKinnedPArticleEmit_StaticNonPrefab.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/Control_WIND.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/Constants.cs" />
+    <Compile Include="Assets/02_Scripts/ParticleInwardAbsorbOverride.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/BlastOnImpactPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/ChainLightning_PDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/DeferredAO/DeferredAO.cs" />

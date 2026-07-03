@@ -19,12 +19,18 @@ public class AIPerformerI : MonoBehaviour
     public Transform touchPosition;
 
     [Header("Motion")]
-    public float moveSpeed = 5f;
-    public float floatingSpeed = 1.5f;
-    public float floatingAmount = 0.03f;
+    public float moveSpeed = 1.8f;
+    public float smoothTime = 0.35f;
+    public float floatingSpeed = 0.7f;
+    public float floatingAmount = 0.008f;
     public float voiceScaleAmount = 0.35f;
 
+    [Header("Arrival")]
+    public float snapDistance = 0.001f;
+
     private Vector3 targetPosition;
+    private Transform targetTransform;
+    private Vector3 moveVelocity;
     private Vector3 baseScale;
 
     private bool isListening;
@@ -33,6 +39,7 @@ public class AIPerformerI : MonoBehaviour
     private void Awake()
     {
         targetPosition = transform.position;
+        targetTransform = null;
         baseScale = transform.localScale;
     }
 
@@ -44,14 +51,26 @@ public class AIPerformerI : MonoBehaviour
 
     private void MoveToTarget()
     {
-        Vector3 floatOffset = Vector3.up * Mathf.Sin(Time.time * floatingSpeed) * floatingAmount;
-        Vector3 finalTarget = targetPosition + floatOffset;
+        Vector3 target = targetTransform != null
+            ? targetTransform.position
+            : targetPosition;
 
-        transform.position = Vector3.Lerp(
+        // 월드 Y 기준으로 아주 약하게만 둥둥 뜨게 함
+        Vector3 floatOffset = Vector3.up * Mathf.Sin(Time.time * floatingSpeed) * floatingAmount;
+        Vector3 finalTarget = target + floatOffset;
+
+        transform.position = Vector3.SmoothDamp(
             transform.position,
             finalTarget,
-            Time.deltaTime * moveSpeed
+            ref moveVelocity,
+            smoothTime,
+            moveSpeed
         );
+
+        if (Vector3.Distance(transform.position, finalTarget) < snapDistance)
+        {
+            transform.position = finalTarget;
+        }
     }
 
     private void UpdateReactiveScale()
@@ -83,21 +102,43 @@ public class AIPerformerI : MonoBehaviour
 
     public void MoveToRoomDoor(RoomType roomType)
     {
+        targetTransform = null;
+
         if (roomType == RoomType.Stair && stairDoorPosition != null)
-            targetPosition = stairDoorPosition.position;
+        {
+            targetTransform = stairDoorPosition;
+        }
+        else if (roomType == RoomType.Wave && waveDoorPosition != null)
+        {
+            targetTransform = waveDoorPosition;
+        }
+        else if (roomType == RoomType.Shadow && shadowDoorPosition != null)
+        {
+            targetTransform = shadowDoorPosition;
+        }
 
-        if (roomType == RoomType.Wave && waveDoorPosition != null)
-            targetPosition = waveDoorPosition.position;
-
-        if (roomType == RoomType.Shadow && shadowDoorPosition != null)
-            targetPosition = shadowDoorPosition.position;
+        if (targetTransform != null)
+        {
+            targetPosition = targetTransform.position;
+            moveVelocity = Vector3.zero;
+        }
+        else
+        {
+            Debug.LogWarning($"I_Performer: {roomType} door position is not assigned.");
+        }
     }
 
     public void MoveToTouchPosition()
     {
         if (touchPosition != null)
         {
+            targetTransform = touchPosition;
             targetPosition = touchPosition.position;
+            moveVelocity = Vector3.zero;
+        }
+        else
+        {
+            Debug.LogWarning("I_Performer: touchPosition is not assigned.");
         }
     }
 
@@ -111,7 +152,7 @@ public class AIPerformerI : MonoBehaviour
 
     public void FirstTonePulse()
     {
-        transform.localScale = baseScale * 1.25f;
+        transform.localScale = baseScale * 1.15f;
     }
 
     public void StartSpeaking()
@@ -146,7 +187,7 @@ public class AIPerformerI : MonoBehaviour
 
     public void ReleaseContraction()
     {
-        transform.localScale = baseScale * 0.7f;
+        transform.localScale = baseScale * 0.85f;
     }
 
     public void EmitToPiece(Vector3 piecePosition)

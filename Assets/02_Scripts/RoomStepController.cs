@@ -60,6 +60,9 @@ public class RoomStepController : MonoBehaviour
     public float createPieceDelay = 0.5f;
     public float nextRoomDelay = 1.0f;
 
+    [Header("Room Found Feedback")]
+    public float roomFoundMessageDuration = 1.5f;
+
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
 
@@ -176,7 +179,11 @@ public class RoomStepController : MonoBehaviour
 
         performerI.MoveToTouchPosition();
 
-        yield return new WaitUntil(() => voiceInput.IsHolding);
+        // 이전 단계에서 오브제를 돌리던 터치가 남아 있으면 먼저 완전히 떼기를 기다림
+        yield return new WaitUntil(() => voiceInput == null || !voiceInput.IsHolding);
+
+        // 그 다음 새로 I를 누를 때만 답변 시작
+        yield return new WaitUntil(() => voiceInput != null && voiceInput.IsHolding);
 
         currentState = RoomState.Listening;
 
@@ -409,6 +416,7 @@ public class RoomStepController : MonoBehaviour
         // 1. 육면체 인식 가이드 사라짐
         SetScanGuide(false);
         SetQuestion("");
+        HideRoomGuideImage();
 
         // 2. 파티클 한 번 재생
         PlayIRoomAwakeParticle();
@@ -422,22 +430,13 @@ public class RoomStepController : MonoBehaviour
             sfxSource.PlayOneShot(iRoomAwakeClip);
         }
 
-        // 좀 더 오래 머무르게
+        // I의 방 깨어남 문구가 충분히 머무름
         yield return new WaitForSeconds(awakenedMessageDuration);
 
-        // 4. 다음 안내
-        SetGuide("오브제를 돌려 계단의 방을 비춰주세요.");
-
-        if (stairRoomGuideClip != null && sfxSource != null)
-        {
-            sfxSource.PlayOneShot(stairRoomGuideClip);
-        }
-
-        yield return new WaitForSeconds(nextGuideDuration);
-
-        // 5. 이후 실제 계단 방 루틴 시작
-        ClearUI();
-
+        // 여기서 직접 "계단의 방을 비춰주세요"를 띄우지 않음.
+        // onFinished가 호출되면 IRoomSequenceManager가 WaitForCurrentRoomTarget()
+        // → ShowFindRoomGuide(Stair)를 호출해서
+        // 계단 가이드 이미지 + 안내문을 같이 띄움.
         onFinished?.Invoke();
     }
 
@@ -549,5 +548,46 @@ public class RoomStepController : MonoBehaviour
         {
             performerI.StartSpeaking();
         }
-    }        
+    }    
+
+    public void PlayRoomFoundSequence(RoomType roomType, Action onFinished)
+    {
+        StopAllCoroutines();
+        StartCoroutine(RoomFoundRoutine(roomType, onFinished));
+    }
+
+    private IEnumerator RoomFoundRoutine(RoomType roomType, Action onFinished)
+    {
+        SetScanGuide(false);
+        SetQuestion("");
+        HideRoomGuideImage();
+
+        switch (roomType)
+        {
+            case RoomType.Stair:
+                SetGuide("계단의 방입니다.");
+                break;
+
+            case RoomType.Wave:
+                SetGuide("파도의 방입니다.");
+                break;
+
+            case RoomType.Shadow:
+                SetGuide("그림자의 방입니다.");
+                break;
+
+            default:
+                SetGuide("방이 열렸습니다.");
+                break;
+        }
+
+        PlayGuideHighlight();
+
+        yield return new WaitForSeconds(roomFoundMessageDuration);
+
+        ClearUI();
+
+        onFinished?.Invoke();
+    }
+
 }

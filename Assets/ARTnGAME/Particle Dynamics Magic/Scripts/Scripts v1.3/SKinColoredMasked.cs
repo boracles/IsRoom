@@ -897,34 +897,40 @@ public class SKinColoredMasked : MonoBehaviour {
 						
 						Texture2D pixels = null;
 
-						if(Application.isPlaying){
-							if(simple_mesh.gameObject.GetComponent<Renderer>().material !=null){
-								if(simple_mesh.gameObject.GetComponent<Renderer>().material.HasProperty("_MainTex")){
-									//Debug.Log ("it has ?");
-									if(simple_mesh.gameObject.GetComponent<Renderer>().material.mainTexture !=null){
-										pixels =  simple_mesh.gameObject.GetComponent<Renderer>().material.mainTexture as Texture2D;
-									}
-								}
-							}
+						Renderer rend = simple_mesh.gameObject.GetComponent<Renderer>();
 
-						}else{
+						if (rend != null)
+						{
+								Material mat = Application.isPlaying ? rend.material : rend.sharedMaterial;
 
-							if(simple_mesh.gameObject.GetComponent<Renderer>().sharedMaterial.HasProperty("_MainTex")){
-								if(simple_mesh.gameObject.GetComponent<Renderer>().sharedMaterial.mainTexture !=null){
-									pixels =  simple_mesh.gameObject.GetComponent<Renderer>().sharedMaterial.mainTexture as Texture2D;
+								if (mat != null)
+								{
+										if (mat.HasProperty("_MainTex") && mat.GetTexture("_MainTex") != null)
+										{
+												pixels = mat.GetTexture("_MainTex") as Texture2D;
+										}
+										else if (mat.HasProperty("_BaseMap") && mat.GetTexture("_BaseMap") != null)
+										{
+												pixels = mat.GetTexture("_BaseMap") as Texture2D;
+										}
 								}
-							}
 						}
 
-						if(Application.isPlaying){
-							if(pixels!=null ){
-								offset1 = simple_mesh.gameObject.GetComponent<Renderer>().material.mainTextureOffset;
-							}
-						}
-						else{
-							if(pixels!=null ){
-								offset1 = simple_mesh.gameObject.GetComponent<Renderer>().sharedMaterial.mainTextureOffset;
-							}
+						if (rend != null)
+						{
+								Material mat = Application.isPlaying ? rend.material : rend.sharedMaterial;
+
+								if (mat != null)
+								{
+										if (mat.HasProperty("_MainTex") && mat.GetTexture("_MainTex") != null)
+										{
+												offset1 = mat.GetTextureOffset("_MainTex");
+										}
+										else if (mat.HasProperty("_BaseMap") && mat.GetTexture("_BaseMap") != null)
+										{
+												offset1 = mat.GetTextureOffset("_BaseMap");
+										}
+								}
 						}
 
 

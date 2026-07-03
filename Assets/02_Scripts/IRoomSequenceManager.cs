@@ -24,6 +24,9 @@ public class IRoomSequenceManager : MonoBehaviour
 
     private bool waitingForRoomTarget = false;
 
+    private float roomTargetAcceptTime = 0f;
+    public float roomTargetDetectionDelay = 1.0f;
+
     private void Awake()
     {
         roomOrder.Clear();
@@ -75,6 +78,7 @@ public class IRoomSequenceManager : MonoBehaviour
         }
 
         waitingForRoomTarget = true;
+        roomTargetAcceptTime = Time.time + roomTargetDetectionDelay;
 
         roomStepController.ShowFindRoomGuide(expectedRoom.roomType);
 
@@ -84,6 +88,11 @@ public class IRoomSequenceManager : MonoBehaviour
     public void OnRoomTargetDetected(RoomType detectedRoomType)
     {
         if (!waitingForRoomTarget)
+        {
+            return;
+        }
+
+        if (Time.time < roomTargetAcceptTime)
         {
             return;
         }
@@ -105,9 +114,12 @@ public class IRoomSequenceManager : MonoBehaviour
         {
             waitingForRoomTarget = false;
 
-            Debug.Log($"{detectedRoomType} 방 인식됨. 방 루틴을 시작합니다.");
+            Debug.Log($"{detectedRoomType} 방 인식됨. 확인 메시지 후 방 루틴을 시작합니다.");
 
-            StartCurrentRoom();
+            roomStepController.PlayRoomFoundSequence(detectedRoomType, () =>
+            {
+                StartCurrentRoom();
+            });
         }
         else
         {

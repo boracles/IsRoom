@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0a5fbd39d5b445f900d9342dc93785, type: 3}
   m_Name: Shadow
   m_EditorClassIdentifier: Assembly-CSharp::RoomConfig
-  roomType: 0
+  roomType: 2
   questionText: "\uB2F9\uC2E0 \uC548\uC5D0\uC11C \uC544\uC9C1 \uB9D0\uD558\uC9C0
     \uBABB\uD55C \uAC83\uC740 \uBB34\uC5C7\uC778\uAC00\uC694?"
   firstToneClip: {fileID: 0}

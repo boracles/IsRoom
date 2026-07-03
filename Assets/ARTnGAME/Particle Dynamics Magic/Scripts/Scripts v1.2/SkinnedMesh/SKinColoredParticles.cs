@@ -200,6 +200,15 @@ namespace Artngame.PDM {
 		public bool extend_life=false;
 		
 		public bool Gravity_Mode=false;
+
+		[Header("Inward / Absorb Motion")]
+		public bool Inward_Mode = false;
+		public float Outer_scale = 0.05f;
+		public float Inner_scale = 0.01f;
+		public float Inward_speed = 0.03f;
+		public float Outer_jitter = 0.008f;
+		public float Outer_random_scale = 0.25f;
+		public Transform Inward_Target;
 		
 
 		
@@ -213,10 +222,124 @@ namespace Artngame.PDM {
 
 		
 		public float Return_speed=0.005f;
-		
+
+		float Stable01(int seed)
+		{
+			float v = Mathf.Sin(seed * 12.9898f + 78.233f) * 43758.5453f;
+			return v - Mathf.Floor(v);
+		}
+
+		Vector3 StableUnitVector(int seed)
+		{
+			float x = Stable01(seed * 3 + 1) * 2f - 1f;
+			float y = Stable01(seed * 3 + 2) * 2f - 1f;
+			float z = Stable01(seed * 3 + 3) * 2f - 1f;
+
+			Vector3 v = new Vector3(x, y, z);
+			if (v.sqrMagnitude < 0.0001f)
+			{
+				v = Vector3.up;
+			}
+
+			return v.normalized;
+		}
+
+		Texture2D GetMaterialTexture(Renderer rend)
+		{
+			if (rend == null) { return null; }
+
+			Material mat = Application.isPlaying ? rend.material : rend.sharedMaterial;
+			if (mat == null) { return null; }
+
+			if (mat.HasProperty("_MainTex") && mat.GetTexture("_MainTex") != null)
+			{
+				return mat.GetTexture("_MainTex") as Texture2D;
+			}
+
+			if (mat.HasProperty("_BaseMap") && mat.GetTexture("_BaseMap") != null)
+			{
+				return mat.GetTexture("_BaseMap") as Texture2D;
+			}
+
+			return mat.mainTexture as Texture2D;
+		}
+
+		Vector2 GetMaterialTextureOffset(Renderer rend)
+		{
+			if (rend == null) { return Vector2.zero; }
+
+			Material mat = Application.isPlaying ? rend.material : rend.sharedMaterial;
+			if (mat == null) { return Vector2.zero; }
+
+			if (mat.HasProperty("_MainTex") && mat.GetTexture("_MainTex") != null)
+			{
+				return mat.GetTextureOffset("_MainTex");
+			}
+
+			if (mat.HasProperty("_BaseMap") && mat.GetTexture("_BaseMap") != null)
+			{
+				return mat.GetTextureOffset("_BaseMap");
+			}
+
+			return mat.mainTextureOffset;
+		}
+
+		Vector3 GetOuterPosition(Vector3 vertexLocal, int particleIndex)
+		{
+			Vector3 dir = vertexLocal.normalized;
+
+			if (dir == Vector3.zero)
+			{
+				dir = StableUnitVector(particleIndex + 17);
+			}
+
+			// particleIndex 기반 고정 랜덤.
+			// Random.InitState를 쓰지 않아서 매 프레임 타겟이 흔들리지 않는다.
+			float randomScale = 1f + ((Stable01(particleIndex * 11 + 5) * 2f - 1f) * Outer_random_scale);
+			Vector3 jitterLocal = StableUnitVector(particleIndex * 13 + 9) * Stable01(particleIndex * 17 + 3) * Outer_jitter;
+
+			Vector3 outerLocal = dir * vertexLocal.magnitude * Outer_scale * randomScale + jitterLocal;
+
+			return emitter.transform.TransformPoint(outerLocal);
+		}
+
+		Vector3 GetInnerPosition(Vector3 vertexLocal)
+		{
+				Vector3 innerLocal = vertexLocal * Inner_scale;
+				return emitter.transform.TransformPoint(innerLocal);
+		}
+
+		void ApplyInwardMotion(ref ParticleSystem.Particle particle, Vector3 vertexLocal, int index)
+		{
+				Vector3 outerPos = GetOuterPosition(vertexLocal, index);
+				Vector3 innerPos = GetInnerPosition(vertexLocal);
+				Vector3 finalTarget = Inward_Target != null ? Inward_Target.position : innerPos;
+
+				// remainingLifetime 기준으로 초반에는 무조건 바깥 위치에 둔다.
+				// 이게 있어야 Outer_scale을 키웠을 때 진짜 바깥에 있는 파티클이 보인다.
+				bool stayOuter = particle.remainingLifetime > particle.startLifetime * keep_in_position_factor;
+
+				if (stayOuter)
+				{
+						particle.position = outerPos;
+				}
+				else
+				{
+						particle.position = Vector3.Lerp(
+								particle.position,
+								finalTarget,
+								Mathf.Clamp01(Inward_speed)
+						);
+				}
+
+				particle.velocity = Vector3.Lerp(
+						particle.velocity,
+						Vector3.zero,
+						0.12f
+				);
+		}
 
 
-		
 		void Update () {
 			
 			
@@ -420,7 +543,7 @@ namespace Artngame.PDM {
 							}
 							
 							colorsA = new Color32[ uvs.Length ]; 
-							Vector4 offset1 = new Vector4(0,0,0,0);
+							Vector2 offset1 = Vector2.zero;
 							
 							if(Application.isPlaying){
 								offset1 = simple_mesh.gameObject.GetComponent<Renderer>().material.mainTextureOffset;
@@ -496,7 +619,7 @@ namespace Artngame.PDM {
 											if(positions!=null){ 
 												if(positions!=null & i<positions.Length){
 													
-													if(!extend_life & ParticleList[i].remainingLifetime > ParticleList[i].startLifetime*keep_in_position_factor){
+													if(!Inward_Mode && !extend_life & ParticleList[i].remainingLifetime > ParticleList[i].startLifetime*keep_in_position_factor){
 														if(!face_emit){
 															ParticleList[i].position = vertices[count_vertices]*Scale_factor + new Vector3(0f,0f,0f)+ p11.transform.position;
 														}else{
@@ -513,10 +636,12 @@ namespace Artngame.PDM {
 													
 													//Gravity
 													if(let_loose & Gravity_Mode){
-														
-														ParticleList[i].position = Vector3.Slerp(ParticleList[i].position, positions[i]+ new Vector3(i*0.005f,Y_offset,i*0.007f),Return_speed);
-														
-														ParticleList[i].velocity= Vector3.Slerp(ParticleList[i].velocity,Vector3.zero,0.05f);
+														if(Inward_Mode){
+															ApplyInwardMotion(ref ParticleList[i], vertices[count_vertices], i);
+														}else{
+															ParticleList[i].position = Vector3.Slerp(ParticleList[i].position, positions[i]+ new Vector3(i*0.005f,Y_offset,i*0.007f),Return_speed);
+															ParticleList[i].velocity= Vector3.Slerp(ParticleList[i].velocity,Vector3.zero,0.05f);
+														}
 													}
 												}}
 											
@@ -548,7 +673,8 @@ namespace Artngame.PDM {
 							Vector2[] uvs    =  animated_mesh.uv2;
 							colorsA = new Color32[ uvs.Length ]; 
 							
-							Texture2D pixels = mesh.gameObject.GetComponent<Renderer>().sharedMaterial.mainTexture as Texture2D;
+							Renderer skinnedRenderer = mesh.gameObject.GetComponent<Renderer>();
+							Texture2D pixels = GetMaterialTexture(skinnedRenderer);
 							
 							int uvl = uvs.Length;
 							for ( int j=0; j<uvl; j++) {
@@ -589,7 +715,7 @@ namespace Artngame.PDM {
 										}
 										
 										if(let_loose){
-											if(!extend_life & ParticleList[i].remainingLifetime > (ParticleList[i].startLifetime*keep_in_position_factor)){
+											if(!Inward_Mode && !extend_life & ParticleList[i].remainingLifetime > (ParticleList[i].startLifetime*keep_in_position_factor)){
 												
 												ParticleList[i].position = emitter.transform.rotation*(vertices[count_vertices]*Scale_factor+new Vector3(0f,0f,0f))+ p11.transform.position;
 												
@@ -597,10 +723,12 @@ namespace Artngame.PDM {
 											
 											//Gravity
 											if(let_loose & Gravity_Mode){
-												
-												ParticleList[i].position = Vector3.Slerp(ParticleList[i].position, (emitter.transform.rotation*(vertices[count_vertices]*Scale_factor+new Vector3(0f,0f,0f))+ p11.transform.position),Return_speed);
-												
-												ParticleList[i].velocity= Vector3.Slerp(ParticleList[i].velocity,Vector3.zero,0.05f);
+												if(Inward_Mode){
+													ApplyInwardMotion(ref ParticleList[i], vertices[count_vertices], i);
+												}else{
+													ParticleList[i].position = Vector3.Slerp(ParticleList[i].position, (emitter.transform.rotation*(vertices[count_vertices]*Scale_factor+new Vector3(0f,0f,0f))+ p11.transform.position),Return_speed);
+													ParticleList[i].velocity= Vector3.Slerp(ParticleList[i].velocity,Vector3.zero,0.05f);
+												}
 											}
 											
 										}
@@ -673,5 +801,3 @@ namespace Artngame.PDM {
 	}
 	
 }
-
-
