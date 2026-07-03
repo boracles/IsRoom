@@ -22,6 +22,8 @@ public class RoomStepController : MonoBehaviour
     public AudioSource voiceSource;
 
     [Header("UI")]
+    public GameObject questionPanel;
+    public GameObject guidePanel;
     public TMP_Text questionText;
     public TMP_Text guideText;
 
@@ -35,6 +37,31 @@ public class RoomStepController : MonoBehaviour
 
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
+
+    private void Start()
+    {
+        ShowScanGuide();
+    }
+
+    public void ShowScanGuide()
+    {
+        currentState = RoomState.Idle;
+
+        StopAllCoroutines();
+
+        SetQuestion("");
+        SetGuide("오브제를 비추어 I의 방을 깨워주세요.");
+    }
+
+    public void ShowRotateGuide()
+    {
+        currentState = RoomState.Idle;
+
+        StopAllCoroutines();
+
+        SetQuestion("");
+        SetGuide("오브제를 천천히 돌려 방의 문을 비춰보세요.");
+    }
 
     public void StartRoom(RoomConfig roomConfig, Action<GameObject> finishedCallback)
     {
@@ -69,10 +96,8 @@ public class RoomStepController : MonoBehaviour
 
         currentState = RoomState.Question;
 
-        if (questionText != null)
-        {
-            questionText.text = currentRoom.questionText;
-        }
+        SetQuestion(currentRoom.questionText);
+        SetGuide("");
 
         performerI.StartSpeaking();
 
@@ -90,10 +115,7 @@ public class RoomStepController : MonoBehaviour
 
         currentState = RoomState.WaitingHold;
 
-        if (guideText != null)
-        {
-            guideText.text = "화면의 I를 누른 채 답해보세요.";
-        }
+        SetGuide("화면의 I를 누른 채 답해보세요.");
 
         performerI.MoveToTouchPosition();
 
@@ -101,10 +123,7 @@ public class RoomStepController : MonoBehaviour
 
         currentState = RoomState.Listening;
 
-        if (guideText != null)
-        {
-            guideText.text = "누르고 있는 동안 I가 듣고 있습니다.";
-        }
+        SetGuide("누르고 있는 동안 I가 듣고 있습니다.");
 
         performerI.StartListening();
 
@@ -112,10 +131,7 @@ public class RoomStepController : MonoBehaviour
 
         currentState = RoomState.Release;
 
-        if (guideText != null)
-        {
-            guideText.text = "I가 듣기를 멈췄습니다.";
-        }
+        SetGuide("I가 듣기를 멈췄습니다.");
 
         performerI.StopListening();
         performerI.ReleaseContraction();
@@ -208,16 +224,39 @@ public class RoomStepController : MonoBehaviour
         return clip.length;
     }
 
-    private void ClearUI()
+    private void SetQuestion(string text)
     {
+        bool hasText = !string.IsNullOrWhiteSpace(text);
+
+        if (questionPanel != null)
+        {
+            questionPanel.SetActive(hasText);
+        }
+
         if (questionText != null)
         {
-            questionText.text = "";
+            questionText.text = hasText ? text : "";
+        }
+    }
+
+    private void SetGuide(string text)
+    {
+        bool hasText = !string.IsNullOrWhiteSpace(text);
+
+        if (guidePanel != null)
+        {
+            guidePanel.SetActive(hasText);
         }
 
         if (guideText != null)
         {
-            guideText.text = "";
+            guideText.text = hasText ? text : "";
         }
+    }
+
+    private void ClearUI()
+    {
+        SetQuestion("");
+        SetGuide("");
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0a5fbd39d5b445f900d9342dc93785, type: 3}
   m_Name: Stair
   m_EditorClassIdentifier: Assembly-CSharp::RoomConfig
-  roomType: 0
+  roomType: 1
   questionText: "\uB2F9\uC2E0 \uC548\uC5D0\uC11C \uBA48\uCD94\uC9C0 \uC54A\uACE0
     \uC62C\uB77C\uAC00\uB294 \uAC83\uC740 \uBB34\uC5C7\uC778\uAC00\uC694?"
   firstToneClip: {fileID: 0}
@@ -20,7 +20,7 @@ MonoBehaviour:
   releaseClip: {fileID: 0}
   createPieceClip: {fileID: 0}
   piecePrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3684350078959203981, guid: 26ecc69df52318149a47840943df74b5, type: 3}
+  - {fileID: 8346408696163654652, guid: f99377d6665a1904bbe8c144d8caf139, type: 3}
+  - {fileID: 2597803890886618395, guid: 84b75f29722229247b6f7d6290e83bda, type: 3}
   iParticleColor: {r: 0.13203098, g: 0.4056604, b: 0.2174337, a: 1}

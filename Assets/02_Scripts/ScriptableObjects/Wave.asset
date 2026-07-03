@@ -20,7 +20,7 @@ MonoBehaviour:
   releaseClip: {fileID: 0}
   createPieceClip: {fileID: 0}
   piecePrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 490690082969491148, guid: 03b3a5b3d966b445d85f8762428ddf72, type: 3}
+  - {fileID: 2084853621137342916, guid: 86bc56012e3ac4d43ae04ca290e27531, type: 3}
+  - {fileID: 8406956184707585872, guid: 80d8259c13bdf46579aa4f98d38f15a6, type: 3}
   iParticleColor: {r: 0.11672304, g: 0.3983824, b: 0.5754717, a: 1}
