@@ -75,6 +75,8 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.2/Blasts/BlastControlLegacyPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Mesh Emission Masked/SKinColoredMaskedCol.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Demo/PDM_Demo_V20.cs" />
+    <Compile Include="Assets/02_Scripts/IRoomVuforiaTracker.cs" />
+    <Compile Include="Assets/02_Scripts/UISoftPulse.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SA Scripts/CombineChildrenPDM.cs" />
     <Compile Include="Assets/VolumetricLights/Demos/Temple/Scripts/PlayerController.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Exhibition/DemoResources/Scripts/VerticalBounce.cs" />
@@ -108,7 +110,6 @@
     <Compile Include="Assets/LiquidVolumePro/Scripts/LiquidVolumeDepthPrePassRenderFeature.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Exhibition/DemoResources/Scripts/CylinderManager.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/Make_appear_PDM.cs" />
-    <Compile Include="Assets/02_Scripts/CubeFaceImageTracker.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/PDM_Demo_MOBILE.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/Triangulation/DelaunayTrianglationInternal.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Multiple Layers/DemoResources/Scripts/BeakerController.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/VolumeParticlesPDM.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/Triangulation.cs" />
+    <Compile Include="Assets/02_Scripts/CubeFaceRoomDetector.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.5/Scripts/RaycasterPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/SA/GameScore.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SkewTextExample.cs" />
