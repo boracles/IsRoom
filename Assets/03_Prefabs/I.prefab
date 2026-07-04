@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIPerformerI
   voiceInput: {fileID: 1707848906451283115}
   iRenderer: {fileID: 1309460228434831065}
-  absorbParticle: {fileID: 0}
+  absorbParticle: {fileID: 6499550508737106128}
   emitParticle: {fileID: 0}
   stairDoorPosition: {fileID: 0}
   waveDoorPosition: {fileID: 0}
@@ -818,7 +818,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 0
+    maxNumParticles: 172
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5032,7 +5032,7 @@ ParticleSystemRenderer:
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_UseCustomVertexStreams: 0
+  m_UseCustomVertexStreams: 1
   m_VertexStreams: 0001030405
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
@@ -5590,7 +5590,7 @@ MonoBehaviour:
   Custom_Color: 0
   Lerp_Color: 0
   End_color: {r: 0.9056604, g: 0.6874042, b: 0.089711644, a: 0}
-  face_emit: 1
+  face_emit: 0
   follow_particle: 0
   Velocity_toward_normal: 0
   Normal_Velocity: {x: 0, y: 0, z: 0}
@@ -5817,8 +5817,8 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 1
-  playOnAwake: 1
+  prewarm: 0
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -6038,7 +6038,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.4
-      minScalar: 0.1
+      minScalar: 0.15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7068,7 +7068,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0.23921569, b: 0.23921569, a: 1}
+        key1: {r: 1, g: 0.71031284, b: 0.23921567, a: 1}
         key2: {r: 1, g: 1, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -7092,7 +7092,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 2
       minGradient:
@@ -10594,7 +10594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scale_factor: 0.03
-  Start_size: 0.3
+  Start_size: 0.4
   emitter: {fileID: 805066122919282108}
   mesh: {fileID: 0}
   simple_mesh: {fileID: 4432403852209524280}
@@ -10610,11 +10610,11 @@ MonoBehaviour:
   keep_in_position_factor: 0.85
   keep_alive_factor: 0.84
   extend_life: 0
-  Gravity_Mode: 0
-  Inward_Mode: 0
+  Gravity_Mode: 1
+  Inward_Mode: 1
   Outer_scale: 1.2
-  Inner_scale: 1
-  Inward_speed: 0.05
+  Inner_scale: 0.01
+  Inward_speed: 0.005
   Outer_jitter: 0.06
   Outer_random_scale: 0.5
   Inward_Target: {fileID: 0}

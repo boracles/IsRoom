@@ -17,6 +17,7 @@ public class AIPerformerI : MonoBehaviour
     public Transform waveDoorPosition;
     public Transform shadowDoorPosition;
     public Transform touchPosition;
+    public Transform afterAnswerPosition;
 
     [Header("Motion")]
     public float moveSpeed = 1.8f;
@@ -36,18 +37,30 @@ public class AIPerformerI : MonoBehaviour
     private bool isListening;
     private bool isSpeaking;
 
+    private void OnEnable()
+    {
+        StopListening();
+    }
+
+    private void OnDisable()
+    {
+        StopListening();
+    }
+
     private void Awake()
     {
         targetPosition = transform.position;
         targetTransform = null;
         baseScale = transform.localScale;
+
+        StopListening();
     }
 
     private void Update()
     {
         MoveToTarget();
         UpdateReactiveScale();
-    }
+    } 
 
     private void MoveToTarget()
     {
@@ -142,6 +155,20 @@ public class AIPerformerI : MonoBehaviour
         }
     }
 
+    public void MoveToAfterAnswerPosition()
+    {
+        if (afterAnswerPosition != null)
+        {
+            targetTransform = afterAnswerPosition;
+            targetPosition = afterAnswerPosition.position;
+            moveVelocity = Vector3.zero;
+        }
+        else
+        {
+            Debug.LogWarning("I_Performer: afterAnswerPosition is not assigned.");
+        }
+    }
+
     public void SetIColor(Color color)
     {
         if (iRenderer != null && iRenderer.material.HasProperty("_BaseColor"))
@@ -167,11 +194,20 @@ public class AIPerformerI : MonoBehaviour
 
     public void StartListening()
     {
+        if (isListening) return;
+
         isListening = true;
 
         if (absorbParticle != null)
         {
-            absorbParticle.Play();
+            absorbParticle.gameObject.SetActive(true);
+
+            absorbParticle.Stop(
+                true,
+                ParticleSystemStopBehavior.StopEmittingAndClear
+            );
+
+            absorbParticle.Play(true);
         }
     }
 
@@ -181,7 +217,12 @@ public class AIPerformerI : MonoBehaviour
 
         if (absorbParticle != null)
         {
-            absorbParticle.Stop();
+            absorbParticle.Stop(
+                true,
+                ParticleSystemStopBehavior.StopEmittingAndClear
+            );
+
+            absorbParticle.gameObject.SetActive(false);
         }
     }
 
@@ -197,4 +238,14 @@ public class AIPerformerI : MonoBehaviour
         emitParticle.transform.LookAt(piecePosition);
         emitParticle.Play();
     }
+
+    public bool HasArrivedAtCurrentTarget(float tolerance = 0.03f)
+    {
+        Vector3 target = targetTransform != null
+            ? targetTransform.position
+            : targetPosition;
+
+        return Vector3.Distance(transform.position, target) <= tolerance;
+    }
+
 }

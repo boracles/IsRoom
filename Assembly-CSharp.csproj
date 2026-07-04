@@ -151,6 +151,7 @@
     <Compile Include="Assets/LiquidVolumePro/Scripts/LiquidVolumeLayer.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Forces/DemoResources/Scripts/RandomMove.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Exhibition/DemoResources/Scripts/PortalAnimator.cs" />
+    <Compile Include="Assets/02_Scripts/UIBlinkText.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Terrain/PlaceParticleSheetOnGround.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SA Scripts/MeshCombineUtilityPDM.cs" />
     <Compile Include="Assets/Grandpas_Attic/scripts/FPSControllerSimple.cs" />

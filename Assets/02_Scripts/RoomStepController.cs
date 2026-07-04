@@ -18,6 +18,9 @@ public class RoomStepController : MonoBehaviour
     public Transform wavePieceSpawn;
     public Transform shadowPieceSpawn;
 
+    [Header("Generated Piece Parent")]
+    public Transform generatedPieceParent;
+
     [Header("Awake Sequence")]
     public AudioClip iRoomAwakeClip;
     public AudioClip stairRoomGuideClip;
@@ -37,12 +40,19 @@ public class RoomStepController : MonoBehaviour
     public AudioSource sfxSource;
     public AudioSource voiceSource;
 
+    [Header("Music Listening")]
+    public float musicListenDuration = 20f;
+    public float pieceRotationSpeed = 18f;
+
     [Header("UI")]
     public GameObject scanGuideGroup;
     public GameObject questionPanel;
     public GameObject guidePanel;
     public TMP_Text questionText;
     public TMP_Text guideText;
+
+    [Header("Touch Guide UI")]
+    public GameObject touchGuideObject;
 
     [Header("Room Guide Image")]
     public GameObject roomGuideImagePanel;
@@ -136,6 +146,11 @@ public class RoomStepController : MonoBehaviour
         SetScanGuide(false);
         ClearUI();
 
+        if (performerI != null)
+        {
+            performerI.StopListening();
+        }
+
         currentState = RoomState.DoorFocused;
 
         performerI.SetIColor(currentRoom.iParticleColor);
@@ -145,7 +160,7 @@ public class RoomStepController : MonoBehaviour
 
         currentState = RoomState.FirstTone;
 
-        if (currentRoom.firstToneClip != null)
+        if (currentRoom.firstToneClip != null && sfxSource != null)
         {
             sfxSource.PlayOneShot(currentRoom.firstToneClip);
         }
@@ -154,14 +169,29 @@ public class RoomStepController : MonoBehaviour
 
         yield return new WaitForSeconds(GetClipLength(currentRoom.firstToneClip) + afterFirstToneDelay);
 
+        // 여기서 질문을 바로 띄우지 않음.
+        // 먼저 I를 TouchPoint로 이동시킴.
+        currentState = RoomState.WaitingHold;
+
+        ClearUI();
+        SetGuide("I가 당신에게 다가가고 있습니다.");
+
+        performerI.StopListening();
+        performerI.MoveToTouchPosition();
+
+        // I가 TouchPoint에 도착할 때까지 기다림.
+        yield return new WaitUntil(() => performerI.HasArrivedAtCurrentTarget(0.03f));
+
+        // 도착한 뒤 질문 표시.
         currentState = RoomState.Question;
 
-        SetQuestion(currentRoom.questionText);
         SetGuide("");
+        SetQuestion(currentRoom.questionText);
+        SetTouchGuide(true);
 
         performerI.StartSpeaking();
 
-        if (currentRoom.questionVoiceClip != null)
+        if (currentRoom.questionVoiceClip != null && voiceSource != null)
         {
             voiceSource.PlayOneShot(currentRoom.questionVoiceClip);
             yield return new WaitForSeconds(currentRoom.questionVoiceClip.length);
@@ -177,13 +207,13 @@ public class RoomStepController : MonoBehaviour
 
         SetGuide("화면의 I를 누른 채 답해보세요.");
 
-        performerI.MoveToTouchPosition();
-
-        // 이전 단계에서 오브제를 돌리던 터치가 남아 있으면 먼저 완전히 떼기를 기다림
+        // 혹시 이전 터치가 남아 있으면 먼저 완전히 떼기를 기다림.
         yield return new WaitUntil(() => voiceInput == null || !voiceInput.IsHolding);
 
-        // 그 다음 새로 I를 누를 때만 답변 시작
+        // 새로 I를 누를 때까지 기다림.
         yield return new WaitUntil(() => voiceInput != null && voiceInput.IsHolding);
+
+        SetTouchGuide(false);
 
         currentState = RoomState.Listening;
 
@@ -191,7 +221,8 @@ public class RoomStepController : MonoBehaviour
 
         performerI.StartListening();
 
-        yield return new WaitUntil(() => !voiceInput.IsHolding);
+        // 누르고 있는 동안만 듣기.
+        yield return new WaitUntil(() => voiceInput == null || !voiceInput.IsHolding);
 
         currentState = RoomState.Release;
 
@@ -200,10 +231,16 @@ public class RoomStepController : MonoBehaviour
         performerI.StopListening();
         performerI.ReleaseContraction();
 
-        if (currentRoom.releaseClip != null)
+        // 답변이 끝나면 I가 조각을 가리지 않는 위치로 비켜남
+        performerI.MoveToAfterAnswerPosition();
+
+        if (currentRoom.releaseClip != null && sfxSource != null)
         {
             sfxSource.PlayOneShot(currentRoom.releaseClip);
         }
+
+        // I가 어느 정도 비켜날 때까지 기다림
+        yield return new WaitUntil(() => performerI.HasArrivedAtCurrentTarget(0.04f));
 
         yield return new WaitForSeconds(releaseDuration);
 
@@ -216,12 +253,23 @@ public class RoomStepController : MonoBehaviour
             performerI.EmitToPiece(createdPiece.transform.position);
         }
 
-        if (currentRoom.createPieceClip != null)
+        if (currentRoom.createPieceClip != null && sfxSource != null)
         {
             sfxSource.PlayOneShot(currentRoom.createPieceClip);
         }
 
-        yield return new WaitForSeconds(createPieceDelay);
+        SetQuestion("");
+        SetGuide("조각이 만든 소리를 들어보세요.");
+
+        // 조각 생성 후 20초 동안 음악을 들으면서 조각을 천천히 회전.
+        if (createdPiece != null)
+        {
+            yield return StartCoroutine(RotatePieceDuringMusic(createdPiece.transform));
+        }
+        else
+        {
+            yield return new WaitForSeconds(musicListenDuration);
+        }
 
         currentState = RoomState.Done;
 
@@ -256,7 +304,8 @@ public class RoomStepController : MonoBehaviour
         GameObject piece = Instantiate(
             selectedPrefab,
             spawnPosition,
-            spawnRotation
+            spawnRotation,
+            generatedPieceParent
         );
 
         piece.name = $"{currentRoom.roomType}_Piece_{randomIndex}";
@@ -279,6 +328,32 @@ public class RoomStepController : MonoBehaviour
 
             default:
                 return null;
+        }
+    }
+
+    private IEnumerator RotatePieceDuringMusic(Transform pieceTransform)
+    {
+        if (pieceTransform == null)
+        {
+            yield return new WaitForSeconds(musicListenDuration);
+            yield break;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < musicListenDuration)
+        {
+            if (pieceTransform != null)
+            {
+                pieceTransform.Rotate(
+                    Vector3.up,
+                    pieceRotationSpeed * Time.deltaTime,
+                    Space.Self
+                );
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
     }
 
@@ -477,12 +552,23 @@ public class RoomStepController : MonoBehaviour
         iRoomAwakeParticleObject.SetActive(false);
     }
 
+    private void SetTouchGuide(bool visible)
+    {
+        if (touchGuideObject != null)
+        {
+            touchGuideObject.SetActive(visible);
+        }
+    }
+
     private void ClearUI()
     {
         SetQuestion("");
         SetGuide("");
         HideRoomGuideImage();
+        SetTouchGuide(false);
     }
+
+
 
     public void ShowFindRoomGuide(RoomType expectedRoomType)
     {
