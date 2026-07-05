@@ -109,8 +109,8 @@
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/2D/ShaderGraph/Targets/UniversalMeshLitInfo.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/Converter/InitializeConverterContext.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/ShaderGUI/ShaderGraphLitGUI.cs" />
-    <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/2D/Shadows/ShadowCaster2DShapeTool.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/2D/CompositeShadowCaster2DEditor.cs" />
+    <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/2D/Shadows/ShadowCaster2DShapeTool.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/2D/Converter/URP2DConverterUtility.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/ShaderGUI/ShadergraphSpriteGUI.cs" />
     <Compile Include="Library/PackageCache/com.unity.render-pipelines.universal@40f8b5b9939e/Editor/ShaderGUI/ShaderGraphTerrainLitGUI.cs" />

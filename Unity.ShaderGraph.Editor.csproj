@@ -99,8 +99,8 @@
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Drawing/Views/Slots/BooleanSlotControlView.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/ShaderGraphNodeValidationExtension.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Graphs/Vector3MaterialSlot.cs" />
-    <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Interfaces/IMayRequireDepthTexture.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Generation/Targets/PreviewTarget.cs" />
+    <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Data/Interfaces/IMayRequireDepthTexture.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Generation/Descriptors/BlockFieldDescriptor.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Drawing/Views/Slots/PropertyConnectionStateSlotControlView.cs" />
     <Compile Include="Library/PackageCache/com.unity.shadergraph@2da3a5f87f4a/Editor/Generation/Processors/PropertyCollector.cs" />

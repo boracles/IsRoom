@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.928, y: 0.0473, z: 0.666}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4726864028141378886}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7510614816358278393}
   - component: {fileID: 8121878855137305799}
   m_Layer: 0
-  m_Name: ink_pot_01
+  m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   _stencilPass: 0
   _stencilFail: 0
   _stencilZFail: 0
-  _topology: 10
+  _topology: 2
   _detail: 51
   _level: 0.6
   _levelMultiplier: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   _backDepthBias: 0
   _rotationLevelCompensation: 0
   _ignoreGravity: 0
-  _reactToForces: 0
+  _reactToForces: 1
   _extentsScale: {x: 1, y: 1, z: 1}
   _noiseVariation: 1
   _foamNoiseTexture: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 5678962527728783478}
   - component: {fileID: 5762339141029847790}
   m_Layer: 0
-  m_Name: ink_pot_01.lid
+  m_Name: Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

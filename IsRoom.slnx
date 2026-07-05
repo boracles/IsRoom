@@ -20,8 +20,8 @@
   <Project Path="Unity.XR.ARFoundation.VisualScripting.Editor.csproj" />
   <Project Path="Unity.Burst.csproj" />
   <Project Path="Unity.XR.ARKit.csproj" />
-  <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
   <Project Path="Unity.XR.ARSubsystems.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.InputSystem.csproj" />
