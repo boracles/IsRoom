@@ -16,6 +16,7 @@ public class AIPerformerI : MonoBehaviour
     public Transform stairDoorPosition;
     public Transform waveDoorPosition;
     public Transform shadowDoorPosition;
+    public Transform lightDoorPosition;
     public Transform touchPosition;
     public Transform afterAnswerPosition;
 
@@ -128,6 +129,10 @@ public class AIPerformerI : MonoBehaviour
         else if (roomType == RoomType.Shadow && shadowDoorPosition != null)
         {
             targetTransform = shadowDoorPosition;
+        }
+        else if (roomType == RoomType.Light && lightDoorPosition != null)
+        {
+            targetTransform = lightDoorPosition;
         }
 
         if (targetTransform != null)

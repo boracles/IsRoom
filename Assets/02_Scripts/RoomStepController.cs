@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -61,6 +62,7 @@ public class RoomStepController : MonoBehaviour
     public Sprite stairGuideSprite;
     public Sprite waveGuideSprite;
     public Sprite shadowGuideSprite;
+    public Sprite lightGuideSprite;
 
     [Header("Timing")]
     public float firstToneDelay = 0.5f;
@@ -429,6 +431,9 @@ public class RoomStepController : MonoBehaviour
             case RoomType.Shadow:
                 return shadowGuideSprite;
 
+            case RoomType.Light:
+                return lightGuideSprite;
+
             default:
                 return null;
         }
@@ -676,4 +681,95 @@ public class RoomStepController : MonoBehaviour
         onFinished?.Invoke();
     }
 
+    public void ShowFindFinalRoomGuide()
+    {
+        SetScanGuide(false);
+        SetQuestion("");
+        SetTouchGuide(false);
+
+        Sprite guideSprite = GetGuideSprite(RoomType.Light);
+        SetRoomGuideImage(guideSprite, guideSprite != null);
+
+        SetGuide("오브제를 돌려 빛이 머무는 방을 비춰주세요.");
+
+        if (performerI != null)
+        {
+            performerI.StopListening();
+            performerI.MoveToRoomDoor(RoomType.Light);
+            performerI.StartSpeaking();
+        }
+    }
+
+    public void ShowWrongFinalRoomGuide(RoomType detectedRoomType)
+    {
+        SetScanGuide(false);
+        SetQuestion("");
+        SetTouchGuide(false);
+
+        Sprite guideSprite = GetGuideSprite(RoomType.Light);
+        SetRoomGuideImage(guideSprite, guideSprite != null);
+
+        SetGuide("아직 마지막 방이 아닙니다. 오브제를 돌려 빛이 머무는 방을 비춰주세요.");
+
+        if (performerI != null)
+        {
+            performerI.StartSpeaking();
+        }
+    }
+
+    public void PlayFinalRoomFoundSequence(Action onFinished)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FinalRoomFoundRoutine(onFinished));
+    }
+
+    private IEnumerator FinalRoomFoundRoutine(Action onFinished)
+    {
+        SetScanGuide(false);
+        SetQuestion("");
+        HideRoomGuideImage();
+        SetTouchGuide(false);
+
+        SetGuide("마지막 문을 열어보세요.");
+        PlayGuideHighlight();
+
+        if (performerI != null)
+        {
+            performerI.StopListening();
+            performerI.MoveToRoomDoor(RoomType.Light);
+            performerI.StartSpeaking();
+        }
+
+        yield return new WaitForSeconds(roomFoundMessageDuration);
+
+        ClearUI();
+
+        onFinished?.Invoke();
+    }
+
+    public void StartFinalLightRoom(List<GameObject> pieces)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FinalLightRoomRoutine(pieces));
+    }
+
+    private IEnumerator FinalLightRoomRoutine(List<GameObject> pieces)
+    {
+        currentState = RoomState.Done;
+
+        SetScanGuide(false);
+        SetQuestion("");
+        HideRoomGuideImage();
+        SetTouchGuide(false);
+
+        Debug.Log($"빛이 머무는 방 시작. 생성된 조각 수: {pieces?.Count ?? 0}");
+
+        SetGuide("빛이 머무는 방이 열렸습니다.");
+
+        yield return new WaitForSeconds(2f);
+
+        SetGuide("중심의 홈에 열쇠를 끼워보세요.");
+
+        // 여기부터 나중에 턴테이블 인터랙션 연결
+    }
 }

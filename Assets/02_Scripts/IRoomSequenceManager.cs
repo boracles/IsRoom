@@ -16,8 +16,16 @@ public class IRoomSequenceManager : MonoBehaviour
     public RoomConfig waveRoomConfig;
     public RoomConfig shadowRoomConfig;
 
+    [Header("Final Room")]
+    public RoomType finalRoomType = RoomType.Light;
+
+    private bool waitingForFinalRoomTarget = false;
+
     [Header("Generated Pieces")]
     public List<GameObject> generatedPieces = new List<GameObject>();
+
+    [Header("Room Detection")]
+    public CubeFaceRoomDetector cubeFaceRoomDetector;
 
     private List<RoomConfig> roomOrder = new List<RoomConfig>();
     private int currentRoomIndex;
@@ -80,6 +88,11 @@ public class IRoomSequenceManager : MonoBehaviour
         waitingForRoomTarget = true;
         roomTargetAcceptTime = Time.time + roomTargetDetectionDelay;
 
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
         roomStepController.ShowFindRoomGuide(expectedRoom.roomType);
 
         Debug.Log($"이제 {expectedRoom.roomType} 방을 기다립니다.");
@@ -87,6 +100,34 @@ public class IRoomSequenceManager : MonoBehaviour
 
     public void OnRoomTargetDetected(RoomType detectedRoomType)
     {
+        if (waitingForFinalRoomTarget)
+        {
+            if (Time.time < roomTargetAcceptTime)
+            {
+                return;
+            }
+
+            if (detectedRoomType == finalRoomType)
+            {
+                waitingForFinalRoomTarget = false;
+
+                Debug.Log("빛이 머무는 방 인식됨. 마지막 방 시퀀스를 시작합니다.");
+
+                roomStepController.PlayFinalRoomFoundSequence(() =>
+                {
+                    roomStepController.StartFinalLightRoom(generatedPieces);
+                });
+            }
+            else
+            {
+                Debug.Log($"잘못된 방 인식됨: {detectedRoomType}. 기다리는 방: {finalRoomType}");
+
+                roomStepController.ShowWrongFinalRoomGuide(detectedRoomType);
+            }
+
+            return;
+        }
+
         if (!waitingForRoomTarget)
         {
             return;
@@ -164,8 +205,29 @@ public class IRoomSequenceManager : MonoBehaviour
         else
         {
             waitingForRoomTarget = false;
-            Debug.Log("계단, 파도, 그림자의 방 완료.");
+
+            Debug.Log("계단, 파도, 그림자의 방 완료. 이제 빛이 머무는 방을 기다립니다.");
+
+            WaitForFinalRoomTarget();
         }
+    }
+
+    private void WaitForFinalRoomTarget()
+    {
+        waitingForFinalRoomTarget = true;
+        roomTargetAcceptTime = Time.time + roomTargetDetectionDelay;
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
+        if (roomStepController != null)
+        {
+            roomStepController.ShowFindFinalRoomGuide();
+        }
+
+        Debug.Log("이제 빛이 머무는 방을 기다립니다.");
     }
 
     private int GetStartIndex(TestStartRoom room)
@@ -192,6 +254,13 @@ public class IRoomSequenceManager : MonoBehaviour
         currentRoomIndex = 0;
         generatedPieces.Clear();
         waitingForRoomTarget = false;
+        waitingForFinalRoomTarget = false;
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
         StartCurrentRoom();
     }
 
@@ -201,6 +270,13 @@ public class IRoomSequenceManager : MonoBehaviour
         currentRoomIndex = 1;
         generatedPieces.Clear();
         waitingForRoomTarget = false;
+        waitingForFinalRoomTarget = false;
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
         StartCurrentRoom();
     }
 
@@ -210,6 +286,13 @@ public class IRoomSequenceManager : MonoBehaviour
         currentRoomIndex = 2;
         generatedPieces.Clear();
         waitingForRoomTarget = false;
+        waitingForFinalRoomTarget = false;
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
         StartCurrentRoom();
     }
 }

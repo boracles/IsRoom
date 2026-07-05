@@ -12,6 +12,7 @@ public class CubeFaceRoomDetector : MonoBehaviour
     public Transform stairFace;
     public Transform waveFace;
     public Transform shadowFace;
+    public Transform lightFace;
 
     [Header("Detection")]
     public float checkInterval = 0.3f;
@@ -50,6 +51,7 @@ public class CubeFaceRoomDetector : MonoBehaviour
         CheckFace(stairFace, RoomType.Stair, ref bestDot, ref bestRoomType, ref found);
         CheckFace(waveFace, RoomType.Wave, ref bestDot, ref bestRoomType, ref found);
         CheckFace(shadowFace, RoomType.Shadow, ref bestDot, ref bestRoomType, ref found);
+        CheckFace(lightFace, RoomType.Light, ref bestDot, ref bestRoomType, ref found);
 
         if (!found)
         {
@@ -95,5 +97,11 @@ public class CubeFaceRoomDetector : MonoBehaviour
             bestRoomType = roomType;
             found = true;
         }
+    }
+
+    public void ResetDetection()
+    {
+        hasDetectedOnce = false;
+        lastDetectedRoomType = default;
     }
 }

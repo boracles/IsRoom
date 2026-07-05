@@ -2,7 +2,8 @@ public enum RoomType
 {
     Stair,
     Wave,
-    Shadow
+    Shadow,
+    Light
 }
 
 public enum RoomState
