@@ -7670,7 +7670,7 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.8584906, g: 0.80681586, b: 0.75725347, a: 1}
-  m_Intensity: 0.01
+  m_Intensity: 0.02
   m_Range: 0.1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7733,7 +7733,7 @@ Transform:
   m_GameObject: {fileID: 1053858168}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5000727, y: -0.49992564, z: -0.49992555, w: 0.5000761}
-  m_LocalPosition: {x: 0.0608, y: 0.0068, z: 0.0003}
+  m_LocalPosition: {x: 0.0278, y: -0.0041, z: 0.0003}
   m_LocalScale: {x: 0.9909091, y: 0.990909, z: 0.99090916}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14827,6 +14827,35 @@ MonoBehaviour:
   createPieceDelay: 0.5
   nextRoomDelay: 1
   roomFoundMessageDuration: 1.5
+  finalPieceUpperPositions: []
+  finalPieceMoveUpDuration: 1.5
+  finalPieceMoveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  keyholeRenderer: {fileID: 0}
+  keyholeNormalMaterial: {fileID: 0}
+  keyholeEmissionMaterial: {fileID: 0}
 --- !u!4 &2003864184
 Transform:
   m_ObjectHideFlags: 0
