@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1bf434e034b55f542880ecc26ff9ac59
+timeCreated: 1534488990
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/01_fish-french-angel.mat
+  uploadId: 613741

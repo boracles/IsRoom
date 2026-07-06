@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f729d3f4ff942f24d96804b9565c2b25
+timeCreated: 1534488989
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/05_zebra-sail-yellow.mat
+  uploadId: 613741

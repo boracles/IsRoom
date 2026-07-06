@@ -146,6 +146,7 @@ Material:
     - _CausticsTiling3D: 0.5
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ClustersCount: 0
     - _ColorMode: 0
     - _Cull: 2
     - _CullMode: 2
@@ -224,6 +225,7 @@ Material:
     - _WaveSpeed: 10
     - _WaveStartDistance: 0
     - _WaveSteepness: 0.5
+    - _WavesPerCluster: 4
     - _WorkflowMode: 1
     - _WorldUV: 0
     - _ZWrite: 1
@@ -234,7 +236,7 @@ Material:
     - _CausticsSpeed: {r: 1, g: 1, b: -0.2, a: -0.33}
     - _CausticsSpeed3D: {r: 1, g: 1, b: 1, a: 1}
     - _CausticsTiling: {r: 0.2, g: 0.2, b: 0.1, a: 0.1}
-    - _Color: {r: 0.25490195, g: 0.98039216, b: 0.6740629, a: 1}
+    - _Color: {r: 0.25490195, g: 0.85834634, b: 0.98039216, a: 1}
     - _DepthColor: {r: 0, g: 0.25999996, b: 0.39999998, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowTiling: {r: 1, g: 1, b: 0, a: 0}
@@ -250,6 +252,7 @@ Material:
     - _NormalMapBTilings: {r: 1, g: 1, b: 1, a: 1}
     - _NormalMapFarSpeeds: {r: 1, g: 1, b: 1, a: 1}
     - _NormalMapFarTilings: {r: 1, g: 1, b: 0.5, a: 0.5}
+    - _OceanInfos: {r: 0, g: 0, b: 0, a: 0}
     - _RefractionKey1: {r: -1, g: -1, b: -1, a: -1}
     - _RefractionKey2: {r: -1, g: -1, b: -1, a: -1}
     - _RefractionKey3: {r: -1, g: -1, b: -1, a: -1}
@@ -261,7 +264,13 @@ Material:
     - _ScatteringColor: {r: 0.2783019, g: 1, b: 0.78321666, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderWaterColor: {r: 0.21226415, g: 0.46418187, b: 0.8490566, a: 0.1764706}
+    - _WaveOffsets: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _WaveParams1: {r: 10, g: 0.5, b: 10, a: 0}
+    - _WaveParams2: {r: 8, g: 0.5, b: 10, a: 0}
+    - _WaveParams3: {r: 6, g: 0.5, b: 10, a: 0}
+    - _WaveParams4: {r: 3, g: 0.5, b: 10, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &3734885289509101253
 MonoBehaviour:
   m_ObjectHideFlags: 11

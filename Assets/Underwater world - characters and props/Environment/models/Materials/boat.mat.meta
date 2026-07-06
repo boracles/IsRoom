@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1452187d213cba248aa8d761dd234b14
+timeCreated: 1538846959
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Environment/models/Materials/boat.mat
+  uploadId: 613741

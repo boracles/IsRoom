@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f1a4fcc6d06704141a8354b860dc920a
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Scripts/Editor/FishesAreaInspector.cs
+  uploadId: 613741

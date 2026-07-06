@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: a63dac4d4a607ba42ae68bb1c1357ea8
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: body
+    100002: //RootNode
+    100004: coral_beauty
+    100006: coral_beauty_pose
+    100008: fin_1.L
+    100010: fin_1.L_end
+    100012: fin_1.R
+    100014: fin_1.R_end
+    100016: fin_2
+    100018: fin_2.L
+    100020: fin_2.L_end
+    100022: fin_2.R
+    100024: fin_2.R_end
+    100026: fin_2_end
+    100028: fin_3
+    100030: fin_3_end
+    100032: general
+    100034: head
+    100036: head_end
+    100038: neak
+    100040: tail
+    100042: tail_1
+    100044: tail_2
+    100046: tail_end
+    100048: armature
+    100050: neak_end
+    400000: body
+    400002: //RootNode
+    400004: coral_beauty
+    400006: coral_beauty_pose
+    400008: fin_1.L
+    400010: fin_1.L_end
+    400012: fin_1.R
+    400014: fin_1.R_end
+    400016: fin_2
+    400018: fin_2.L
+    400020: fin_2.L_end
+    400022: fin_2.R
+    400024: fin_2.R_end
+    400026: fin_2_end
+    400028: fin_3
+    400030: fin_3_end
+    400032: general
+    400034: head
+    400036: head_end
+    400038: neak
+    400040: tail
+    400042: tail_1
+    400044: tail_2
+    400046: tail_end
+    400048: armature
+    400050: neak_end
+    4300000: coral_beauty
+    7400000: swim
+    7400002: eat
+    7400004: idle
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: coral_beauty
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral_beauty
+    second: {fileID: 2100000, guid: 6bb1f3de2ed8fb947849973bf667087d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral_beauty_fin
+    second: {fileID: 2100000, guid: 4f9cdde9731ecae44a84a2d253bde1db, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Coral_beauty.fbx
+  uploadId: 613741

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 70d737bf1564be74cbed7ce3413b41f3
+timeCreated: 1533131506
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/Paracanthurus_hepatus.mat
+  uploadId: 613741

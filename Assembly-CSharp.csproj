@@ -63,6 +63,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/EnvMapAnimator.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/ConvexHull/ConvexHullAlgorithm.Initialize.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
+    <Compile Include="Assets/Underwater world - characters and props/Fish/Scripts/FishArea.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/SkinnedMesh/SKinnedGAmeobjEmit.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/PlaceGameobjectFREEFORM.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/ConvexHull/Collections.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="Assets/Grandpas_Attic/scripts/CrouchArea.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Spray.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Buoyancy/DemoResources/Scripts/FloatingObjectComplex.cs" />
+    <Compile Include="Assets/Underwater world - characters and props/Fish/Scripts/Fish.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/DragTransformPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/CycleShieldUVs.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/IVertex.cs" />

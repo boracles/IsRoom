@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f4aa13a4f8acb404886e20e9231ece53
+timeCreated: 1534488986
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/07_Siganus-vulpinus.mat
+  uploadId: 613741

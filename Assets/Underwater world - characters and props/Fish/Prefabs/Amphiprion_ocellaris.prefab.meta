@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b860567bf9f93d64c92294d37bf2830b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Prefabs/Amphiprion_ocellaris.prefab
+  uploadId: 613741

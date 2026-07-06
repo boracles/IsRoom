@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac2db43678bf6824dacfa4ca2e08a84d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Sea creatures/prefab/shark.prefab
+  uploadId: 613741

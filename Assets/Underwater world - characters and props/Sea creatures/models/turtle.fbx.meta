@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 1f646d140e484714eb92b14c5c94a83d
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature_turtle
+    100002: body
+    100004: foot_1.L
+    100006: foot_1.R
+    100008: foot_2.L
+    100010: foot_2.L_end
+    100012: foot_2.R
+    100014: foot_2.R_end
+    100016: hand_1.L
+    100018: hand_1.R
+    100020: hand_2.L
+    100022: hand_2.R
+    100024: hand_3.L
+    100026: hand_3.L_end
+    100028: hand_3.R
+    100030: hand_3.R_end
+    100032: head
+    100034: mouth
+    100036: mouth_end
+    100038: neak
+    100040: Point.000
+    100042: Point.001
+    100044: tail
+    100046: tail_2
+    100048: tail_3
+    100050: tail_3_end
+    100052: //RootNode
+    100054: turtle
+    100056: foot_2.L_end_end
+    100058: foot_2.R_end_end
+    100060: hand_3.L_end_end
+    100062: hand_3.R_end_end
+    100064: mouth_end_end
+    100066: tail_3_end_end
+    400000: Armature_turtle
+    400002: body
+    400004: foot_1.L
+    400006: foot_1.R
+    400008: foot_2.L
+    400010: foot_2.L_end
+    400012: foot_2.R
+    400014: foot_2.R_end
+    400016: hand_1.L
+    400018: hand_1.R
+    400020: hand_2.L
+    400022: hand_2.R
+    400024: hand_3.L
+    400026: hand_3.L_end
+    400028: hand_3.R
+    400030: hand_3.R_end
+    400032: head
+    400034: mouth
+    400036: mouth_end
+    400038: neak
+    400040: Point.000
+    400042: Point.001
+    400044: tail
+    400046: tail_2
+    400048: tail_3
+    400050: tail_3_end
+    400052: turtle
+    400054: //RootNode
+    400056: foot_2.L_end_end
+    400058: foot_2.R_end_end
+    400060: hand_3.L_end_end
+    400062: hand_3.R_end_end
+    400064: mouth_end_end
+    400066: tail_3_end_end
+    4300000: turtle
+    7400000: turtle_swim
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: turtle
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: turtle_mat
+    second: {fileID: 2100000, guid: 2a28f7862a3f5774f9576c2284eb4da8, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: turtle_swim
+      takeName: Armature_turtle|turtle_walk
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 2
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Sea creatures/models/turtle.fbx
+  uploadId: 613741

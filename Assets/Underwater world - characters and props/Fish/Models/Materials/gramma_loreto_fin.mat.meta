@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b75f20c7f7139f8468cb24c0d021c807
+timeCreated: 1497790939
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/gramma_loreto_fin.mat
+  uploadId: 613741

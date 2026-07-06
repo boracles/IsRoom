@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d8ce7afdbcdaef1419995b1a6ae1c185
+timeCreated: 1497795272
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/flame_angel_fin.mat
+  uploadId: 613741

@@ -79,6 +79,7 @@
     <Compile Include="Assets/LiquidVolumePro/Editor/LiquidVolumeEditorStyles.cs" />
     <Compile Include="Assets/VolumetricLights/Editor/MenuIntegration.cs" />
     <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightsTranslucencyEditor.cs" />
+    <Compile Include="Assets/Underwater world - characters and props/Fish/Scripts/Editor/FishesAreaInspector.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Bloom/Editor/BloomEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Editor/SpraySurfaceMaterialEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/DeferredAO/Editor/DeferredAOEditor.cs" />

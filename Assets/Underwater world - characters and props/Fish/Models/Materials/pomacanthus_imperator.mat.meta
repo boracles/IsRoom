@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cc0633beab418b94994b03b1f717a3f6
+timeCreated: 1497774152
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/pomacanthus_imperator.mat
+  uploadId: 613741

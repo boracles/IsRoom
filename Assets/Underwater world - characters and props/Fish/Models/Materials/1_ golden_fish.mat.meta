@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 4506f68eb4fb4fd44bfda3aa2f728719
+timeCreated: 1497708420
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/1_
+    golden_fish.mat
+  uploadId: 613741

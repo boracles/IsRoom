@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: afac5b378b312e746b990603065b44f8
+timeCreated: 1534488989
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/04_silver-swallow-fish.mat
+  uploadId: 613741

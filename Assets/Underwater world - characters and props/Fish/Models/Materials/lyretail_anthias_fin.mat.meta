@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2fdb44a78d008e441ba2089a438dbc05
+timeCreated: 1497788581
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/lyretail_anthias_fin.mat
+  uploadId: 613741

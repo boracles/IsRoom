@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e60cb6252d9270f42ada44a14a5c12cb
+timeCreated: 1534488993
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/10_tamarin-green.mat
+  uploadId: 613741

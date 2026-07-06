@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 6f2c6250b145ef243b66e4c60802ffd9
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: b1
+    100002: b2
+    100004: b2.001
+    100006: b3
+    100008: b3.001
+    100010: b4
+    100012: Bone
+    100014: Bone.010
+    100016: Bone.011
+    100018: Bone.011_end
+    100020: h
+    100022: h1
+    100024: h1_end
+    100026: h2
+    100028: h2_end
+    100030: p
+    100032: p.L
+    100034: p.R
+    100036: p1
+    100038: p1.L
+    100040: p1.R
+    100042: p2.L
+    100044: p2.L_end
+    100046: p2.R
+    100048: p2.R_end
+    100050: p3
+    100052: p3_end
+    100054: //RootNode
+    100056: shark
+    100058: Shark_Armature
+    400000: b1
+    400002: b2
+    400004: b2.001
+    400006: b3
+    400008: b3.001
+    400010: b4
+    400012: Bone
+    400014: Bone.010
+    400016: Bone.011
+    400018: Bone.011_end
+    400020: h
+    400022: h1
+    400024: h1_end
+    400026: h2
+    400028: h2_end
+    400030: p
+    400032: p.L
+    400034: p.R
+    400036: p1
+    400038: p1.L
+    400040: p1.R
+    400042: p2.L
+    400044: p2.L_end
+    400046: p2.R
+    400048: p2.R_end
+    400050: p3
+    400052: p3_end
+    400054: shark
+    400056: //RootNode
+    400058: Shark_Armature
+    4300000: shark
+    7400000: Shark_walk
+    7400002: Shark_idle
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: shark
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shark
+    second: {fileID: 2100000, guid: de5ff62f3681e9b4d9ed0b60e548fb27, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Shark_walk
+      takeName: Shark_Armature|Shark_walk
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 2
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shark_idle
+      takeName: Shark_Armature|Shark_walk
+      firstFrame: 36
+      lastFrame: 66
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Sea creatures/models/shark.fbx
+  uploadId: 613741

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c1b76f5abceec824b8bfda269e3d13d7
+timeCreated: 1497798301
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Fish/Models/Materials/cown_triggerfish_fin.mat
+  uploadId: 613741

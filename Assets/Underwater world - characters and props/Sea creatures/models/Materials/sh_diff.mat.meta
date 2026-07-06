@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: de5ff62f3681e9b4d9ed0b60e548fb27
+timeCreated: 1456782751
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130240
+  packageName: Underwater world - characters and props
+  packageVersion: 2.0
+  assetPath: Assets/Underwater world - characters and props/Sea creatures/models/Materials/sh_diff.mat
+  uploadId: 613741
