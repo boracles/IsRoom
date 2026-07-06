@@ -209,6 +209,7 @@
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/Triangulation/VoronoiEdge.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/ConvexHull/DataModel.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/PDM_Demo_NEBULA.cs" />
+    <Compile Include="Assets/Shader Graph Materials V3/Twisted Corridor/Move.cs" />
     <Compile Include="Assets/02_Scripts/IRoomSequenceManager.cs" />
     <Compile Include="Assets/VolumetricLights/Demos/Minimal/Scripts/CubeGen.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/SimplexNoisePDM.cs" />
@@ -267,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/URPWater/Shaders/HLSL/URPWater_Standard.shader" />
+    <None Include="Assets/Shader Graph Materials V3/Old Screen/README.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/URPWater/Shaders/HLSL/Includes/URPWaterRefraction.hlsl" />
     <None Include="Assets/URPWater/Shaders/VFX/NormalFX.shader" />
@@ -362,6 +364,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/FeathersV20.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Vignette/Shader/Vignette.shader" />
+    <None Include="Assets/Shader Graph Materials V3/Water Ripples/Built in/WaterRipples-built in.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/NOTES.txt" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/DeferredAO/Shader/DeferredAO.shader" />
     <None Include="Assets/VolumetricLights/Resources/Shaders/Options.hlsl" />
@@ -394,15 +397,18 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/ColorSuite/Shader/ColorSuite.shader" />
     <None Include="Assets/LiquidVolumePro/Resources/Shaders/LiquidVolumeSimple.shader" />
+    <None Include="Assets/Shader Graph Materials V3/Water Ripples/README.txt" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Assets/Version 2.0/Shaders/TEM/PDM_Glow_Shader_Add_Blend.shader" />
     <None Include="Assets/LiquidVolumePro/Demos/Pouring/DemoResources/Shaders/Particle Add DIsplacement.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Unlit.shader" />
     <None Include="Assets/VolumetricLights/Resources/Shaders/Particles/DustParticles.shader" />
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ApplyBuoyancy.compute" />
+    <None Include="Assets/Shader Graph Materials V3/Fake Interior/README.txt" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/Surface.shader" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/SimplexNoiseGrad3D.cginc" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/PARTICLE DYNAMIC MAGIC Beta 3 WIP NOTES.txt" />
     <None Include="Assets/URPWater/Shaders/HLSL/Includes/URPWaterTesselation.hlsl" />
+    <None Include="Assets/Shader Graph Materials V3/Procedural Polygons/README.txt" />
     <None Include="Assets/URPWater/Shaders/VFX/FoamFX.shader" />
     <None Include="Assets/URPWater/Shaders/HLSL/Includes/URPWaterReflections.hlsl" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Debug.shader" />
@@ -419,6 +425,7 @@
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/LICENSE.txt" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Opaque.shader" />
     <None Include="Assets/URPWater/Shaders/HLSL/Includes/URPWaterAlpha.hlsl" />
+    <None Include="Assets/Shader Graph Materials V3/Twisted Corridor/README.txt" />
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeJacobi.compute" />
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/FireRayCast.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
