@@ -75,6 +75,16 @@ public class RoomStepController : MonoBehaviour
     [Header("Room Found Feedback")]
     public float roomFoundMessageDuration = 1.5f;
 
+    [Header("Final Light Room Piece Movement")]
+    public Transform[] finalPieceUpperPositions;
+    public float finalPieceMoveUpDuration = 1.5f;
+    public AnimationCurve finalPieceMoveCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
+    [Header("Final Door Keyhole Highlight")]
+    public Renderer keyholeRenderer;
+    public Material keyholeNormalMaterial;
+    public Material keyholeEmissionMaterial;
+
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
 
@@ -730,6 +740,8 @@ public class RoomStepController : MonoBehaviour
         HideRoomGuideImage();
         SetTouchGuide(false);
 
+        SetKeyholeHighlight(true);
+
         SetGuide("마지막 문을 열어보세요.");
         PlayGuideHighlight();
 
@@ -764,12 +776,117 @@ public class RoomStepController : MonoBehaviour
 
         Debug.Log($"빛이 머무는 방 시작. 생성된 조각 수: {pieces?.Count ?? 0}");
 
+        SetKeyholeHighlight(true);
+
         SetGuide("빛이 머무는 방이 열렸습니다.");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        SetGuide("중심의 홈에 열쇠를 끼워보세요.");
+        if (pieces != null && pieces.Count > 0)
+        {
+            SetGuide("조각들이 빛의 방으로 떠오릅니다.");
+            yield return StartCoroutine(MovePiecesToFinalUpperPositions(pieces));
+        }
 
-        // 여기부터 나중에 턴테이블 인터랙션 연결
+        SetGuide("열쇠를 빛나는 홈에 드래그해 끼워보세요.");
+
+        // 여기부터 턴테이블 / 드래그 인터랙션 연결
     }
+
+    private IEnumerator MovePiecesToFinalUpperPositions(List<GameObject> pieces)
+    {
+        if (pieces == null || pieces.Count == 0)
+            yield break;
+
+        List<Transform> pieceTransforms = new List<Transform>();
+        List<Vector3> startPositions = new List<Vector3>();
+        List<Quaternion> startRotations = new List<Quaternion>();
+        List<Vector3> targetPositions = new List<Vector3>();
+        List<Quaternion> targetRotations = new List<Quaternion>();
+
+        for (int i = 0; i < pieces.Count; i++)
+        {
+            if (pieces[i] == null)
+                continue;
+
+            if (finalPieceUpperPositions == null || i >= finalPieceUpperPositions.Length)
+                continue;
+
+            Transform targetPoint = finalPieceUpperPositions[i];
+
+            if (targetPoint == null)
+                continue;
+
+            Transform pieceTransform = pieces[i].transform;
+
+            pieceTransforms.Add(pieceTransform);
+            startPositions.Add(pieceTransform.position);
+            startRotations.Add(pieceTransform.rotation);
+            targetPositions.Add(targetPoint.position);
+            targetRotations.Add(targetPoint.rotation);
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < finalPieceMoveUpDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = Mathf.Clamp01(elapsed / finalPieceMoveUpDuration);
+            float curvedT = finalPieceMoveCurve != null
+                ? finalPieceMoveCurve.Evaluate(t)
+                : t;
+
+            for (int i = 0; i < pieceTransforms.Count; i++)
+            {
+                if (pieceTransforms[i] == null)
+                    continue;
+
+                pieceTransforms[i].position = Vector3.Lerp(
+                    startPositions[i],
+                    targetPositions[i],
+                    curvedT
+                );
+
+                pieceTransforms[i].rotation = Quaternion.Slerp(
+                    startRotations[i],
+                    targetRotations[i],
+                    curvedT
+                );
+            }
+
+            yield return null;
+        }
+
+        for (int i = 0; i < pieceTransforms.Count; i++)
+        {
+            if (pieceTransforms[i] == null)
+                continue;
+
+            pieceTransforms[i].position = targetPositions[i];
+            pieceTransforms[i].rotation = targetRotations[i];
+        }
+    }
+
+    private void SetKeyholeHighlight(bool highlighted)
+    {
+        if (keyholeRenderer == null)
+            return;
+
+        if (highlighted)
+        {
+            if (keyholeEmissionMaterial != null)
+            {
+                keyholeRenderer.material = keyholeEmissionMaterial;
+            }
+        }
+        else
+        {
+            if (keyholeNormalMaterial != null)
+            {
+                keyholeRenderer.material = keyholeNormalMaterial;
+            }
+        }
+    }
+
 }
