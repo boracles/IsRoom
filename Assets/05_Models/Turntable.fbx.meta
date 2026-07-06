@@ -1,59 +1,11 @@
 fileFormatVersion: 2
-guid: e607660a6fac0a1499a01c7d53551870
-AssetOrigin:
-  serializedVersion: 1
-  productId: 163717
-  packageName: Grandpa's Attic - Modular Attic & Props Pack
-  packageVersion: 1.1
-  assetPath: Assets/Grandpas_Attic/models/props/stool/stool.fbx
-  uploadId: 672089
+guid: 2c5a3c0a2d3cf42d49bd907ddbaf94fe
 ModelImporter:
   serializedVersion: 24200
-  internalIDToNameTable:
-  - first:
-      1: 100000
-    second: //RootNode
-  - first:
-      1: 100002
-    second: stoolB
-  - first:
-      4: 400000
-    second: //RootNode
-  - first:
-      4: 400002
-    second: stoolB
-  - first:
-      21: 2100000
-    second: stool
-  - first:
-      23: 2300000
-    second: //RootNode
-  - first:
-      23: 2300002
-    second: stoolB
-  - first:
-      33: 3300000
-    second: //RootNode
-  - first:
-      33: 3300002
-    second: stoolB
-  - first:
-      43: 4300000
-    second: stool
-  - first:
-      43: 4300002
-    second: stoolB
-  - first:
-      41386430: 2186277476908879412
-    second: ImportLogs
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: stool
-    second: {fileID: 2100000, guid: 7cc24cc1ff9597d43b2065652dd7958c, type: 2}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -78,10 +30,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.7
+    globalScale: 0.28
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -91,8 +43,8 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
-    fileIdsGeneration: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -112,7 +64,7 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 0
+    secondaryUVMarginMethod: 1
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
@@ -127,7 +79,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -139,19 +91,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0069999998
+    globalScale: 0.0028
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
-  importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
