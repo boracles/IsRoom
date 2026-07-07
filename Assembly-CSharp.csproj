@@ -90,6 +90,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/BlastOnImpactPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/ChainLightning_PDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/DeferredAO/DeferredAO.cs" />
+    <Compile Include="Assets/02_Scripts/FakeInteriorMatrixSetter.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Splines/PlaceParticleOnSpline.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/SplineCollisions/ColliderMessagePDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.6/Scripts/PlaceParticleFlowOnSpline.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Assets/LiquidVolumePro/Scripts/LiquidVolume.ShaderParams.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Scripts/BulkMesh.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3.5/DisableAttractorPDM.cs" />
+    <Compile Include="Assets/02_Scripts/FakeInteriorRoomController.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/Make_explode_PDM.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Exhibition/DemoResources/Scripts/FishAnimator.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Exhibition/DemoResources/Scripts/CameraAnimator.cs" />
@@ -385,6 +387,7 @@
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeProjection.compute" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Shaders/Common.cginc" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/UnityPro/Refraction 1.shader" />
+    <None Include="Assets/04_Images/Shaders/FakeInteriorBoxURP.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Shaders/ComputeConfinement.compute" />
     <None Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Shaders/Debug.shader" />
