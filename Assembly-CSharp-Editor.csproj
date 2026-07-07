@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/LiquidVolumePro/Editor/LiquidVolumeEditor.cs" />
-    <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Fog/Editor/FogEditor.cs" />
     <Compile Include="Assets/URPWater/Editor/URPWaterEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Editor/PlaceParticleFREEFORMEditor.cs" />
@@ -58,13 +57,10 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Editor/WallEditor.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Editor/WallScrollerEditor.cs" />
-    <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightsDepthPrePassFeatureEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Editor/SKinColoredMaskedEditorPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Editor/SprayUnlitMaterialEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Editor/SkinnedGameobjEditorPDM.cs" />
-    <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightsRenderFeatureEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Editor/PlaceGameobjectFREEFORMEditor.cs" />
-    <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightProfileEditor.cs" />
     <Compile Include="Assets/Editor/Migration/AddVuforiaEnginePackage.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Wizard/Editor/PDM_Prefab_Manager.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/ColorSuite/Editor/ColorSuiteEditor.cs" />
@@ -77,8 +73,6 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Editor/WallMaterialEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Editor/Tags.cs" />
     <Compile Include="Assets/LiquidVolumePro/Editor/LiquidVolumeEditorStyles.cs" />
-    <Compile Include="Assets/VolumetricLights/Editor/MenuIntegration.cs" />
-    <Compile Include="Assets/VolumetricLights/Editor/VolumetricLightsTranslucencyEditor.cs" />
     <Compile Include="Assets/Underwater world - characters and props/Fish/Scripts/Editor/FishesAreaInspector.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Bloom/Editor/BloomEditor.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kvant/Spray/Editor/SpraySurfaceMaterialEditor.cs" />

@@ -1593,7 +1593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334759768}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7933534, y: -0, z: -0, w: 0.60876137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0492, z: 0.042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1604,7 +1604,7 @@ Transform:
   - {fileID: 1107631965}
   - {fileID: 1510383294}
   m_Father: {fileID: 1191461513}
-  m_LocalEulerAnglesHint: {x: 105, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &335455076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,6 +2032,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5489867791737664560, guid: 9bfdffbf4fe694ecfb9cf3409d4e51fb, type: 3}
   m_PrefabInstance: {fileID: 436047580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &451224169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451224170}
+  - component: {fileID: 451224171}
+  m_Layer: 0
+  m_Name: WindowEmissionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &451224170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451224169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1638622062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451224171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451224169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4ec0a2a9f0b4410a43c7a63a988f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightRoomWindowEmissionController
+  targets:
+  - renderer: {fileID: 1638622063}
+    materialIndex: 0
+  fadeDuration: 1.2
+  targetIntensity: 5.5
+  darkBlue: {r: 0.0033374808, g: 0.054734785, b: 0.23584908, a: 1}
+  darkGreen: {r: 0, g: 0.1981132, b: 0.07429245, a: 1}
+  darkPurple: {r: 0.16296412, g: 0, b: 0.1981132, a: 1}
 --- !u!1001 &457105635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3214,7 +3266,7 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.9245283, g: 0.7544387, b: 0.5974546, a: 1}
-  m_Intensity: 0.001
+  m_Intensity: 0.002
   m_Range: 0.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6735,19 +6787,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000119209275
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -6863,11 +6915,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       insertIndex: -1
       addedObject: {fileID: 171301127}
+    - targetCorrespondingSourceObject: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451224170}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
 --- !u!4 &1638622062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
+  m_PrefabInstance: {fileID: 1638622061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1638622063 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1468226689449084260, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
   m_PrefabInstance: {fileID: 1638622061}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &1642687546 stripped
@@ -8316,6 +8376,8 @@ MonoBehaviour:
   waveRoomConfig: {fileID: 11400000, guid: 4f274f35fd729451ca2671bc761f361f, type: 2}
   shadowRoomConfig: {fileID: 11400000, guid: a1cd232cf7b4c43fbb7d1ece4ced2466, type: 2}
   finalRoomType: 3
+  lightRoomWindowEmission: {fileID: 451224171}
+  selectedInkColor: 0
   generatedPieces: []
   cubeFaceRoomDetector: {fileID: 1191461516}
   roomTargetDetectionDelay: 1

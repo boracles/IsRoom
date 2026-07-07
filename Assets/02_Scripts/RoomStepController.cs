@@ -320,7 +320,8 @@ public class RoomStepController : MonoBehaviour
             generatedPieceParent
         );
 
-        piece.name = $"{currentRoom.roomType}_Piece_{randomIndex}";
+        // 파도의 방에서 Ink_Blue / Ink_Green / Ink_Purple 이름을 알 수 있게 프리팹 이름 유지
+        piece.name = selectedPrefab.name;
 
         return piece;
     }

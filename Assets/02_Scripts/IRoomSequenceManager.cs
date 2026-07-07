@@ -19,6 +19,10 @@ public class IRoomSequenceManager : MonoBehaviour
     [Header("Final Room")]
     public RoomType finalRoomType = RoomType.Light;
 
+    [Header("Light Room Window Emission")]
+    public LightRoomWindowEmissionController lightRoomWindowEmission;
+    public InkColorType selectedInkColor = InkColorType.Blue;
+
     private bool waitingForFinalRoomTarget = false;
 
     [Header("Generated Pieces")]
@@ -113,6 +117,11 @@ public class IRoomSequenceManager : MonoBehaviour
 
                 Debug.Log("빛이 머무는 방 인식됨. 마지막 방 시퀀스를 시작합니다.");
 
+                if (lightRoomWindowEmission != null)
+                {
+                    lightRoomWindowEmission.PlayEmissionByInk(selectedInkColor);
+                }
+
                 roomStepController.PlayFinalRoomFoundSequence(() =>
                 {
                     roomStepController.StartFinalLightRoom(generatedPieces);
@@ -196,6 +205,17 @@ public class IRoomSequenceManager : MonoBehaviour
             generatedPieces.Add(createdPiece);
         }
 
+        // 파도의 방에서 생성된 잉크 조각 색 저장
+        if (currentRoomIndex >= 0 && currentRoomIndex < roomOrder.Count)
+        {
+            RoomConfig finishedRoom = roomOrder[currentRoomIndex];
+
+            if (finishedRoom != null && finishedRoom.roomType == RoomType.Wave)
+            {
+                SetSelectedInkColorFromPiece(createdPiece);
+            }
+        }
+
         currentRoomIndex++;
 
         if (currentRoomIndex < roomOrder.Count)
@@ -210,6 +230,38 @@ public class IRoomSequenceManager : MonoBehaviour
 
             WaitForFinalRoomTarget();
         }
+    }
+
+    private void SetSelectedInkColorFromPiece(GameObject createdPiece)
+    {
+        if (createdPiece == null)
+        {
+            Debug.LogWarning("파도의 방 조각이 없어서 잉크 색을 기본값 Blue로 유지합니다.");
+            selectedInkColor = InkColorType.Blue;
+            return;
+        }
+
+        string pieceName = createdPiece.name.ToLower();
+
+        if (pieceName.Contains("blue"))
+        {
+            selectedInkColor = InkColorType.Blue;
+        }
+        else if (pieceName.Contains("green"))
+        {
+            selectedInkColor = InkColorType.Green;
+        }
+        else if (pieceName.Contains("purple"))
+        {
+            selectedInkColor = InkColorType.Purple;
+        }
+        else
+        {
+            Debug.LogWarning($"잉크 색을 판단할 수 없는 조각 이름입니다: {createdPiece.name}. 기본값 Blue를 사용합니다.");
+            selectedInkColor = InkColorType.Blue;
+        }
+
+        Debug.Log($"선택된 잉크 색 저장됨: {selectedInkColor} / 조각 이름: {createdPiece.name}");
     }
 
     private void WaitForFinalRoomTarget()
@@ -256,6 +308,13 @@ public class IRoomSequenceManager : MonoBehaviour
         waitingForRoomTarget = false;
         waitingForFinalRoomTarget = false;
 
+        selectedInkColor = InkColorType.Blue;
+
+        if (lightRoomWindowEmission != null)
+        {
+            lightRoomWindowEmission.TurnOffEmission();
+        }
+
         if (cubeFaceRoomDetector != null)
         {
             cubeFaceRoomDetector.ResetDetection();
@@ -272,6 +331,13 @@ public class IRoomSequenceManager : MonoBehaviour
         waitingForRoomTarget = false;
         waitingForFinalRoomTarget = false;
 
+        selectedInkColor = InkColorType.Blue;
+
+        if (lightRoomWindowEmission != null)
+        {
+            lightRoomWindowEmission.TurnOffEmission();
+        }
+
         if (cubeFaceRoomDetector != null)
         {
             cubeFaceRoomDetector.ResetDetection();
@@ -287,6 +353,13 @@ public class IRoomSequenceManager : MonoBehaviour
         generatedPieces.Clear();
         waitingForRoomTarget = false;
         waitingForFinalRoomTarget = false;
+
+        selectedInkColor = InkColorType.Blue;
+
+        if (lightRoomWindowEmission != null)
+        {
+            lightRoomWindowEmission.TurnOffEmission();
+        }
 
         if (cubeFaceRoomDetector != null)
         {

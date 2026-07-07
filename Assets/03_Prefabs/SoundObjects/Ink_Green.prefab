@@ -339,7 +339,7 @@ MonoBehaviour:
   _doubleSidedBias: 0.05
   _backDepthBias: 0
   _rotationLevelCompensation: 0
-  _ignoreGravity: 0
+  _ignoreGravity: 1
   _reactToForces: 0
   _extentsScale: {x: 1, y: 1, z: 1}
   _noiseVariation: 1
