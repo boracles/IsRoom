@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 39855899}
   - component: {fileID: 39855898}
   m_Layer: 0
-  m_Name: Point Light (2)
+  m_Name: Point Light_Out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4862,6 +4862,7 @@ Transform:
   - {fileID: 2057623150}
   - {fileID: 538673639}
   - {fileID: 334759769}
+  - {fileID: 1331370073}
   - {fileID: 1857599633}
   - {fileID: 74595370}
   - {fileID: 1994153241}
@@ -5701,6 +5702,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330766681}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1331370072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331370073}
+  m_Layer: 0
+  m_Name: Top_OpenPose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1331370073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331370072}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.9396927, y: 0, z: 0, w: 0.34202018}
+  m_LocalPosition: {x: 0, y: -0.0492, z: 0.042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1191461513}
+  m_LocalEulerAnglesHint: {x: 140, y: 0, z: 0}
 --- !u!1 &1365918646
 GameObject:
   m_ObjectHideFlags: 0
@@ -7166,15 +7198,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 300365383431601675, guid: 012fe43a80894f9409a1d51d84ed6351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -7377,13 +7409,26 @@ MonoBehaviour:
   innerDoorOpenPose: {fileID: 276742659}
   outerDoor: {fileID: 1638622062}
   outerDoorOpenPose: {fileID: 862792266}
+  topDoor: {fileID: 334759769}
+  topDoorOpenPose: {fileID: 1331370073}
   keyDragGuideObject: {fileID: 1211003834}
   keyMoveToApproachDuration: 0.35
   keyInsertDuration: 0.45
   keyTurnDuration: 0.45
   pauseAfterTurn: 0.25
+  playKeyAudioAfterOpen: 1
+  keyAudioFadeInDuration: 1
+  keyAudioVolume: 0.8
   innerDoorOpenDuration: 0.8
   outerDoorOpenDuration: 1
+  topDoorOpenDuration: 1
+  fakeInteriorController: {fileID: 1783988700}
+  revealInteriorAfterOpen: 1
+  rotatingCircle: {fileID: 956461439}
+  rotateCircleAfterOpen: 1
+  circleRotateAxis: {x: 0, y: 1, z: 0}
+  circleRotateSpeed: 120
+  circleRotateSpace: 1
   moveCurve:
     serializedVersion: 2
     m_Curve:
