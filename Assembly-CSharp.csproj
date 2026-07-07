@@ -262,9 +262,11 @@
     <Compile Include="Assets/Underwater world - characters and props/Fish/Scripts/Fish.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/DragTransformPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/CycleShieldUVs.cs" />
+    <Compile Include="Assets/02_Scripts/FinalDoorUnlockSequence.cs" />
     <Compile Include="Assets/02_Scripts/KeyDragGuideUI.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/IVertex.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/DragRigidbodyPDM.cs" />
+    <Compile Include="Assets/02_Scripts/DraggableKeyToKeyhole.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/ColorSuite/ColorSuite.cs" />
     <Compile Include="Assets/02_Scripts/RoomStepController.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Projection/ParticlePROJECTION.cs" />

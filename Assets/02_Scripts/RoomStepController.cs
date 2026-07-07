@@ -91,6 +91,11 @@ public class RoomStepController : MonoBehaviour
     [Header("Final Key Drag Guide")]
     public KeyDragGuideUI keyDragGuideUI;
     public Transform keyholeTarget;
+    public Transform keySnapPose;
+    public Camera arCamera;
+
+    [Header("Final Door Unlock Sequence")]
+    public FinalDoorUnlockSequence finalDoorUnlockSequence;
 
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
@@ -934,7 +939,26 @@ public class RoomStepController : MonoBehaviour
             keyDragGuideUI.SetKeyholeTarget(keyholeTarget);
         }
 
-        Debug.Log($"드래그 가이드 키 연결됨: {keyTransform.name}");
+        DraggableKeyToKeyhole draggableKey = keyTransform.GetComponent<DraggableKeyToKeyhole>();
+
+        if (draggableKey == null)
+        {
+            draggableKey = keyTransform.gameObject.AddComponent<DraggableKeyToKeyhole>();
+        }
+
+        Camera targetCamera = arCamera != null ? arCamera : Camera.main;
+
+        draggableKey.SetTarget(
+            targetCamera,
+            keyholeTarget,
+            keySnapPose,
+            keyholeGuideObject
+        );
+
+        draggableKey.unlockSequence = finalDoorUnlockSequence;
+        draggableKey.enabled = true;
+
+        Debug.Log($"드래그 가이드와 드래그 기능이 키에 연결됨: {keyTransform.name}");
     }
 
     private Transform FindRuntimeKeyTransform(List<GameObject> pieces)
