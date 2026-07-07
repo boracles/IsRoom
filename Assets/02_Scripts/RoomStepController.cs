@@ -85,6 +85,13 @@ public class RoomStepController : MonoBehaviour
     public Material keyholeNormalMaterial;
     public Material keyholeEmissionMaterial;
 
+    [Header("Final Key Guide")]
+    public GameObject keyholeGuideObject;
+
+    [Header("Final Key Drag Guide")]
+    public KeyDragGuideUI keyDragGuideUI;
+    public Transform keyholeTarget;
+
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
 
@@ -582,6 +589,7 @@ public class RoomStepController : MonoBehaviour
         SetGuide("");
         HideRoomGuideImage();
         SetTouchGuide(false);
+        SetKeyholeGuide(false);
     }
 
 
@@ -789,9 +797,13 @@ public class RoomStepController : MonoBehaviour
             yield return StartCoroutine(MovePiecesToFinalUpperPositions(pieces));
         }
 
-        SetGuide("열쇠를 빛나는 홈에 드래그해 끼워보세요.");
+        SetGuide("빛나는 홈에 열쇠를 맞춰보세요.");
+        SetKeyholeHighlight(true);
 
-        // 여기부터 턴테이블 / 드래그 인터랙션 연결
+        BindRuntimeKeyToDragGuide(pieces);
+
+        // 드래그 안내 UI 켜기
+        SetKeyholeGuide(true);
     }
 
     private IEnumerator MovePiecesToFinalUpperPositions(List<GameObject> pieces)
@@ -888,6 +900,83 @@ public class RoomStepController : MonoBehaviour
                 keyholeRenderer.material = keyholeNormalMaterial;
             }
         }
+    }
+
+    private void SetKeyholeGuide(bool visible)
+    {
+        if (keyholeGuideObject != null)
+        {
+            keyholeGuideObject.SetActive(visible);
+        }
+    }
+
+    private void BindRuntimeKeyToDragGuide(List<GameObject> pieces)
+    {
+        if (keyDragGuideUI == null)
+        {
+            Debug.LogWarning("KeyDragGuideUI가 연결되어 있지 않습니다.");
+            return;
+        }
+
+        Transform keyTransform = FindRuntimeKeyTransform(pieces);
+
+        if (keyTransform == null)
+        {
+            Debug.LogWarning("생성된 열쇠를 찾지 못했습니다. Key_1 / Key_2 / Key_3 이름을 확인하세요.");
+            keyDragGuideUI.ClearKeyTarget();
+            return;
+        }
+
+        keyDragGuideUI.SetKeyTarget(keyTransform);
+
+        if (keyholeTarget != null)
+        {
+            keyDragGuideUI.SetKeyholeTarget(keyholeTarget);
+        }
+
+        Debug.Log($"드래그 가이드 키 연결됨: {keyTransform.name}");
+    }
+
+    private Transform FindRuntimeKeyTransform(List<GameObject> pieces)
+    {
+        // 1. generatedPieces 리스트 안에서 먼저 찾기
+        if (pieces != null)
+        {
+            foreach (GameObject piece in pieces)
+            {
+                if (piece == null) continue;
+
+                string name = piece.name.ToLower();
+
+                if (name.Contains("key"))
+                {
+                    return piece.transform;
+                }
+            }
+        }
+
+        // 2. generatedPieceParent 아래에서 다시 찾기
+        if (generatedPieceParent != null)
+        {
+            Transform[] children = generatedPieceParent.GetComponentsInChildren<Transform>(true);
+
+            foreach (Transform child in children)
+            {
+                if (child == null) continue;
+
+                string name = child.name.ToLower();
+
+                if (name.Contains("key_1") ||
+                    name.Contains("key_2") ||
+                    name.Contains("key_3") ||
+                    name.Contains("key"))
+                {
+                    return child;
+                }
+            }
+        }
+
+        return null;
     }
 
 }

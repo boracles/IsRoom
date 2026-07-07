@@ -92,6 +92,7 @@
     <Compile Include="Assets/02_Scripts/FakeInteriorMatrixSetter.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Splines/PlaceParticleOnSpline.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/SplineCollisions/ColliderMessagePDM.cs" />
+    <Compile Include="Assets/02_Scripts/FollowWorldTargetUI.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.6/Scripts/PlaceParticleFlowOnSpline.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Ribbons/RibbonsPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/AttractParticles.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets/ARTnGAME/Common Tools/FluidSim3D/Scripts/SmokeFluidSim.cs" />
     <Compile Include="Assets/02_Scripts/RoomType.cs" />
+    <Compile Include="Assets/02_Scripts/BillboardToCamera.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Terrain/PlaceParticleOnGround.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/Kino/Fog/Fog.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Demos/PDM_Demo_PROPAGATION.cs" />
@@ -260,6 +262,7 @@
     <Compile Include="Assets/Underwater world - characters and props/Fish/Scripts/Fish.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Procedural/DragTransformPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/CycleShieldUVs.cs" />
+    <Compile Include="Assets/02_Scripts/KeyDragGuideUI.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/IVertex.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/DragRigidbodyPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Spray/ColorSuite/ColorSuite.cs" />
