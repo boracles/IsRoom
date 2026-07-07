@@ -56,11 +56,56 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     public float circleRotateSpeed = 120f;
     public Space circleRotateSpace = Space.Self;
 
+    [Header("Turntable Layering")]
+    public TurntableLayeringSequence turntableLayeringSequence;
+    public bool startTurntableLayeringAfterOpen = true;
+
     [Header("Motion")]
     public AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    private Vector3 innerDoorClosedPosition;
+    private Quaternion innerDoorClosedRotation;
+
+    private Vector3 outerDoorClosedPosition;
+    private Quaternion outerDoorClosedRotation;
+
+    private Vector3 topDoorClosedPosition;
+    private Quaternion topDoorClosedRotation;
+
+    private bool closedPoseCached;
+
     private bool isPlaying;
     private Coroutine circleRotateCoroutine;
+
+    private void Awake()
+    {
+        CacheClosedPoses();
+    }
+
+    private void CacheClosedPoses()
+    {
+        if (closedPoseCached) return;
+
+        if (innerDoor != null)
+        {
+            innerDoorClosedPosition = innerDoor.position;
+            innerDoorClosedRotation = innerDoor.rotation;
+        }
+
+        if (outerDoor != null)
+        {
+            outerDoorClosedPosition = outerDoor.position;
+            outerDoorClosedRotation = outerDoor.rotation;
+        }
+
+        if (topDoor != null)
+        {
+            topDoorClosedPosition = topDoor.position;
+            topDoorClosedRotation = topDoor.rotation;
+        }
+
+        closedPoseCached = true;
+    }
 
     public void PlayUnlockSequence(Transform keyTransform)
     {
@@ -180,6 +225,12 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         if (rotateCircleAfterOpen && rotatingCircle != null)
         {
             StartCircleRotation();
+        }
+
+        // 6-5. 잉크 → 편지지 순서로 턴테이블 레이어링 시작
+        if (startTurntableLayeringAfterOpen && turntableLayeringSequence != null)
+        {
+            turntableLayeringSequence.BeginSequence();
         }
 
         // 6-3. 열쇠 배경음 루프 시작
@@ -473,5 +524,143 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         }
 
         keyAudio.volume = keyAudioVolume;
+    }
+
+    public IEnumerator CloseFinalRoomRoutine()
+    {
+        CacheClosedPoses();
+
+        StopCircleRotation();
+
+        bool hasOuterDoor = outerDoor != null;
+        bool hasTopDoor = topDoor != null;
+
+        // 1. 뚜껑 + 벽 먼저 닫힘
+        if (hasOuterDoor || hasTopDoor)
+        {
+            yield return CloseOuterAndTopTogether(hasOuterDoor, hasTopDoor);
+        }
+
+        // 2. 마지막으로 안쪽 문 닫힘
+        if (innerDoor != null)
+        {
+            yield return MoveTransformWorld(
+                innerDoor,
+                innerDoorClosedPosition,
+                innerDoorClosedRotation,
+                innerDoorOpenDuration
+            );
+        }
+
+        Debug.Log("[FinalDoorUnlockSequence] 마지막 방 닫힘 완료.");
+    }
+
+    private IEnumerator CloseOuterAndTopTogether(bool hasOuterDoor, bool hasTopDoor)
+    {
+        Vector3 outerStartPos = Vector3.zero;
+        Quaternion outerStartRot = Quaternion.identity;
+
+        Vector3 topStartPos = Vector3.zero;
+        Quaternion topStartRot = Quaternion.identity;
+
+        if (hasOuterDoor)
+        {
+            outerStartPos = outerDoor.position;
+            outerStartRot = outerDoor.rotation;
+        }
+
+        if (hasTopDoor)
+        {
+            topStartPos = topDoor.position;
+            topStartRot = topDoor.rotation;
+        }
+
+        float duration = Mathf.Max(
+            hasOuterDoor ? outerDoorOpenDuration : 0f,
+            hasTopDoor ? topDoorOpenDuration : 0f
+        );
+
+        if (duration <= 0.001f)
+        {
+            if (hasOuterDoor)
+            {
+                outerDoor.position = outerDoorClosedPosition;
+                outerDoor.rotation = outerDoorClosedRotation;
+            }
+
+            if (hasTopDoor)
+            {
+                topDoor.position = topDoorClosedPosition;
+                topDoor.rotation = topDoorClosedRotation;
+            }
+
+            yield break;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            if (hasOuterDoor)
+            {
+                float tOuter = Mathf.Clamp01(elapsed / outerDoorOpenDuration);
+                float cOuter = moveCurve != null ? moveCurve.Evaluate(tOuter) : tOuter;
+
+                outerDoor.position = Vector3.Lerp(
+                    outerStartPos,
+                    outerDoorClosedPosition,
+                    cOuter
+                );
+
+                outerDoor.rotation = Quaternion.Slerp(
+                    outerStartRot,
+                    outerDoorClosedRotation,
+                    cOuter
+                );
+            }
+
+            if (hasTopDoor)
+            {
+                float tTop = Mathf.Clamp01(elapsed / topDoorOpenDuration);
+                float cTop = moveCurve != null ? moveCurve.Evaluate(tTop) : tTop;
+
+                topDoor.position = Vector3.Lerp(
+                    topStartPos,
+                    topDoorClosedPosition,
+                    cTop
+                );
+
+                topDoor.rotation = Quaternion.Slerp(
+                    topStartRot,
+                    topDoorClosedRotation,
+                    cTop
+                );
+            }
+
+            yield return null;
+        }
+
+        if (hasOuterDoor)
+        {
+            outerDoor.position = outerDoorClosedPosition;
+            outerDoor.rotation = outerDoorClosedRotation;
+        }
+
+        if (hasTopDoor)
+        {
+            topDoor.position = topDoorClosedPosition;
+            topDoor.rotation = topDoorClosedRotation;
+        }
+    }
+
+    private void StopCircleRotation()
+    {
+        if (circleRotateCoroutine != null)
+        {
+            StopCoroutine(circleRotateCoroutine);
+            circleRotateCoroutine = null;
+        }
     }
 }

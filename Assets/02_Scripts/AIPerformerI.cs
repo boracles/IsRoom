@@ -19,6 +19,7 @@ public class AIPerformerI : MonoBehaviour
     public Transform lightDoorPosition;
     public Transform touchPosition;
     public Transform afterAnswerPosition;
+    public Transform finalLetterPosition;
 
     [Header("Motion")]
     public float moveSpeed = 1.8f;
@@ -253,4 +254,100 @@ public class AIPerformerI : MonoBehaviour
         return Vector3.Distance(transform.position, target) <= tolerance;
     }
 
+    public void MoveToFinalLetterPosition()
+    {
+        if (finalLetterPosition != null)
+        {
+            targetTransform = finalLetterPosition;
+            targetPosition = finalLetterPosition.position;
+            moveVelocity = Vector3.zero;
+        }
+        else
+        {
+            Debug.LogWarning("I_Performer: finalLetterPosition is not assigned.");
+        }
+    } 
+
+    public void AttachObjectToPerformer(Transform item, Transform holdPoint)
+    {
+        if (item == null || holdPoint == null) return;
+
+        item.SetParent(holdPoint);
+        item.localPosition = Vector3.zero;
+        item.localRotation = Quaternion.identity;
+        item.localScale = Vector3.one;
+    }
+
+    public void FadeOut(float duration)
+    {
+        StartCoroutine(FadeOutRoutine(duration));
+    }
+
+    private System.Collections.IEnumerator FadeOutRoutine(float duration)
+    {
+        if (iRenderer == null)
+        {
+            yield return new WaitForSeconds(duration);
+            gameObject.SetActive(false);
+            yield break;
+        }
+
+        Material mat = iRenderer.material;
+
+        if (!mat.HasProperty("_BaseColor"))
+        {
+            yield return new WaitForSeconds(duration);
+            gameObject.SetActive(false);
+            yield break;
+        }
+
+        Color startColor = mat.GetColor("_BaseColor");
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / duration);
+
+            Color c = startColor;
+            c.a = Mathf.Lerp(startColor.a, 0f, t);
+            mat.SetColor("_BaseColor", c);
+
+            yield return null;
+        }
+
+        Color finalColor = startColor;
+        finalColor.a = 0f;
+        mat.SetColor("_BaseColor", finalColor);
+
+        gameObject.SetActive(false);
+    }
+
+    public void MoveAwayFromCamera(Camera camera, float distance = 0.25f)
+    {
+        if (camera == null)
+        {
+            camera = Camera.main;
+        }
+
+        if (camera == null)
+        {
+            Debug.LogWarning("I_Performer: Camera가 없어 멀어지는 방향을 계산할 수 없습니다.");
+            return;
+        }
+
+        targetTransform = null;
+
+        Vector3 awayDirection = transform.position - camera.transform.position;
+
+        if (awayDirection.sqrMagnitude < 0.0001f)
+        {
+            awayDirection = camera.transform.forward;
+        }
+
+        awayDirection.Normalize();
+
+        targetPosition = transform.position + awayDirection * distance;
+        moveVelocity = Vector3.zero;
+    }
 }

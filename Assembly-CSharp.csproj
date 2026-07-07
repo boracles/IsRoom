@@ -173,6 +173,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/TimedObjectDestructorPDM.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ChatController.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/MoveItemOverGround.cs" />
+    <Compile Include="Assets/02_Scripts/TurntableLayeringSequence.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 3.0 Beta WIP/Kvant Wall/Wall.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v2.0/Changed/Freeze/FreezeBurnBlastPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.3/TransitionsMusicManagerPDM.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.5/Propagation/Ice_Grow_PDM.cs" />
     <Compile Include="Assets/URPWater/Scripts/URPWaterWaves.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/ShieldRipplePDM.cs" />
+    <Compile Include="Assets/02_Scripts/FinalSequenceController.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/DestroyOnImpactPDM.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.7/Provide_Transition_Target_PDM.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/DropdownSample.cs" />
@@ -264,6 +266,7 @@
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Scripts v1.2/Demo scripts/CycleShieldUVs.cs" />
     <Compile Include="Assets/02_Scripts/FinalDoorUnlockSequence.cs" />
     <Compile Include="Assets/02_Scripts/KeyDragGuideUI.cs" />
+    <Compile Include="Assets/02_Scripts/DraggablePieceToTurntable.cs" />
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/IVertex.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/DragRigidbodyPDM.cs" />
     <Compile Include="Assets/02_Scripts/DraggableKeyToKeyhole.cs" />
