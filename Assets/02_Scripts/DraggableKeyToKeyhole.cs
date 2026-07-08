@@ -18,6 +18,11 @@ public class DraggableKeyToKeyhole : MonoBehaviour
     public float worldSnapDistance = 0.08f;
     public bool disableAfterSnap = true;
 
+    [Header("Pick")]
+    public LayerMask draggableLayerMask;
+    public float pickRayDistance = 100f;
+    public float screenPickDistance = 180f;
+
     [Header("Guide")]
     public GameObject keyholeGuideObject;
 
@@ -38,6 +43,11 @@ public class DraggableKeyToKeyhole : MonoBehaviour
         if (arCamera == null)
         {
             arCamera = Camera.main;
+        }
+
+        if (draggableLayerMask.value == 0)
+        {
+            draggableLayerMask = LayerMask.GetMask("DraggablePiece");
         }
 
         originalPosition = transform.position;
@@ -113,26 +123,74 @@ public class DraggableKeyToKeyhole : MonoBehaviour
 
     private void TryBeginDrag(Vector2 screenPosition)
     {
+        Vector3 pickWorldPosition = transform.position;
+
+        Collider keyCollider = GetComponentInChildren<Collider>();
+
+        if (keyCollider != null)
+        {
+            pickWorldPosition = keyCollider.bounds.center;
+        }
+
+        Vector3 keyScreen = arCamera.WorldToScreenPoint(pickWorldPosition);
+
+        if (keyScreen.z < 0f)
+        {
+            return;
+        }
+
+        float screenDistance = Vector2.Distance(
+            screenPosition,
+            new Vector2(keyScreen.x, keyScreen.y)
+        );
+
+        bool pickedByScreenDistance = screenDistance <= screenPickDistance;
+
+        bool pickedByRaycast = false;
+
         Ray ray = arCamera.ScreenPointToRay(screenPosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        if (Physics.Raycast(
+            ray,
+            out RaycastHit hit,
+            pickRayDistance,
+            draggableLayerMask,
+            QueryTriggerInteraction.Ignore
+        ))
         {
-            if (hit.transform == transform || hit.transform.IsChildOf(transform))
+            DraggableKeyToKeyhole hitKey =
+                hit.collider.GetComponentInParent<DraggableKeyToKeyhole>();
+
+            if (hitKey == this)
             {
-                isDragging = true;
-
-                Vector3 planeNormal = -arCamera.transform.forward;
-                Vector3 planePoint = transform.position + arCamera.transform.forward * dragPlaneOffset;
-
-                dragPlane = new Plane(planeNormal, planePoint);
-                targetPosition = transform.position;
-
-                if (keyholeGuideObject != null)
-                {
-                    keyholeGuideObject.SetActive(true);
-                }
+                pickedByRaycast = true;
             }
         }
+
+        if (!pickedByScreenDistance && !pickedByRaycast)
+        {
+            Debug.Log(
+                $"열쇠 선택 실패: screenDistance {screenDistance}, limit {screenPickDistance}"
+            );
+            return;
+        }
+
+        isDragging = true;
+
+        Vector3 planeNormal = -arCamera.transform.forward;
+        Vector3 planePoint = transform.position + arCamera.transform.forward * dragPlaneOffset;
+
+        dragPlane = new Plane(planeNormal, planePoint);
+        targetPosition = transform.position;
+
+        if (keyholeGuideObject != null)
+        {
+            keyholeGuideObject.SetActive(true);
+        }
+
+        Debug.Log(
+            $"열쇠 드래그 시작: {gameObject.name} / screenDistance {screenDistance}"
+        );
     }
 
     private void UpdateDrag(Vector2 screenPosition)

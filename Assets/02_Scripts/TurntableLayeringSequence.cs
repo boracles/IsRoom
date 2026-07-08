@@ -146,7 +146,8 @@ public class TurntableLayeringSequence : MonoBehaviour
             targetPose,
             dragGuideObject,
             dragScale,
-            placedScale
+            placedScale,
+            targetPose
         );
 
         draggable.onPlaced = onPlaced;

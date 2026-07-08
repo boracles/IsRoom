@@ -8,6 +8,10 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     public Transform keyInsertPose;
     public Transform keyTurnPose;
 
+    [Header("Key Parent")]
+    public Transform keyholeParent;
+    public bool parentKeyToKeyholeAfterInsert = true;
+
     [Header("Door Targets")]
     public Transform innerDoor; // Door
     public Transform innerDoorOpenPose;
@@ -163,6 +167,13 @@ public class FinalDoorUnlockSequence : MonoBehaviour
                 keyInsertDuration
             );
         }
+
+        // 2-1. 꽂힌 순간부터 키홀의 자식으로 붙임
+        if (parentKeyToKeyholeAfterInsert && keyholeParent != null)
+        {
+            keyTransform.SetParent(keyholeParent, true); // 월드 위치/회전 유지
+            Debug.Log("[FinalDoorUnlockSequence] 열쇠가 키홀의 자식이 되었습니다.");
+        } 
 
         // 3. 열쇠 회전
         if (keyTurnPose != null)

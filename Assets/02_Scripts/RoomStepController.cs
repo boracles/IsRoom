@@ -100,6 +100,17 @@ public class RoomStepController : MonoBehaviour
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
 
+    private Dictionary<RoomType, int> lastPieceIndexByRoom = new Dictionary<RoomType, int>();
+    private System.Random pieceRandom;
+
+    private void Awake()
+    {
+        int seed = System.Guid.NewGuid().GetHashCode();
+        pieceRandom = new System.Random(seed);
+
+        Debug.Log($"[RoomStepController] Piece random seed: {seed}");
+    }
+
     private void Start()
     {
         ShowScanGuide();
@@ -312,8 +323,34 @@ public class RoomStepController : MonoBehaviour
             return null;
         }
 
-        int randomIndex = UnityEngine.Random.Range(0, currentRoom.piecePrefabs.Length);
+        int prefabCount = currentRoom.piecePrefabs.Length;
+
+        if (pieceRandom == null)
+        {
+            pieceRandom = new System.Random(System.Guid.NewGuid().GetHashCode());
+        }
+
+        int randomIndex = pieceRandom.Next(prefabCount);
+
+        // 같은 방에서 직전에 나온 프리팹은 피하기
+        if (prefabCount > 1 && lastPieceIndexByRoom.TryGetValue(currentRoom.roomType, out int lastIndex))
+        {
+            int safety = 0;
+
+            while (randomIndex == lastIndex && safety < 20)
+            {
+                randomIndex = pieceRandom.Next(prefabCount);
+                safety++;
+            }
+        }
+
+        lastPieceIndexByRoom[currentRoom.roomType] = randomIndex;
+
         GameObject selectedPrefab = currentRoom.piecePrefabs[randomIndex];
+
+        Debug.Log(
+            $"[{currentRoom.roomType}] 랜덤 선택됨: index {randomIndex}, prefab {selectedPrefab.name}, total {prefabCount}"
+        );
 
         Transform spawnPoint = GetSpawnPoint(currentRoom.roomType);
 
@@ -332,7 +369,6 @@ public class RoomStepController : MonoBehaviour
             generatedPieceParent
         );
 
-        // 파도의 방에서 Ink_Blue / Ink_Green / Ink_Purple 이름을 알 수 있게 프리팹 이름 유지
         piece.name = selectedPrefab.name;
 
         return piece;

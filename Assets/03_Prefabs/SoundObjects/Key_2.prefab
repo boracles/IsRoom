@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3853448617889541130}
   - component: {fileID: -6225828993936346302}
+  - component: {fileID: 5915952056453625514}
   m_Layer: 18
   m_Name: Key_2
   m_TagString: Untagged
@@ -130,6 +131,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &5915952056453625514
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346408696163654652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.018, y: 0.01, z: 0.039244227}
+  m_Center: {x: 0, y: 0, z: 0.012684088}
 --- !u!1001 &1727496707057859435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,7 +240,8 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3451118302482216456, guid: 570a3833683dca044b06ac6500d06011, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

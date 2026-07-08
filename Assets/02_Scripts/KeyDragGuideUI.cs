@@ -23,6 +23,9 @@ public class KeyDragGuideUI : MonoBehaviour
     [Header("Visibility")]
     public bool hideWhenBehindCamera = true;
 
+    [Header("Icon Rotation")]
+    public float touchIconRotationOffset = -135f;
+
     private float timer;
 
     private void OnEnable()
@@ -157,7 +160,7 @@ public class KeyDragGuideUI : MonoBehaviour
         if (dir.sqrMagnitude > 0.001f)
         {
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            touchIcon.localRotation = Quaternion.Euler(0f, 0f, angle - 45f);
+            touchIcon.localRotation = Quaternion.Euler(0f, 0f, angle + touchIconRotationOffset);
         }
     }
 

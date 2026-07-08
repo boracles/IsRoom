@@ -10,6 +10,10 @@ public class DraggablePieceToTurntable : MonoBehaviour
     [Header("Target")]
     public Transform targetPose;
 
+    [Header("Parent After Placed")]
+    public Transform placedParent;
+    public bool parentToPlacedParent = true;
+
     [Header("Guide")]
     public GameObject guideObject;
 
@@ -254,6 +258,12 @@ public class DraggablePieceToTurntable : MonoBehaviour
         transform.position = targetPose.position;
         transform.rotation = targetPose.rotation;
 
+        if (parentToPlacedParent && placedParent != null)
+        {
+            transform.SetParent(placedParent, true); // 월드 위치/회전 유지
+            Debug.Log($"[{gameObject.name}] {placedParent.name}의 자식이 되었습니다.");
+        }
+
         StartScaleTo(placedScale);
 
         if (guideObject != null)
@@ -345,11 +355,12 @@ public class DraggablePieceToTurntable : MonoBehaviour
     }
 
     public void SetTarget(
-        Camera camera,
-        Transform pose,
-        GameObject guide,
-        Vector3 dragScaleValue,
-        Vector3 placedScaleValue
+    Camera camera,
+    Transform pose,
+    GameObject guide,
+    Vector3 dragScaleValue,
+    Vector3 placedScaleValue,
+    Transform parentAfterPlaced
     )
     {
         arCamera = camera;
@@ -357,6 +368,7 @@ public class DraggablePieceToTurntable : MonoBehaviour
         guideObject = guide;
         dragScale = dragScaleValue;
         placedScale = placedScaleValue;
+        placedParent = parentAfterPlaced;
 
         if (draggableLayerMask.value == 0)
         {
