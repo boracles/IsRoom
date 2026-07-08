@@ -111,11 +111,11 @@ MonoBehaviour:
   _stencilZFail: 0
   _topology: 2
   _detail: 51
-  _level: 0.6
+  _level: 1
   _levelMultiplier: 1
   _liquidLayers:
   - layerName: Layer 0
-    amount: 0.3
+    amount: 1
     density: 1
     color: {r: 0.3687306, g: 0.20392154, b: 0.6039216, a: 0.5}
     miscible: 0
@@ -127,53 +127,13 @@ MonoBehaviour:
     bubblesOpacity: 1
     baseLevel: 0
     currentBaseLevel: 0
-    currentAmount: 0.3
+    currentAmount: 1
     currentColor: {r: 0.3687306, g: 0.20392154, b: 0.6039216, a: 0.5}
     currentMurkiness: 0.379
     currentColor2: {r: 1, g: 1, b: 1, a: 1}
     currentBubblesOpacity: 1
     currentScale: 0.244
     currentViscosity: 1
-  - layerName: Layer 1
-    amount: 0.2
-    density: 1
-    color: {r: 0.61599845, g: 0.4862745, b: 0.7647059, a: 0.5}
-    miscible: 0
-    murkiness: 0.176
-    murkColor: {r: 0.5598084, g: 0.3764706, b: 0.77254903, a: 1}
-    scale: 0.3
-    viscosity: 0
-    adjustmentSpeed: 1
-    bubblesOpacity: 0
-    baseLevel: 0.3
-    currentBaseLevel: 0.3
-    currentAmount: 0.2
-    currentColor: {r: 0.61599845, g: 0.4862745, b: 0.7647059, a: 0.5}
-    currentMurkiness: 0.176
-    currentColor2: {r: 0.5598084, g: 0.3764706, b: 0.77254903, a: 1}
-    currentBubblesOpacity: 0
-    currentScale: 0.3
-    currentViscosity: 0
-  - layerName: Layer 2
-    amount: 0.1
-    density: 1
-    color: {r: 0.8194541, g: 0.7411765, b: 0.9529412, a: 0.116}
-    miscible: 0
-    murkiness: 0.414
-    murkColor: {r: 0.90227586, g: 0.8066038, b: 1, a: 1}
-    scale: 0.3
-    viscosity: 0
-    adjustmentSpeed: 1
-    bubblesOpacity: 1
-    baseLevel: 0.5
-    currentBaseLevel: 0.5
-    currentAmount: 0.1
-    currentColor: {r: 0.8194541, g: 0.7411765, b: 0.9529412, a: 0.116}
-    currentMurkiness: 0.414
-    currentColor2: {r: 0.90227586, g: 0.8066038, b: 1, a: 1}
-    currentBubblesOpacity: 1
-    currentScale: 0.3
-    currentViscosity: 0
   _smoothContactSurface: 2
   _ditherStrength: 0.5
   _layersAdjustmentSpeed: 2
@@ -200,7 +160,7 @@ MonoBehaviour:
   _sparklingAmount: 0.2
   _deepObscurance: 2
   _foamColor: {r: 1, g: 1, b: 1, a: 0.65}
-  _foamScale: 0.2
+  _foamScale: 0.01
   _foamThickness: 0
   _foamDensity: 0.28
   _foamWeight: 10
@@ -222,7 +182,7 @@ MonoBehaviour:
   _lowerLimit: -1
   _subMeshIndex: 0
   _flaskMaterial: {fileID: 0}
-  _flaskThickness: 0
+  _flaskThickness: 0.02
   _glossinessInternal: 0.3
   _scatteringEnabled: 0
   _scatteringPower: 5
@@ -249,8 +209,8 @@ MonoBehaviour:
   _doubleSidedBias: 0.05
   _backDepthBias: 0
   _rotationLevelCompensation: 0
-  _ignoreGravity: 1
-  _reactToForces: 0
+  _ignoreGravity: 0
+  _reactToForces: 1
   _extentsScale: {x: 1, y: 1, z: 1}
   _noiseVariation: 1
   _foamNoiseTexture: {fileID: 0}
