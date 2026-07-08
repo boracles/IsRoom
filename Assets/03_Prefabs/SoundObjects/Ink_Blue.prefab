@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 974071280708111478}
   - component: {fileID: 8918887500701136626}
   - component: {fileID: -8147448452188715733}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ink_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 9151324478156317173}
   - component: {fileID: 7510614816358278393}
   - component: {fileID: 8121878855137305799}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 8169679921127955561}
   - component: {fileID: 5678962527728783478}
   - component: {fileID: 5762339141029847790}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,6 +13,9 @@ public class DraggablePieceToTurntable : MonoBehaviour
     [Header("Guide")]
     public GameObject guideObject;
 
+    [Header("Raycast")]
+    public LayerMask draggableLayerMask;
+
     [Header("Drag")]
     public float followSpeed = 18f;
     public float dragPlaneOffset = 0f;
@@ -52,6 +55,22 @@ public class DraggablePieceToTurntable : MonoBehaviour
 
         originalScale = transform.localScale;
         targetDragPosition = transform.position;
+
+        // 인스펙터에서 LayerMask를 안 넣었을 때 자동으로 DraggablePiece 레이어를 찾음
+        if (draggableLayerMask.value == 0)
+        {
+            int layer = LayerMask.NameToLayer("DraggablePiece");
+
+            if (layer >= 0)
+            {
+                draggableLayerMask = 1 << layer;
+            }
+            else
+            {
+                Debug.LogWarning("[DraggablePieceToTurntable] DraggablePiece 레이어를 찾지 못했습니다. Tags & Layers 이름을 확인하세요.");
+                draggableLayerMask = ~0;
+            }
+        }
     }
 
     private void Update()
@@ -65,11 +84,8 @@ public class DraggablePieceToTurntable : MonoBehaviour
             if (arCamera == null) return;
         }
 
-#if UNITY_EDITOR
         HandleMouseInput();
-#else
         HandleTouchInput();
-#endif
 
         if (isDragging)
         {
@@ -122,30 +138,60 @@ public class DraggablePieceToTurntable : MonoBehaviour
 
     private void TryBeginDrag(Vector2 screenPosition)
     {
+        if (isDragging || isPlaced)
+            return;
+
         Ray ray = arCamera.ScreenPointToRay(screenPosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        RaycastHit[] hits = Physics.RaycastAll(
+            ray,
+            100f,
+            draggableLayerMask,
+            QueryTriggerInteraction.Collide
+        );
+
+        if (hits.Length == 0)
         {
+            Debug.LogWarning($"[Drag Failed] DraggablePiece 레이어에서 아무것도 맞지 않음: {name}");
+            return;
+        }
+
+        Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (RaycastHit hit in hits)
+        {
+            Debug.Log($"[Drag Raycast Hit] {hit.transform.name} / layer: {LayerMask.LayerToName(hit.transform.gameObject.layer)}");
+
             if (hit.transform == transform || hit.transform.IsChildOf(transform))
             {
-                isDragging = true;
-
-                Vector3 planeNormal = -arCamera.transform.forward;
-                Vector3 planePoint = transform.position + arCamera.transform.forward * dragPlaneOffset;
-
-                dragPlane = new Plane(planeNormal, planePoint);
-                targetDragPosition = transform.position;
-
-                if (guideObject != null)
-                {
-                    guideObject.SetActive(true);
-                }
-
-                if (scaleWhileDragging)
-                {
-                    StartScaleTo(dragScale);
-                }
+                BeginDrag();
+                return;
             }
+        }
+
+        Debug.LogWarning($"[Drag Failed] Raycast는 DraggablePiece를 맞췄지만, 현재 오브제 {name}은 아님");
+    }
+
+    private void BeginDrag()
+    {
+        Debug.Log($"[Drag Start] {name}");
+
+        isDragging = true;
+
+        Vector3 planeNormal = -arCamera.transform.forward;
+        Vector3 planePoint = transform.position + arCamera.transform.forward * dragPlaneOffset;
+
+        dragPlane = new Plane(planeNormal, planePoint);
+        targetDragPosition = transform.position;
+
+        if (guideObject != null)
+        {
+            guideObject.SetActive(true);
+        }
+
+        if (scaleWhileDragging)
+        {
+            StartScaleTo(dragScale);
         }
     }
 
@@ -311,5 +357,14 @@ public class DraggablePieceToTurntable : MonoBehaviour
         guideObject = guide;
         dragScale = dragScaleValue;
         placedScale = placedScaleValue;
+
+        if (draggableLayerMask.value == 0)
+        {
+            int layer = LayerMask.NameToLayer("DraggablePiece");
+            if (layer >= 0)
+            {
+                draggableLayerMask = 1 << layer;
+            }
+        }
     }
 }

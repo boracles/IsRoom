@@ -7670,8 +7670,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.8584906, g: 0.80681586, b: 0.75725347, a: 1}
-  m_Intensity: 0.02
-  m_Range: 0.1
+  m_Intensity: 0.04
+  m_Range: 0.3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -7733,7 +7733,7 @@ Transform:
   m_GameObject: {fileID: 1053858168}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5000727, y: -0.49992564, z: -0.49992555, w: 0.5000761}
-  m_LocalPosition: {x: 0.0278, y: -0.0041, z: 0.0003}
+  m_LocalPosition: {x: 0.0221, y: 0.013, z: 0}
   m_LocalScale: {x: 0.9909091, y: 0.990909, z: 0.99090916}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14773,6 +14773,8 @@ MonoBehaviour:
   waveRoomConfig: {fileID: 11400000, guid: 4f274f35fd729451ca2671bc761f361f, type: 2}
   shadowRoomConfig: {fileID: 11400000, guid: a1cd232cf7b4c43fbb7d1ece4ced2466, type: 2}
   finalRoomType: 3
+  lightRoomWindowEmission: {fileID: 0}
+  selectedInkColor: 0
   generatedPieces: []
   cubeFaceRoomDetector: {fileID: 1191461516}
   roomTargetDetectionDelay: 1
@@ -14856,6 +14858,12 @@ MonoBehaviour:
   keyholeRenderer: {fileID: 0}
   keyholeNormalMaterial: {fileID: 0}
   keyholeEmissionMaterial: {fileID: 0}
+  keyholeGuideObject: {fileID: 0}
+  keyDragGuideUI: {fileID: 0}
+  keyholeTarget: {fileID: 0}
+  keySnapPose: {fileID: 0}
+  arCamera: {fileID: 0}
+  finalDoorUnlockSequence: {fileID: 0}
 --- !u!4 &2003864184
 Transform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 965110886742679657}
   - component: {fileID: 1900477800597611877}
   - component: {fileID: 2959812120886024702}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 217371825423375861}
   - component: {fileID: 4371711321657807338}
   - component: {fileID: 4436954891857503090}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 9214455784563576298}
   - component: {fileID: 5052380954841576618}
   - component: {fileID: -5058839510617705735}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ink_Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
