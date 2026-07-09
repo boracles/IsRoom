@@ -19,6 +19,9 @@ public class TurntableLayeringSequence : MonoBehaviour
     public AudioClip placeInkPaperGuideClip; // VO_07_place_ink_paper.wav
     public AudioClip listenTogetherGuideClip; // 이제 함께 들어보세요.
 
+    [Header("Listen Together Timing")]
+    public float listenTogetherDelayAfterPaperPlaced = 1.0f;
+
     [Header("Place SFX")]
     public AudioSource sfxSource;
     public AudioClip inkPlacedClip;
@@ -138,6 +141,9 @@ public class TurntableLayeringSequence : MonoBehaviour
 
     private IEnumerator ListenTogetherGuideRoutine()
     {
+        // 편지지 배치 효과음이 먼저 들리도록 잠깐 기다림
+        yield return new WaitForSeconds(listenTogetherDelayAfterPaperPlaced);
+
         SetGuideText("이제 함께 들어보세요.");
         PlayGuideVoiceClip(listenTogetherGuideClip);
 

@@ -51,6 +51,11 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     public AudioSource sfxSource;
     public AudioClip keyInsertClip;
 
+    [Header("Final Room Close SFX")]
+    public AudioSource closeSfxSource;
+    public AudioClip finalRoomCloseClip;
+    public float closeSfxVolume = 1f;
+
     [Header("Open Durations")]
     public float innerDoorOpenDuration = 0.8f;
     public float outerDoorOpenDuration = 1.0f;
@@ -613,6 +618,9 @@ public class FinalDoorUnlockSequence : MonoBehaviour
 
         StopCircleRotation();
 
+        // 앞벽 + 윗벽 + 문이 닫히기 시작하는 순간 효과음 재생
+        PlayFinalRoomCloseSFX();
+
         bool hasOuterDoor = outerDoor != null;
         bool hasTopDoor = topDoor != null;
 
@@ -788,5 +796,23 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         {
             sfxSource.PlayOneShot(keyInsertClip);
         }
+    }
+
+    private void PlayFinalRoomCloseSFX()
+    {
+        if (finalRoomCloseClip == null)
+        {
+            return;
+        }
+
+        AudioSource source = closeSfxSource != null ? closeSfxSource : sfxSource;
+
+        if (source == null)
+        {
+            return;
+        }
+
+        source.volume = closeSfxVolume;
+        source.PlayOneShot(finalRoomCloseClip);
     }
 }

@@ -19,6 +19,10 @@ public class FinalSequenceController : MonoBehaviour
     public AudioSource guideVoiceSource;
     public AudioClip outsideSoundGuideClip;
 
+    [Header("Final Transition Music")]
+    public AudioSource transitionMusicSource;
+    public AudioClip transitionToLivePianoClip;
+
     [Header("UI")]
     public GameObject finalMessagePanel;
     public TMP_Text finalMessageText;
@@ -151,6 +155,7 @@ public class FinalSequenceController : MonoBehaviour
 
         yield return null;
 
+        // 12-1. “아이패드 내려주세요” 안내 음성이 끝날 때까지 대기
         if (outsideSoundGuideClip != null && guideVoiceSource != null)
         {
             yield return new WaitWhile(() => guideVoiceSource.isPlaying);
@@ -160,8 +165,16 @@ public class FinalSequenceController : MonoBehaviour
             yield return new WaitForSeconds(endingMessageTime);
         }
 
-        // 혹시 너무 바로 꺼지는 느낌이면 아주 짧게 여운
-        yield return new WaitForSeconds(0.3f);
+        // 12-2. AR 사운드에서 현실 피아노/조명으로 넘어가는 연결음 재생
+        PlayTransitionMusic();
+
+        yield return null;
+
+        // 연결음이 끝날 때까지 앱 종료하지 않음
+        if (transitionToLivePianoClip != null && transitionMusicSource != null)
+        {
+            yield return new WaitWhile(() => transitionMusicSource.isPlaying);
+        }
 
         // 13. 앱 종료
         QuitApplication();
@@ -190,6 +203,7 @@ public class FinalSequenceController : MonoBehaviour
         {
             if (sources[i] == null) continue;
             if (sources[i] == guideVoiceSource) continue;
+            if (sources[i] == transitionMusicSource) continue;
 
             startVolumes[i] = sources[i].volume;
         }
@@ -205,6 +219,7 @@ public class FinalSequenceController : MonoBehaviour
             {
                 if (sources[i] == null) continue;
                 if (sources[i] == guideVoiceSource) continue;
+                if (sources[i] == transitionMusicSource) continue;
 
                 sources[i].volume = Mathf.Lerp(
                     startVolumes[i],
@@ -220,6 +235,7 @@ public class FinalSequenceController : MonoBehaviour
         {
             if (sources[i] == null) continue;
             if (sources[i] == guideVoiceSource) continue;
+            if (sources[i] == transitionMusicSource) continue;
 
             sources[i].volume = 0f;
             sources[i].Stop();
@@ -246,6 +262,20 @@ public class FinalSequenceController : MonoBehaviour
 
         guideVoiceSource.Stop();
         guideVoiceSource.PlayOneShot(clip);
+    }
+
+    private void PlayTransitionMusic()
+    {
+        if (transitionToLivePianoClip == null || transitionMusicSource == null)
+        {
+            return;
+        }
+
+        transitionMusicSource.Stop();
+        transitionMusicSource.clip = transitionToLivePianoClip;
+        transitionMusicSource.loop = false;
+        transitionMusicSource.volume = 1f;
+        transitionMusicSource.Play();
     }
 
     private void SpawnCompletedLetter()
