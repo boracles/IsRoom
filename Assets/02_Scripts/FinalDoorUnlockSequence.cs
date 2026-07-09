@@ -47,6 +47,10 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     public float keyAudioFadeInDuration = 1.0f;
     public float keyAudioVolume = 0.8f;
 
+    [Header("Key Insert SFX")]
+    public AudioSource sfxSource;
+    public AudioClip keyInsertClip;
+
     [Header("Open Durations")]
     public float innerDoorOpenDuration = 0.8f;
     public float outerDoorOpenDuration = 1.0f;
@@ -177,6 +181,8 @@ public class FinalDoorUnlockSequence : MonoBehaviour
                 keyInsertDuration
             );
         }
+
+        PlayKeyInsertSFX();
 
         // 2-1. 꽂힌 순간부터 키홀의 자식으로 붙임
         if (parentKeyToKeyholeAfterInsert && keyholeParent != null)
@@ -735,6 +741,14 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         {
             StopCoroutine(circleRotateCoroutine);
             circleRotateCoroutine = null;
+        }
+    }
+
+    private void PlayKeyInsertSFX()
+    {
+        if (sfxSource != null && keyInsertClip != null)
+        {
+            sfxSource.PlayOneShot(keyInsertClip);
         }
     }
 }
