@@ -75,6 +75,10 @@ public class IRoomSequenceManager : MonoBehaviour
             return;
         }
 
+        generatedPieces.Clear();
+
+        PreparePreviousGeneratedPieces();
+
         PlayIRoomBaseLoop();
 
         roomStepController.PlayIRoomAwakenedSequence(() =>
@@ -310,6 +314,48 @@ public class IRoomSequenceManager : MonoBehaviour
         }
     }
 
+    private void PreparePreviousGeneratedPieces()
+    {
+        for (int i = 0; i < currentRoomIndex; i++)
+        {
+            if (i < 0 || i >= roomOrder.Count)
+            {
+                continue;
+            }
+
+            RoomConfig previousRoom = roomOrder[i];
+
+            if (previousRoom == null)
+            {
+                continue;
+            }
+
+            if (roomStepController == null)
+            {
+                Debug.LogError("RoomStepController가 없어 이전 방 결과물을 생성할 수 없습니다.");
+                return;
+            }
+
+            GameObject createdPiece = roomStepController.CreateRoomPieceOnly(previousRoom);
+
+            if (createdPiece != null)
+            {
+                generatedPieces.Add(createdPiece);
+
+                if (previousRoom.roomType == RoomType.Wave)
+                {
+                    SetSelectedInkColorFromPiece(createdPiece);
+                }
+
+                Debug.Log($"이전 방 결과물만 미리 생성됨: {previousRoom.roomType} / {createdPiece.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"이전 방 결과물 생성 실패: {previousRoom.roomType}");
+            }
+        }
+    }
+
     [ContextMenu("Start From Stair")]
     public void StartFromStair()
     {
@@ -340,6 +386,7 @@ public class IRoomSequenceManager : MonoBehaviour
     {
         currentRoomIndex = 1;
         generatedPieces.Clear();
+
         waitingForRoomTarget = false;
         waitingForFinalRoomTarget = false;
 
@@ -354,6 +401,8 @@ public class IRoomSequenceManager : MonoBehaviour
         {
             cubeFaceRoomDetector.ResetDetection();
         }
+
+        PreparePreviousGeneratedPieces();
 
         PlayIRoomBaseLoop();
 
@@ -365,6 +414,7 @@ public class IRoomSequenceManager : MonoBehaviour
     {
         currentRoomIndex = 2;
         generatedPieces.Clear();
+
         waitingForRoomTarget = false;
         waitingForFinalRoomTarget = false;
 
@@ -379,6 +429,8 @@ public class IRoomSequenceManager : MonoBehaviour
         {
             cubeFaceRoomDetector.ResetDetection();
         }
+
+        PreparePreviousGeneratedPieces();
 
         PlayIRoomBaseLoop();
 

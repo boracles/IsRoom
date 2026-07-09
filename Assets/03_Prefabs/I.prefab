@@ -203,7 +203,10 @@ MonoBehaviour:
   stairDoorPosition: {fileID: 0}
   waveDoorPosition: {fileID: 0}
   shadowDoorPosition: {fileID: 0}
+  lightDoorPosition: {fileID: 0}
   touchPosition: {fileID: 0}
+  afterAnswerPosition: {fileID: 0}
+  finalLetterPosition: {fileID: 0}
   moveSpeed: 1.5
   smoothTime: 0.35
   floatingSpeed: 0.6
@@ -263,8 +266,8 @@ MonoBehaviour:
   targetCamera: {fileID: 0}
   nearDistance: 1
   farDistance: 15
-  nearMaxParticleSize: 0.12
-  farMaxParticleSize: 0.04
+  nearMaxParticleSize: 0.2
+  farMaxParticleSize: 0.06
 --- !u!198 &5511662429238296020
 ParticleSystem:
   m_ObjectHideFlags: 0

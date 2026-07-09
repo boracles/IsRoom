@@ -19,6 +19,11 @@ public class RoomStepController : MonoBehaviour
     public Transform wavePieceSpawn;
     public Transform shadowPieceSpawn;
 
+    [Header("Piece Created Guide Voice")]
+    public AudioClip stairPieceCreatedGuideClip;
+    public AudioClip wavePieceCreatedGuideClip;
+    public AudioClip shadowPieceCreatedGuideClip;
+
     [Header("Generated Piece Parent")]
     public Transform generatedPieceParent;
 
@@ -28,6 +33,12 @@ public class RoomStepController : MonoBehaviour
     public AudioClip stairRoomGuideClip;
     public float awakenedMessageDuration = 2.8f;
     public float nextGuideDuration = 2.0f;
+
+    [Header("Scan Guide Voice Repeat")]
+    public float scanGuideVoiceInitialDelay = 0.8f;
+    public float scanGuideVoiceRepeatDelay = 4.0f;
+
+    private Coroutine scanGuideVoiceRoutine;
 
     [Header("Awake Visual Feedback")]
     public GameObject iRoomAwakeParticleObject;
@@ -95,6 +106,8 @@ public class RoomStepController : MonoBehaviour
 
     [Header("Final Key Guide")]
     public GameObject keyholeGuideObject;
+    public AudioClip keyToDoorGuideClip;
+    public AudioClip openFinalDoorGuideClip;
 
     [Header("Final Key Drag Guide")]
     public KeyDragGuideUI keyDragGuideUI;
@@ -108,6 +121,8 @@ public class RoomStepController : MonoBehaviour
     private RoomConfig currentRoom;
     private Action<GameObject> onRoomFinished;
 
+    private bool sequenceStarted = false;
+
     private Dictionary<RoomType, int> lastPieceIndexByRoom = new Dictionary<RoomType, int>();
     private System.Random pieceRandom;
 
@@ -119,11 +134,18 @@ public class RoomStepController : MonoBehaviour
         Debug.Log($"[RoomStepController] Piece random seed: {seed}");
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        ShowScanGuide();
-    }
+        yield return null;
 
+        yield return new WaitForSeconds(0.8f);
+
+        if (!sequenceStarted)
+        {
+            ShowScanGuide();
+        }
+    }
+    
     private void SetScanGuide(bool visible)
     {
         if (scanGuideGroup != null)
@@ -144,7 +166,7 @@ public class RoomStepController : MonoBehaviour
         SetQuestion("");
         SetGuide("오브제를 비추어 I의 방을 깨워주세요.");
 
-        PlayGuideVoiceClip(scanIRoomGuideClip);
+        StartScanGuideVoiceLoop();
     }
 
     public void ShowRotateGuide()
@@ -162,6 +184,8 @@ public class RoomStepController : MonoBehaviour
 
     public void StartRoom(RoomConfig roomConfig, Action<GameObject> finishedCallback)
     {
+        sequenceStarted = true;
+
         currentRoom = roomConfig;
         onRoomFinished = finishedCallback;
 
@@ -309,7 +333,14 @@ public class RoomStepController : MonoBehaviour
         SetGuide(GetPieceCreatedGuide(currentRoom.roomType));
         PlayGuideHighlight();
 
-        yield return new WaitForSeconds(createPieceDelay);
+        AudioClip pieceCreatedGuideClip = GetPieceCreatedGuideClip(currentRoom.roomType);
+        PlayGuideVoiceClip(pieceCreatedGuideClip);
+
+        float pieceCreatedWaitTime = pieceCreatedGuideClip != null
+            ? Mathf.Max(createPieceDelay, pieceCreatedGuideClip.length)
+            : createPieceDelay;
+
+        yield return new WaitForSeconds(pieceCreatedWaitTime);
 
         // 2. 음악 듣기 안내
         SetGuide("조각이 담고 있는 소리를 들어보세요.");
@@ -392,6 +423,42 @@ public class RoomStepController : MonoBehaviour
         return piece;
     }
 
+    public GameObject CreateRoomPieceOnly(RoomConfig roomConfig)
+    {
+        if (roomConfig == null)
+        {
+            Debug.LogWarning("[RoomStepController] RoomConfig가 비어 있어 조각만 생성할 수 없습니다.");
+            return null;
+        }
+
+        RoomConfig previousRoom = currentRoom;
+        currentRoom = roomConfig;
+
+        GameObject createdPiece = CreateRandomPiece();
+
+        currentRoom = previousRoom;
+
+        if (createdPiece != null)
+        {
+            AudioSource pieceAudio = createdPiece.GetComponent<AudioSource>();
+
+            if (pieceAudio == null)
+            {
+                pieceAudio = createdPiece.GetComponentInChildren<AudioSource>(true);
+            }
+
+            if (pieceAudio != null)
+            {
+                pieceAudio.Stop();
+                pieceAudio.playOnAwake = false;
+            }
+
+            Debug.Log($"[RoomStepController] 이전 방 조각만 생성됨: {roomConfig.roomType} / {createdPiece.name}");
+        }
+
+        return createdPiece;
+    }
+
     private Transform GetSpawnPoint(RoomType roomType)
     {
         switch (roomType)
@@ -451,6 +518,24 @@ public class RoomStepController : MonoBehaviour
 
             default:
                 return "소리 조각이 만들어졌습니다.";
+        }
+    }
+
+    private AudioClip GetPieceCreatedGuideClip(RoomType roomType)
+    {
+        switch (roomType)
+        {
+            case RoomType.Stair:
+                return stairPieceCreatedGuideClip;
+
+            case RoomType.Wave:
+                return wavePieceCreatedGuideClip;
+
+            case RoomType.Shadow:
+                return shadowPieceCreatedGuideClip;
+
+            default:
+                return null;
         }
     }
 
@@ -639,7 +724,11 @@ public class RoomStepController : MonoBehaviour
 
     public void PlayIRoomAwakenedSequence(Action onFinished)
     {
+        sequenceStarted = true;
+
         StopAllCoroutines();
+        scanGuideVoiceRoutine = null;
+
         StartCoroutine(IRoomAwakenedRoutine(onFinished));
     }
 
@@ -913,7 +1002,11 @@ public class RoomStepController : MonoBehaviour
             performerI.StartSpeaking();
         }
 
-        yield return new WaitForSeconds(roomFoundMessageDuration);
+        float lightRoomFoundWaitTime = lightRoomFoundClip != null
+            ? Mathf.Max(roomFoundMessageDuration, lightRoomFoundClip.length)
+            : roomFoundMessageDuration;
+
+        yield return new WaitForSeconds(lightRoomFoundWaitTime);
 
         ClearUI();
 
@@ -949,12 +1042,30 @@ public class RoomStepController : MonoBehaviour
             yield return StartCoroutine(MovePiecesToFinalUpperPositions(pieces));
         }
 
-        SetGuide("계단의 열쇠를 문에 가져가 빛이 머무는 방을 열어보세요.");
+        // 1. 먼저 목적 안내
+        SetGuide("마지막 문을 열어보세요.");
+        PlayGuideHighlight();
+        PlayGuideVoiceClip(openFinalDoorGuideClip);
+
+        // "마지막 문을 열어보세요" 음성이 끝난 뒤 텀을 둠
+        if (openFinalDoorGuideClip != null)
+        {
+            yield return new WaitForSeconds(openFinalDoorGuideClip.length + 1.2f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.0f);
+        }
+
+        // 2. 그 다음 조작 안내
+        SetGuide("계단의 열쇠를 문으로 가져가세요.");
+        PlayGuideHighlight();
+        PlayGuideVoiceClip(keyToDoorGuideClip);
+
         SetKeyholeHighlight(true);
 
+        // 실제 드래그 가이드/기능 연결
         BindRuntimeKeyToDragGuide(pieces);
-
-        // 드래그 안내 UI 켜기
         SetKeyholeGuide(true);
     }
 
@@ -1181,7 +1292,41 @@ public class RoomStepController : MonoBehaviour
         }
     }
 
+    private void StartScanGuideVoiceLoop()
+    {
+        if (scanGuideVoiceRoutine != null)
+        {
+            StopCoroutine(scanGuideVoiceRoutine);
+        }
 
+        scanGuideVoiceRoutine = StartCoroutine(ScanGuideVoiceLoopRoutine());
+    }
+
+    private IEnumerator ScanGuideVoiceLoopRoutine()
+    {
+        yield return new WaitForSeconds(scanGuideVoiceInitialDelay);
+
+        while (currentState == RoomState.Idle)
+        {
+            PlayGuideVoiceClip(scanIRoomGuideClip);
+
+            float clipLength = scanIRoomGuideClip != null ? scanIRoomGuideClip.length : 0f;
+            float waitTime = Mathf.Max(scanGuideVoiceRepeatDelay, clipLength + 0.5f);
+
+            yield return new WaitForSeconds(waitTime);
+        }
+
+        scanGuideVoiceRoutine = null;
+    }
+
+    private void StopScanGuideVoiceLoop()
+    {
+        if (scanGuideVoiceRoutine != null)
+        {
+            StopCoroutine(scanGuideVoiceRoutine);
+            scanGuideVoiceRoutine = null;
+        }
+    }
 
     private void PlayGuideVoiceClip(AudioClip clip)
     {
