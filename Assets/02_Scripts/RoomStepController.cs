@@ -41,6 +41,12 @@ public class RoomStepController : MonoBehaviour
     public AudioSource sfxSource;
     public AudioSource voiceSource;
 
+    [Header("Room Found SFX")]
+    public AudioClip stairRoomFoundClip;
+    public AudioClip waveRoomFoundClip;
+    public AudioClip shadowRoomFoundClip;
+    public AudioClip lightRoomFoundClip;
+
     [Header("Music Listening")]
     public float musicListenDuration = 20f;
     public float pieceRotationSpeed = 18f;
@@ -823,6 +829,7 @@ public class RoomStepController : MonoBehaviour
                 break;
         }
 
+        PlayRoomFoundSFX(roomType);
         PlayGuideHighlight();
 
         yield return new WaitForSeconds(roomFoundMessageDuration);
@@ -884,6 +891,7 @@ public class RoomStepController : MonoBehaviour
         SetKeyholeHighlight(true);
 
         SetGuide("빛이 머무는 방입니다.");
+        PlayRoomFoundSFX(RoomType.Light);
         PlayGuideHighlight();
 
         if (performerI != null)
@@ -929,7 +937,7 @@ public class RoomStepController : MonoBehaviour
             yield return StartCoroutine(MovePiecesToFinalUpperPositions(pieces));
         }
 
-        SetGuide("계단의 열쇠를 문에 가져가 마지막 방을 열어보세요.");
+        SetGuide("계단의 열쇠를 문에 가져가 빛이 머무는 방을 열어보세요.");
         SetKeyholeHighlight(true);
 
         BindRuntimeKeyToDragGuide(pieces);
@@ -1128,6 +1136,37 @@ public class RoomStepController : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void PlayRoomFoundSFX(RoomType roomType)
+    {
+        AudioClip clip = GetRoomFoundClip(roomType);
+
+        if (clip != null && sfxSource != null)
+        {
+            sfxSource.PlayOneShot(clip);
+        }
+    }
+
+    private AudioClip GetRoomFoundClip(RoomType roomType)
+    {
+        switch (roomType)
+        {
+            case RoomType.Stair:
+                return stairRoomFoundClip;
+
+            case RoomType.Wave:
+                return waveRoomFoundClip;
+
+            case RoomType.Shadow:
+                return shadowRoomFoundClip;
+
+            case RoomType.Light:
+                return lightRoomFoundClip;
+
+            default:
+                return null;
+        }
     }
 
 }

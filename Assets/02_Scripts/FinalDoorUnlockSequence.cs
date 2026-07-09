@@ -12,6 +12,11 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     public Transform keyholeParent;
     public bool parentKeyToKeyholeAfterInsert = true;
 
+    [Header("Key Insert Scale")]
+    public bool scaleKeyAfterInsert = true;
+    public Vector3 insertedKeyScale = new Vector3(0.65f, 0.65f, 0.65f);
+    public float keyScaleDuration = 0.25f;
+
     [Header("Door Targets")]
     public Transform innerDoor; // Door
     public Transform innerDoorOpenPose;
@@ -31,6 +36,11 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     public float keyInsertDuration = 0.45f;
     public float keyTurnDuration = 0.45f;
     public float pauseAfterTurn = 0.25f;
+    public float pauseAfterInsert = 0.35f;
+    public float pauseBeforeDoorOpen = 0.5f;
+    public float pauseAfterInnerDoorOpen = 0.6f;
+    public float pauseAfterOuterAndTopOpen = 0.8f;
+    public float pauseBeforeTurntableStart = 0.7f;
 
     [Header("Key Loop Audio")]
     public bool playKeyAudioAfterOpen = true;
@@ -171,33 +181,45 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         // 2-1. 꽂힌 순간부터 키홀의 자식으로 붙임
         if (parentKeyToKeyholeAfterInsert && keyholeParent != null)
         {
-            keyTransform.SetParent(keyholeParent, true); // 월드 위치/회전 유지
-            Debug.Log("[FinalDoorUnlockSequence] 열쇠가 키홀의 자식이 되었습니다.");
-        } 
+            keyTransform.SetParent(keyholeParent, true);
+        }
+
+        // 2-2. 꽂힌 뒤 열쇠 스케일 축소
+        if (scaleKeyAfterInsert)
+        {
+            yield return ScaleTransformLocal(
+                keyTransform,
+                insertedKeyScale,
+                keyScaleDuration
+            );
+        }
+
+        yield return new WaitForSeconds(pauseAfterInsert);
 
         // 3. 열쇠 회전
         if (keyTurnPose != null)
         {
-            yield return MoveTransformWorld(
+            yield return RotateTransformWorld(
                 keyTransform,
-                keyTurnPose.position,
                 keyTurnPose.rotation,
                 keyTurnDuration
             );
         }
 
         yield return new WaitForSeconds(pauseAfterTurn);
+        yield return new WaitForSeconds(pauseBeforeDoorOpen);
 
         // 4. 안쪽 문 먼저 열기
         if (innerDoor != null && innerDoorOpenPose != null)
         {
-            yield return MoveTransformWorld(
+            yield return RotateTransformWorld(
                 innerDoor,
-                innerDoorOpenPose.position,
                 innerDoorOpenPose.rotation,
                 innerDoorOpenDuration
             );
         }
+
+        yield return new WaitForSeconds(pauseAfterInnerDoorOpen);
 
         // 5. 바깥문 + Top 동시에 열기
         bool hasOuterDoor = outerDoor != null && outerDoorOpenPose != null;
@@ -208,12 +230,16 @@ public class FinalDoorUnlockSequence : MonoBehaviour
             yield return OpenOuterAndTopTogether(hasOuterDoor, hasTopDoor);
         }
 
+        yield return new WaitForSeconds(pauseAfterOuterAndTopOpen);
+
         // 6. 문이 다 열린 직후 동시에 실행
         // 6-1. Fake Interior reveal
         if (revealInteriorAfterOpen && fakeInteriorController != null)
         {
             fakeInteriorController.RevealRandomInterior();
         }
+
+        yield return new WaitForSeconds(pauseBeforeTurntableStart);
 
         // 6-2. Body가 먼저 제자리에서 회전
         if (moveBodyBeforeCircleRotation && turntableBody != null && bodyOnCirclePose != null)
@@ -393,6 +419,44 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         target.rotation = targetRotation;
     }
 
+    private IEnumerator ScaleTransformLocal(
+    Transform target,
+    Vector3 targetScale,
+    float duration
+    )
+    {
+        if (target == null)
+            yield break;
+
+        Vector3 startScale = target.localScale;
+
+        if (duration <= 0.001f)
+        {
+            target.localScale = targetScale;
+            yield break;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = Mathf.Clamp01(elapsed / duration);
+            float curvedT = moveCurve != null ? moveCurve.Evaluate(t) : t;
+
+            target.localScale = Vector3.Lerp(
+                startScale,
+                targetScale,
+                curvedT
+            );
+
+            yield return null;
+        }
+
+        target.localScale = targetScale;
+    }
+
     private IEnumerator RotateTransformWorld(
     Transform target,
     Quaternion targetRotation,
@@ -555,9 +619,8 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         // 2. 마지막으로 안쪽 문 닫힘
         if (innerDoor != null)
         {
-            yield return MoveTransformWorld(
+            yield return RotateTransformWorld(
                 innerDoor,
-                innerDoorClosedPosition,
                 innerDoorClosedRotation,
                 innerDoorOpenDuration
             );

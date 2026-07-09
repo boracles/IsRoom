@@ -5,13 +5,33 @@ using TMPro;
 
 public class ForcedAppEndController : MonoBehaviour
 {
+    public enum ForcedEndMode
+    {
+        SpecificDateTime,
+        ElapsedAfterAppStart
+    }
+
+    [Header("Enable")]
+    public bool enableForcedEnd = true;
+
+    [Header("Forced End Mode")]
+    public ForcedEndMode forcedEndMode = ForcedEndMode.ElapsedAfterAppStart;
+
+    [Header("Forced End Date")]
+    public int targetMonth = 7;
+    public int targetDay = 14;
+
     [Header("Forced End Time")]
     public int targetHour = 17;
     public int targetMinute = 15;
     public int targetSecond = 0;
 
-    [Tooltip("앱을 17:15 이후에 켰을 때도 바로 종료할지 여부")]
+    [Tooltip("지정한 날짜와 시각 이후에 앱을 켰을 때도 바로 종료할지 여부")]
     public bool triggerImmediatelyIfPastTime = true;
+
+    [Header("Elapsed End Time")]
+    [Tooltip("앱 실행 후 몇 초 뒤에 강제 종료 루틴을 시작할지. 3분 30초 = 210초")]
+    public float endAfterSeconds = 210f;
 
     [Header("UI")]
     public GameObject forcedEndPanel;
@@ -41,16 +61,19 @@ public class ForcedAppEndController : MonoBehaviour
     public GameObject keyholeGuideObject;
 
     private bool hasTriggered = false;
-    private DateTime todayTargetTime;
+    private DateTime targetDateTime;
+    private float appStartTime;
 
     private void Start()
     {
+        appStartTime = Time.time;
+
         DateTime now = DateTime.Now;
 
-        todayTargetTime = new DateTime(
+        targetDateTime = new DateTime(
             now.Year,
-            now.Month,
-            now.Day,
+            targetMonth,
+            targetDay,
             targetHour,
             targetMinute,
             targetSecond
@@ -61,23 +84,62 @@ public class ForcedAppEndController : MonoBehaviour
             forcedEndPanel.SetActive(false);
         }
 
-        Debug.Log($"[ForcedAppEndController] 강제 종료 목표 시각: {todayTargetTime:yyyy-MM-dd HH:mm:ss}");
+        Debug.Log($"[ForcedAppEndController] 강제 종료 모드: {forcedEndMode}");
+        Debug.Log($"[ForcedAppEndController] 날짜/시각 기준: {targetDateTime:yyyy-MM-dd HH:mm:ss}");
+        Debug.Log($"[ForcedAppEndController] 앱 실행 후 종료 기준: {endAfterSeconds}초");
     }
 
     private void Update()
     {
+        if (!enableForcedEnd) return;
         if (hasTriggered) return;
 
+        switch (forcedEndMode)
+        {
+            case ForcedEndMode.SpecificDateTime:
+                CheckSpecificDateTimeEnd();
+                break;
+
+            case ForcedEndMode.ElapsedAfterAppStart:
+                CheckElapsedTimeEnd();
+                break;
+        }
+    }
+
+    private void CheckSpecificDateTimeEnd()
+    {
         DateTime now = DateTime.Now;
 
-        if (now >= todayTargetTime)
+        // 지정 날짜 이전이면 실행 안 함
+        if (now.Date < targetDateTime.Date)
+        {
+            return;
+        }
+
+        // 지정 날짜 이후면 실행 안 함
+        // 즉, 정확히 targetMonth / targetDay에만 작동
+        if (now.Date > targetDateTime.Date)
+        {
+            return;
+        }
+
+        if (now >= targetDateTime)
         {
             if (!triggerImmediatelyIfPastTime)
             {
-                // 앱을 이미 목표 시각 이후에 켰고, 즉시 종료하지 않도록 설정한 경우
                 return;
             }
 
+            StartForcedEnd();
+        }
+    }
+
+    private void CheckElapsedTimeEnd()
+    {
+        float elapsed = Time.time - appStartTime;
+
+        if (elapsed >= endAfterSeconds)
+        {
             StartForcedEnd();
         }
     }
@@ -89,32 +151,25 @@ public class ForcedAppEndController : MonoBehaviour
 
         hasTriggered = true;
 
-        Debug.Log("[ForcedAppEndController] 17:15 강제 종료 시퀀스 시작.");
+        Debug.Log("[ForcedAppEndController] 강제 종료 시퀀스 시작.");
 
         StartCoroutine(ForcedEndRoutine());
     }
 
     private IEnumerator ForcedEndRoutine()
     {
-        // 1. 다른 진행 코루틴 정지
         StopKnownSequences();
 
-        // 2. 입력 / 인식 비활성화
         DisableInputAndDetection();
 
-        // 3. 불필요한 가이드 UI 끄기
         HideInteractionGuides();
 
-        // 4. 종료 안내 표시
         ShowForcedEndMessage();
 
-        // 5. 모든 오디오 페이드아웃
         yield return StartCoroutine(FadeOutAllAudio());
 
-        // 6. 안내 문구 잠깐 유지
         yield return new WaitForSeconds(messageShowTime);
 
-        // 7. 앱 종료
         QuitApplication();
     }
 

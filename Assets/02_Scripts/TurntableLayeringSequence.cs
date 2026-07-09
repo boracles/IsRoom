@@ -17,6 +17,13 @@ public class TurntableLayeringSequence : MonoBehaviour
     public Transform inkTurntablePose;
     public Transform paperTurntablePose;
 
+    [Header("Placed Offset")]
+    public Vector3 inkPlacedLocalOffset = new Vector3(0f, 0.04f, 0f);
+    public Vector3 paperPlacedLocalOffset = new Vector3(0f, 0.06f, 0f);
+
+    public Vector3 inkPlacedLocalEuler = Vector3.zero;
+    public Vector3 paperPlacedLocalEuler = Vector3.zero;
+
     [Header("Scale")]
     public Vector3 inkDragScale = new Vector3(0.45f, 0.45f, 0.45f);
     public Vector3 inkPlacedScale = new Vector3(0.45f, 0.45f, 0.45f);
@@ -65,6 +72,8 @@ public class TurntableLayeringSequence : MonoBehaviour
         SetupDraggablePiece(
             inkPiece,
             inkTurntablePose,
+            inkPlacedLocalOffset,
+            inkPlacedLocalEuler,
             inkDragScale,
             inkPlacedScale,
             OnInkPlaced
@@ -92,6 +101,8 @@ public class TurntableLayeringSequence : MonoBehaviour
         SetupDraggablePiece(
             paperPiece,
             paperTurntablePose,
+            paperPlacedLocalOffset,
+            paperPlacedLocalEuler,
             paperDragScale,
             paperPlacedScale,
             OnPaperPlaced
@@ -123,6 +134,8 @@ public class TurntableLayeringSequence : MonoBehaviour
     private void SetupDraggablePiece(
         GameObject piece,
         Transform targetPose,
+        Vector3 placedLocalOffset,
+        Vector3 placedLocalEuler,
         Vector3 dragScale,
         Vector3 placedScale,
         System.Action<DraggablePieceToTurntable> onPlaced
@@ -141,13 +154,20 @@ public class TurntableLayeringSequence : MonoBehaviour
         draggable.screenSnapDistance = screenSnapDistance;
         draggable.worldSnapDistance = worldSnapDistance;
 
+        Transform adjustedTargetPose = CreateAdjustedTargetPose(
+            targetPose,
+            placedLocalOffset,
+            placedLocalEuler,
+            piece.name + "_AdjustedTurntablePose"
+        );
+
         draggable.SetTarget(
             arCamera != null ? arCamera : Camera.main,
-            targetPose,
+            adjustedTargetPose,
             dragGuideObject,
             dragScale,
             placedScale,
-            targetPose
+            adjustedTargetPose
         );
 
         draggable.onPlaced = onPlaced;
@@ -156,7 +176,7 @@ public class TurntableLayeringSequence : MonoBehaviour
         if (dragGuideUI != null)
         {
             dragGuideUI.SetKeyTarget(piece.transform);
-            dragGuideUI.SetKeyholeTarget(targetPose);
+            dragGuideUI.SetKeyholeTarget(adjustedTargetPose);
         }
 
         if (dragGuideObject != null)
@@ -166,7 +186,35 @@ public class TurntableLayeringSequence : MonoBehaviour
 
         EnsureCollider(piece);
 
-        Debug.Log($"드래그 대상 설정됨: {piece.name} → {targetPose.name}");
+        Debug.Log($"드래그 대상 설정됨: {piece.name} → {adjustedTargetPose.name}");
+    }
+
+    private Transform CreateAdjustedTargetPose(
+        Transform basePose,
+        Vector3 localOffset,
+        Vector3 localEuler,
+        string objectName
+    )
+    {
+        Transform existing = basePose.Find(objectName);
+
+        GameObject poseObject;
+
+        if (existing != null)
+        {
+            poseObject = existing.gameObject;
+        }
+        else
+        {
+            poseObject = new GameObject(objectName);
+            poseObject.transform.SetParent(basePose);
+        }
+
+        poseObject.transform.localPosition = localOffset;
+        poseObject.transform.localRotation = Quaternion.Euler(localEuler);
+        poseObject.transform.localScale = Vector3.one;
+
+        return poseObject.transform;
     }
 
     private void EnsureCollider(GameObject piece)

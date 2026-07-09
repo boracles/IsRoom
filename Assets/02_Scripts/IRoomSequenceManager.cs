@@ -31,6 +31,14 @@ public class IRoomSequenceManager : MonoBehaviour
     [Header("Room Detection")]
     public CubeFaceRoomDetector cubeFaceRoomDetector;
 
+    [Header("I Room Base Loop")]
+    public AudioSource iRoomBaseLoopSource;
+    public float iRoomBaseLoopVolume = 0.45f;
+    public float iRoomBaseLoopFadeInTime = 2.0f;
+    public float iRoomBaseLoopFadeOutTime = 2.0f;
+
+    private Coroutine iRoomBaseLoopRoutine;
+
     private List<RoomConfig> roomOrder = new List<RoomConfig>();
     private int currentRoomIndex;
 
@@ -66,6 +74,8 @@ public class IRoomSequenceManager : MonoBehaviour
             Debug.LogError("RoomStepController가 연결되어 있지 않습니다.");
             return;
         }
+
+        PlayIRoomBaseLoop();
 
         roomStepController.PlayIRoomAwakenedSequence(() =>
         {
@@ -320,6 +330,8 @@ public class IRoomSequenceManager : MonoBehaviour
             cubeFaceRoomDetector.ResetDetection();
         }
 
+        PlayIRoomBaseLoop();
+
         StartCurrentRoom();
     }
 
@@ -342,6 +354,8 @@ public class IRoomSequenceManager : MonoBehaviour
         {
             cubeFaceRoomDetector.ResetDetection();
         }
+
+        PlayIRoomBaseLoop();
 
         StartCurrentRoom();
     }
@@ -366,6 +380,88 @@ public class IRoomSequenceManager : MonoBehaviour
             cubeFaceRoomDetector.ResetDetection();
         }
 
+        PlayIRoomBaseLoop();
+
         StartCurrentRoom();
+    }
+
+    private void PlayIRoomBaseLoop()
+    {
+        if (iRoomBaseLoopSource == null)
+        {
+            return;
+        }
+
+        if (iRoomBaseLoopRoutine != null)
+        {
+            StopCoroutine(iRoomBaseLoopRoutine);
+        }
+
+        iRoomBaseLoopSource.loop = true;
+
+        if (!iRoomBaseLoopSource.isPlaying)
+        {
+            iRoomBaseLoopSource.volume = 0f;
+            iRoomBaseLoopSource.Play();
+        }
+
+        iRoomBaseLoopRoutine = StartCoroutine(
+            FadeAudio(iRoomBaseLoopSource, iRoomBaseLoopVolume, iRoomBaseLoopFadeInTime, false)
+        );
+    }
+
+    private void StopIRoomBaseLoop()
+    {
+        if (iRoomBaseLoopSource == null)
+        {
+            return;
+        }
+
+        if (iRoomBaseLoopRoutine != null)
+        {
+            StopCoroutine(iRoomBaseLoopRoutine);
+        }
+
+        iRoomBaseLoopRoutine = StartCoroutine(
+            FadeAudio(iRoomBaseLoopSource, 0f, iRoomBaseLoopFadeOutTime, true)
+        );
+    }
+
+    private IEnumerator FadeAudio(AudioSource source, float targetVolume, float duration, bool stopAfterFade)
+    {
+        if (source == null)
+        {
+            yield break;
+        }
+
+        float startVolume = source.volume;
+        float elapsed = 0f;
+
+        if (duration <= 0f)
+        {
+            source.volume = targetVolume;
+
+            if (stopAfterFade)
+            {
+                source.Stop();
+            }
+
+            yield break;
+        }
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            source.volume = Mathf.Lerp(startVolume, targetVolume, t);
+            yield return null;
+        }
+
+        source.volume = targetVolume;
+
+        if (stopAfterFade)
+        {
+            source.Stop();
+        }
     }
 }

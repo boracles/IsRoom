@@ -16,7 +16,7 @@ MonoBehaviour:
   questionText: "\uB2F9\uC2E0 \uC548\uC5D0\uC11C \uC544\uC9C1 \uB9D0\uD558\uC9C0
     \uBABB\uD55C \uAC83\uC740 \uBB34\uC5C7\uC778\uAC00\uC694?"
   firstToneClip: {fileID: 0}
-  questionVoiceClip: {fileID: 0}
+  questionVoiceClip: {fileID: 8300000, guid: 7fd9ae9dece3c41c8ab10bfc10cf44cb, type: 3}
   releaseClip: {fileID: 0}
   createPieceClip: {fileID: 0}
   piecePrefabs:
