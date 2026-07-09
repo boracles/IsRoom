@@ -647,6 +647,9 @@ public class RoomStepController : MonoBehaviour
     {
         currentState = RoomState.Idle;
 
+        // 이전 하단 안내 음성이 끝날 때까지 기다림
+        yield return WaitForGuideVoiceToFinish();
+
         // 1. 육면체 인식 가이드 사라짐
         SetScanGuide(false);
         SetQuestion("");
@@ -658,14 +661,14 @@ public class RoomStepController : MonoBehaviour
         // 3. I의 방이 깨어났습니다
         SetGuide("I의 방이 깨어났습니다.");
         PlayGuideHighlight();
+        PlayGuideVoiceClip(iRoomAwakeClip);
 
-        if (iRoomAwakeClip != null && sfxSource != null)
-        {
-            sfxSource.PlayOneShot(iRoomAwakeClip);
-        }
+        // I의 방 깨어남 문구와 음성이 충분히 머무름
+        float waitTime = iRoomAwakeClip != null
+            ? Mathf.Max(awakenedMessageDuration, iRoomAwakeClip.length)
+            : awakenedMessageDuration;
 
-        // I의 방 깨어남 문구가 충분히 머무름
-        yield return new WaitForSeconds(awakenedMessageDuration);
+        yield return new WaitForSeconds(waitTime);
 
         // 다음 안내: 오브제를 돌려 방의 문을 찾도록 안내
         SetQuestion("");
@@ -674,9 +677,14 @@ public class RoomStepController : MonoBehaviour
         SetGuide("오브제를 천천히 돌려 방의 문을 비춰보세요.");
         PlayGuideHighlight();
 
-        yield return new WaitForSeconds(nextGuideDuration);
+        PlayGuideVoiceClip(stairRoomGuideClip);
 
-        // 이제 실제 첫 번째 방을 기다림
+        float rotateGuideWaitTime = stairRoomGuideClip != null
+            ? Mathf.Max(nextGuideDuration, stairRoomGuideClip.length)
+            : nextGuideDuration;
+
+        yield return new WaitForSeconds(rotateGuideWaitTime);
+
         onFinished?.Invoke();
     }
 
@@ -1173,6 +1181,8 @@ public class RoomStepController : MonoBehaviour
         }
     }
 
+
+
     private void PlayGuideVoiceClip(AudioClip clip)
     {
         if (clip == null || guideVoiceSource == null)
@@ -1182,6 +1192,19 @@ public class RoomStepController : MonoBehaviour
 
         guideVoiceSource.Stop();
         guideVoiceSource.PlayOneShot(clip);
+    }
+
+    private IEnumerator WaitForGuideVoiceToFinish()
+    {
+        if (guideVoiceSource == null)
+        {
+            yield break;
+        }
+
+        while (guideVoiceSource.isPlaying)
+        {
+            yield return null;
+        }
     }
 
 }
