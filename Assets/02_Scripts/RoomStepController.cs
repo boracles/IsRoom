@@ -23,6 +23,7 @@ public class RoomStepController : MonoBehaviour
     public Transform generatedPieceParent;
 
     [Header("Awake Sequence")]
+    public AudioClip scanIRoomGuideClip;
     public AudioClip iRoomAwakeClip;
     public AudioClip stairRoomGuideClip;
     public float awakenedMessageDuration = 2.8f;
@@ -39,7 +40,8 @@ public class RoomStepController : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource sfxSource;
-    public AudioSource voiceSource;
+    public AudioSource questionVoiceSource;
+    public AudioSource guideVoiceSource;
 
     [Header("Room Found SFX")]
     public AudioClip stairRoomFoundClip;
@@ -141,6 +143,8 @@ public class RoomStepController : MonoBehaviour
         SetScanGuide(true);
         SetQuestion("");
         SetGuide("오브제를 비추어 I의 방을 깨워주세요.");
+
+        PlayGuideVoiceClip(scanIRoomGuideClip);
     }
 
     public void ShowRotateGuide()
@@ -232,9 +236,9 @@ public class RoomStepController : MonoBehaviour
 
         performerI.StartSpeaking();
 
-        if (currentRoom.questionVoiceClip != null && voiceSource != null)
+        if (currentRoom.questionVoiceClip != null && questionVoiceSource != null)
         {
-            voiceSource.PlayOneShot(currentRoom.questionVoiceClip);
+            questionVoiceSource.PlayOneShot(currentRoom.questionVoiceClip);
             yield return new WaitForSeconds(currentRoom.questionVoiceClip.length);
         }
         else
@@ -1167,6 +1171,17 @@ public class RoomStepController : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    private void PlayGuideVoiceClip(AudioClip clip)
+    {
+        if (clip == null || guideVoiceSource == null)
+        {
+            return;
+        }
+
+        guideVoiceSource.Stop();
+        guideVoiceSource.PlayOneShot(clip);
     }
 
 }
