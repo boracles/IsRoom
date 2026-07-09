@@ -18,7 +18,7 @@ MonoBehaviour:
   firstToneClip: {fileID: 0}
   questionVoiceClip: {fileID: 8300000, guid: 7fd9ae9dece3c41c8ab10bfc10cf44cb, type: 3}
   releaseClip: {fileID: 0}
-  createPieceClip: {fileID: 0}
+  createPieceClip: {fileID: 8300000, guid: ec204ed6454f640f88d93193b1680536, type: 3}
   piecePrefabs:
   - {fileID: 915604337774178165, guid: 2aa298f8e9380ce499266a130c93b53d, type: 3}
   - {fileID: 6265461725890504494, guid: 81f9f9135fd2c514fb258a382c97cbca, type: 3}

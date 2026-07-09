@@ -142,6 +142,8 @@ public class FinalSequenceController : MonoBehaviour
         ShowMessage(endingMessage);
         PlayGuideVoiceClip(outsideSoundGuideClip);
 
+        yield return null;
+
         if (outsideSoundGuideClip != null && guideVoiceSource != null)
         {
             yield return new WaitWhile(() => guideVoiceSource.isPlaying);
