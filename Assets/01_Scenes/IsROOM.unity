@@ -9066,6 +9066,7 @@ GameObject:
   - component: {fileID: 2003864184}
   - component: {fileID: 2003864183}
   - component: {fileID: 2003864182}
+  - component: {fileID: 2003864185}
   m_Layer: 0
   m_Name: RoomSystem
   m_TagString: Untagged
@@ -9204,6 +9205,37 @@ Transform:
   - {fileID: 1769166411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2003864185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003864181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158775b1c5e664a9db866de497ba184d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ForcedAppEndController
+  targetHour: 17
+  targetMinute: 15
+  targetSecond: 0
+  triggerImmediatelyIfPastTime: 1
+  forcedEndPanel: {fileID: 1495339860}
+  forcedEndText: {fileID: 627539895}
+  forcedEndMessage: "\uC774\uC81C \uD654\uBA74 \uBC16\uC758 \uC18C\uB9AC\uB97C \uB4E4\uC5B4\uBCFC
+    \uC2DC\uAC04\uC774\uC5D0\uC694.\n\uD734\uB300\uD3F0\uC744 \uB0B4\uB824\uC8FC\uC138\uC694."
+  messageShowTime: 4
+  audioFadeOutTime: 2
+  iRoomSequenceManager: {fileID: 2003864182}
+  roomStepController: {fileID: 2003864183}
+  finalSequenceController: {fileID: 448890727}
+  finalDoorUnlockSequence: {fileID: 1638622068}
+  voiceInput: {fileID: 37176300}
+  cubeFaceRoomDetector: {fileID: 1191461516}
+  scanGuideGroup: {fileID: 1661001999}
+  touchGuideObject: {fileID: 739223778}
+  keyholeGuideObject: {fileID: 1211003834}
 --- !u!1001 &2011639186
 PrefabInstance:
   m_ObjectHideFlags: 0

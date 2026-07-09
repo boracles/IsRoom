@@ -294,12 +294,20 @@ public class RoomStepController : MonoBehaviour
         }
 
         SetQuestion("");
-        SetGuide("조각이 만든 소리를 들어보세요.");
 
-        // 조각 생성 후 20초 동안 음악을 들으면서 조각을 천천히 회전.
+        // 1. 조각 생성 완료 문장
+        SetGuide(GetPieceCreatedGuide(currentRoom.roomType));
+        PlayGuideHighlight();
+
+        yield return new WaitForSeconds(createPieceDelay);
+
+        // 2. 음악 듣기 안내
+        SetGuide("조각이 담고 있는 소리를 들어보세요.");
+
+        // 3. 생성된 조각 프리팹 안의 AudioSource 재생 + 조각 회전
         if (createdPiece != null)
         {
-            yield return StartCoroutine(RotatePieceDuringMusic(createdPiece.transform));
+            yield return StartCoroutine(PlayPieceAudioAndRotate(createdPiece));
         }
         else
         {
@@ -415,6 +423,83 @@ public class RoomStepController : MonoBehaviour
 
             elapsed += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private string GetPieceCreatedGuide(RoomType roomType)
+    {
+        switch (roomType)
+        {
+            case RoomType.Stair:
+                return "계단의 소리 조각이 만들어졌습니다.";
+
+            case RoomType.Wave:
+                return "파도의 소리 조각이 만들어졌습니다.";
+
+            case RoomType.Shadow:
+                return "그림자의 소리 조각이 만들어졌습니다.";
+
+            default:
+                return "소리 조각이 만들어졌습니다.";
+        }
+    }
+
+    private IEnumerator PlayPieceAudioAndRotate(GameObject piece)
+    {
+        if (piece == null)
+        {
+            yield return new WaitForSeconds(musicListenDuration);
+            yield break;
+        }
+
+        AudioSource pieceAudio = piece.GetComponent<AudioSource>();
+
+        if (pieceAudio == null)
+        {
+            pieceAudio = piece.GetComponentInChildren<AudioSource>(true);
+        }
+
+        if (pieceAudio != null)
+        {
+            pieceAudio.Stop();
+            pieceAudio.loop = false;
+
+            if (pieceAudio.clip != null)
+            {
+                pieceAudio.Play();
+                Debug.Log($"[RoomStepController] 조각 사운드 재생: {piece.name} / {pieceAudio.clip.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"[RoomStepController] {piece.name} AudioSource에 AudioClip이 없습니다. 음악 없이 회전만 진행합니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[RoomStepController] {piece.name} 프리팹 안에서 AudioSource를 찾지 못했습니다.");
+        }
+
+        Transform pieceTransform = piece.transform;
+        float elapsed = 0f;
+
+        while (elapsed < musicListenDuration)
+        {
+            if (pieceTransform != null)
+            {
+                pieceTransform.Rotate(
+                    Vector3.up,
+                    pieceRotationSpeed * Time.deltaTime,
+                    Space.Self
+                );
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        if (pieceAudio != null)
+        {
+            pieceAudio.Stop();
         }
     }
 
@@ -572,10 +657,16 @@ public class RoomStepController : MonoBehaviour
         // I의 방 깨어남 문구가 충분히 머무름
         yield return new WaitForSeconds(awakenedMessageDuration);
 
-        // 여기서 직접 "계단의 방을 비춰주세요"를 띄우지 않음.
-        // onFinished가 호출되면 IRoomSequenceManager가 WaitForCurrentRoomTarget()
-        // → ShowFindRoomGuide(Stair)를 호출해서
-        // 계단 가이드 이미지 + 안내문을 같이 띄움.
+        // 다음 안내: 오브제를 돌려 방의 문을 찾도록 안내
+        SetQuestion("");
+        HideRoomGuideImage();
+        SetScanGuide(false);
+        SetGuide("오브제를 천천히 돌려 방의 문을 비춰보세요.");
+        PlayGuideHighlight();
+
+        yield return new WaitForSeconds(nextGuideDuration);
+
+        // 이제 실제 첫 번째 방을 기다림
         onFinished?.Invoke();
     }
 
@@ -792,7 +883,7 @@ public class RoomStepController : MonoBehaviour
 
         SetKeyholeHighlight(true);
 
-        SetGuide("마지막 문을 열어보세요.");
+        SetGuide("빛이 머무는 방입니다.");
         PlayGuideHighlight();
 
         if (performerI != null)
@@ -838,7 +929,7 @@ public class RoomStepController : MonoBehaviour
             yield return StartCoroutine(MovePiecesToFinalUpperPositions(pieces));
         }
 
-        SetGuide("빛나는 홈에 열쇠를 맞춰보세요.");
+        SetGuide("계단의 열쇠를 문에 가져가 마지막 방을 열어보세요.");
         SetKeyholeHighlight(true);
 
         BindRuntimeKeyToDragGuide(pieces);

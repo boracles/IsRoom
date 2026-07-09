@@ -55,6 +55,7 @@
     <Compile Include="Assets/LiquidVolumePro/ThirdParty/MIConvexHull/ConvexHull.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventHandler.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/Circle_Around_Particle.cs" />
+    <Compile Include="Assets/02_Scripts/ForcedAppEndController.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/Version 2.3/HelperScripts/SmoothLookAtPDM.cs" />
     <Compile Include="Assets/LiquidVolumePro/Demos/Pouring/DemoResources/Scripts/LiquidLevelPouringSync.cs" />
     <Compile Include="Assets/ARTnGAME/Particle Dynamics Magic/Scripts/ImageToParticlesDYNAMIC.cs" />
