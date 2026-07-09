@@ -19,6 +19,11 @@ public class TurntableLayeringSequence : MonoBehaviour
     public AudioClip placeInkPaperGuideClip; // VO_07_place_ink_paper.wav
     public AudioClip listenTogetherGuideClip; // 이제 함께 들어보세요.
 
+    [Header("Place SFX")]
+    public AudioSource sfxSource;
+    public AudioClip inkPlacedClip;
+    public AudioClip paperPlacedClip;
+
     [Header("Turntable Poses")]
     public Transform inkTurntablePose;
     public Transform paperTurntablePose;
@@ -104,6 +109,8 @@ public class TurntableLayeringSequence : MonoBehaviour
     {
         Debug.Log("Ink 배치 완료. Paper 단계 시작.");
 
+        PlaySFX(inkPlacedClip);
+
         if (paperPiece == null)
         {
             SetGuideText("");
@@ -151,6 +158,8 @@ public class TurntableLayeringSequence : MonoBehaviour
     private void OnPaperPlaced(DraggablePieceToTurntable placed)
     {
         Debug.Log("Paper 배치 완료. 턴테이블 레이어링 완료.");
+
+        PlaySFX(paperPlacedClip);
 
         if (dragGuideObject != null)
         {
@@ -314,5 +323,15 @@ public class TurntableLayeringSequence : MonoBehaviour
 
         guideVoiceSource.Stop();
         guideVoiceSource.PlayOneShot(clip);
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || sfxSource == null)
+        {
+            return;
+        }
+
+        sfxSource.PlayOneShot(clip);
     }
 }

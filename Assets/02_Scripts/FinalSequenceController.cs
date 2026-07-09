@@ -85,6 +85,16 @@ public class FinalSequenceController : MonoBehaviour
 
         // 3. 완성된 편지 프리팹 등장
         SpawnCompletedLetter();
+
+        // 편지가 등장하는 순간 턴테이블 circle 회전 정지
+        if (finalDoorUnlockSequence != null)
+        {
+            finalDoorUnlockSequence.StopCircleRotation();
+        }
+
+        // 편지가 등장하는 순간 연주 오디오 정지 / 페이드아웃
+        yield return StartCoroutine(FadeOutAllAudio());
+
         yield return new WaitForSeconds(letterShowTime);
 
         // 4. 뚜껑 + 벽 + 문 닫힘
@@ -96,9 +106,6 @@ public class FinalSequenceController : MonoBehaviour
         {
             Debug.LogWarning("[FinalSequenceController] finalDoorUnlockSequence가 연결되지 않았습니다.");
         }
-
-        // 6. 음악 페이드아웃
-        yield return StartCoroutine(FadeOutAllAudio());
 
         // 7. 벽 emission off
         yield return StartCoroutine(FadeEmissionOff());

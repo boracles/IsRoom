@@ -773,7 +773,7 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         }
     }
 
-    private void StopCircleRotation()
+    public void StopCircleRotation()
     {
         if (circleRotateCoroutine != null)
         {
