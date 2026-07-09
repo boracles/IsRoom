@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,6 +13,11 @@ public class TurntableLayeringSequence : MonoBehaviour
     public KeyDragGuideUI dragGuideUI;
     public GameObject dragGuideObject;
     public TMP_Text guideText;
+
+    [Header("Guide Voice")]
+    public AudioSource guideVoiceSource;
+    public AudioClip placeInkPaperGuideClip; // VO_07_place_ink_paper.wav
+    public AudioClip listenTogetherGuideClip; // 이제 함께 들어보세요.
 
     [Header("Turntable Poses")]
     public Transform inkTurntablePose;
@@ -62,6 +68,20 @@ public class TurntableLayeringSequence : MonoBehaviour
             Debug.LogWarning("[TurntableLayeringSequence] Paper 오브제를 찾지 못했습니다.");
         }
 
+        StartCoroutine(BeginPlaceInkPaperGuideRoutine());
+    }
+
+    private IEnumerator BeginPlaceInkPaperGuideRoutine()
+    {
+        SetGuideText("이제 잉크와 편지지를 턴테이블 위에 올려보세요.");
+        PlayGuideVoiceClip(placeInkPaperGuideClip);
+
+        float waitTime = placeInkPaperGuideClip != null
+            ? Mathf.Max(0.5f, placeInkPaperGuideClip.length)
+            : 1.5f;
+
+        yield return new WaitForSeconds(waitTime);
+
         StartInkStep();
     }
 
@@ -109,11 +129,28 @@ public class TurntableLayeringSequence : MonoBehaviour
         );
     }
 
+    private IEnumerator ListenTogetherGuideRoutine()
+    {
+        SetGuideText("이제 함께 들어보세요.");
+        PlayGuideVoiceClip(listenTogetherGuideClip);
+
+        float waitTime = listenTogetherGuideClip != null
+            ? Mathf.Max(0.5f, listenTogetherGuideClip.length)
+            : 1.5f;
+
+        yield return new WaitForSeconds(waitTime);
+
+        SetGuideText("");
+
+        if (finalSequenceController != null)
+        {
+            finalSequenceController.StartFinalSequence();
+        }
+    }
+
     private void OnPaperPlaced(DraggablePieceToTurntable placed)
     {
         Debug.Log("Paper 배치 완료. 턴테이블 레이어링 완료.");
-
-        SetGuideText("");
 
         if (dragGuideObject != null)
         {
@@ -125,10 +162,7 @@ public class TurntableLayeringSequence : MonoBehaviour
             dragGuideUI.ClearKeyTarget();
         }
 
-        if (finalSequenceController != null)
-        {
-            finalSequenceController.StartFinalSequence();
-        }
+        StartCoroutine(ListenTogetherGuideRoutine());
     }
 
     private void SetupDraggablePiece(
@@ -269,5 +303,16 @@ public class TurntableLayeringSequence : MonoBehaviour
             guideText.text = text;
             guideText.transform.parent.gameObject.SetActive(!string.IsNullOrWhiteSpace(text));
         }
+    }
+
+    private void PlayGuideVoiceClip(AudioClip clip)
+    {
+        if (clip == null || guideVoiceSource == null)
+        {
+            return;
+        }
+
+        guideVoiceSource.Stop();
+        guideVoiceSource.PlayOneShot(clip);
     }
 }

@@ -23,5 +23,6 @@ public enum TestStartRoom
 {
     Stair,
     Wave,
-    Shadow
+    Shadow,
+    Light
 }

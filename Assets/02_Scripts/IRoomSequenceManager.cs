@@ -83,7 +83,14 @@ public class IRoomSequenceManager : MonoBehaviour
 
         roomStepController.PlayIRoomAwakenedSequence(() =>
         {
-            WaitForCurrentRoomTarget();
+            if (currentRoomIndex >= roomOrder.Count)
+            {
+                WaitForFinalRoomTarget();
+            }
+            else
+            {
+                WaitForCurrentRoomTarget();
+            }
         });
     }
 
@@ -309,6 +316,9 @@ public class IRoomSequenceManager : MonoBehaviour
             case TestStartRoom.Shadow:
                 return 2;
 
+            case TestStartRoom.Light:
+                return 3;
+
             default:
                 return 0;
         }
@@ -435,6 +445,74 @@ public class IRoomSequenceManager : MonoBehaviour
         PlayIRoomBaseLoop();
 
         StartCurrentRoom();
+    }
+
+    [ContextMenu("Start From Light")]
+    public void StartFromLight()
+    {
+        currentRoomIndex = roomOrder.Count;
+        generatedPieces.Clear();
+
+        waitingForRoomTarget = false;
+        waitingForFinalRoomTarget = false;
+
+        selectedInkColor = InkColorType.Blue;
+
+        if (lightRoomWindowEmission != null)
+        {
+            lightRoomWindowEmission.TurnOffEmission();
+        }
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
+        // 계단, 파도, 그림자 방의 결과물을 미리 생성
+        PreparePreviousGeneratedPieces();
+
+        PlayIRoomBaseLoop();
+
+        // 바로 빛의 방을 기다림
+        WaitForFinalRoomTarget();
+
+        Debug.Log("빛의 방부터 시작합니다. 이전 세 방의 조각은 미리 생성되었습니다.");
+    }
+
+    [ContextMenu("Start Final Light Room Directly")]
+    public void StartFinalLightRoomDirectly()
+    {
+        currentRoomIndex = roomOrder.Count;
+        generatedPieces.Clear();
+
+        waitingForRoomTarget = false;
+        waitingForFinalRoomTarget = false;
+
+        selectedInkColor = InkColorType.Blue;
+
+        if (lightRoomWindowEmission != null)
+        {
+            lightRoomWindowEmission.PlayEmissionByInk(selectedInkColor);
+        }
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
+        PreparePreviousGeneratedPieces();
+
+        PlayIRoomBaseLoop();
+
+        if (roomStepController != null)
+        {
+            roomStepController.PlayFinalRoomFoundSequence(() =>
+            {
+                roomStepController.StartFinalLightRoom(generatedPieces);
+            });
+        }
+
+        Debug.Log("빛의 방 시퀀스를 바로 시작합니다.");
     }
 
     private void PlayIRoomBaseLoop()

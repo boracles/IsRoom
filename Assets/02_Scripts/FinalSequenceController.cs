@@ -2,14 +2,22 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class FinalSequenceController : MonoBehaviour
 {
     [Header("Timing")]
-    public float completedMusicListenTime = 20f;
+    public float completedMusicListenTime = 40f;
     public float finalMessageTime = 3f;
     public float letterShowTime = 2f;
     public float disappearTime = 3f;
     public float endingMessageTime = 3f;
+
+    [Header("Final Outside Sound Guide")]
+    public AudioSource guideVoiceSource;
+    public AudioClip outsideSoundGuideClip;
 
     [Header("UI")]
     public GameObject finalMessagePanel;
@@ -19,7 +27,7 @@ public class FinalSequenceController : MonoBehaviour
     public string finalMessage = "흩어져 있던 조각들이 하나의 편지가 되었습니다.";
 
     [TextArea]
-    public string endingMessage = "이제 이 이야기를 연주로 들어보겠습니다.";
+    public string endingMessage = "이제 화면 밖의 소리를 들어볼 시간이에요. 휴대폰을 내려주세요.";
 
     [Header("Completed Letter")]
     public GameObject completedLetterPrefab;
@@ -49,11 +57,11 @@ public class FinalSequenceController : MonoBehaviour
 
     [Header("Performer I")]
     public AIPerformerI performerI;
-    public float performerFadeOutTime = 2f;
+    public float performerFadeOutTime = 4f;
 
     [Header("Performer Disappear")]
     public Camera arCamera;
-    public float performerDisappearDistance = 0.3f;
+    public float performerDisappearDistance = 1.5f;
 
     private bool isRunning;
     private GameObject spawnedLetter;
@@ -68,7 +76,7 @@ public class FinalSequenceController : MonoBehaviour
     {
         isRunning = true;
 
-        // 1. 마지막 레이어가 올라간 뒤 완성 음악 20초 감상
+        // 1. 마지막 레이어가 올라간 뒤 완성 음악 40초 감상
         yield return new WaitForSeconds(completedMusicListenTime);
 
         // 2. 마무리 멘트
@@ -118,16 +126,33 @@ public class FinalSequenceController : MonoBehaviour
         {
             performerI.MoveAwayFromCamera(arCamera, performerDisappearDistance);
 
-            yield return new WaitForSeconds(1.2f);
+            // 멀어지는 움직임이 보일 때까지 기다림
+            yield return new WaitUntil(() => performerI.HasArrivedAtCurrentTarget(0.05f));
 
+            // 완전히 도착한 뒤 잠깐 머무름
+            yield return new WaitForSeconds(0.8f);
+
+            // 그다음 천천히 페이드아웃
             performerI.FadeOut(performerFadeOutTime);
+
+            yield return new WaitForSeconds(performerFadeOutTime);
         }
 
-        yield return new WaitForSeconds(performerFadeOutTime);
-
-        // 12. 마지막 멘트
+        // 12. 엔딩 멘트
         ShowMessage(endingMessage);
-        yield return new WaitForSeconds(endingMessageTime);
+        PlayGuideVoiceClip(outsideSoundGuideClip);
+
+        if (outsideSoundGuideClip != null && guideVoiceSource != null)
+        {
+            yield return new WaitWhile(() => guideVoiceSource.isPlaying);
+        }
+        else
+        {
+            yield return new WaitForSeconds(endingMessageTime);
+        }
+
+        // 혹시 너무 바로 꺼지는 느낌이면 아주 짧게 여운
+        yield return new WaitForSeconds(0.3f);
 
         // 13. 앱 종료
         QuitApplication();
@@ -155,6 +180,8 @@ public class FinalSequenceController : MonoBehaviour
         for (int i = 0; i < sources.Length; i++)
         {
             if (sources[i] == null) continue;
+            if (sources[i] == guideVoiceSource) continue;
+
             startVolumes[i] = sources[i].volume;
         }
 
@@ -168,6 +195,7 @@ public class FinalSequenceController : MonoBehaviour
             for (int i = 0; i < sources.Length; i++)
             {
                 if (sources[i] == null) continue;
+                if (sources[i] == guideVoiceSource) continue;
 
                 sources[i].volume = Mathf.Lerp(
                     startVolumes[i],
@@ -182,13 +210,14 @@ public class FinalSequenceController : MonoBehaviour
         for (int i = 0; i < sources.Length; i++)
         {
             if (sources[i] == null) continue;
+            if (sources[i] == guideVoiceSource) continue;
 
             sources[i].volume = 0f;
             sources[i].Stop();
         }
 
         Debug.Log($"[FinalSequenceController] 씬 전체 AudioSource {sources.Length}개 페이드아웃 후 정지.");
-    }
+    }    
 
     private void ShowMessage(string message)
     {
@@ -197,6 +226,17 @@ public class FinalSequenceController : MonoBehaviour
 
         if (finalMessageText != null)
             finalMessageText.text = message;
+    }
+
+    private void PlayGuideVoiceClip(AudioClip clip)
+    {
+        if (clip == null || guideVoiceSource == null)
+        {
+            return;
+        }
+
+        guideVoiceSource.Stop();
+        guideVoiceSource.PlayOneShot(clip);
     }
 
     private void SpawnCompletedLetter()
@@ -293,10 +333,11 @@ public class FinalSequenceController : MonoBehaviour
 
     private void QuitApplication()
     {
-#if UNITY_EDITOR
-        Debug.Log("[FinalSequenceController] 앱 종료 지점입니다. 실제 기기에서는 Application.Quit 실행.");
-#else
+    #if UNITY_EDITOR
+        Debug.Log("[FinalSequenceController] 앱 종료 지점입니다. Editor Play Mode를 종료합니다.");
+        EditorApplication.isPlaying = false;
+    #else
         Application.Quit();
-#endif
+    #endif
     }
 }

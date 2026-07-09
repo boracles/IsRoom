@@ -266,8 +266,8 @@ MonoBehaviour:
   targetCamera: {fileID: 0}
   nearDistance: 1
   farDistance: 15
-  nearMaxParticleSize: 0.2
-  farMaxParticleSize: 0.06
+  nearMaxParticleSize: 0.1
+  farMaxParticleSize: 0.04
 --- !u!198 &5511662429238296020
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -6040,8 +6040,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.4
-      minScalar: 0.15
+      scalar: 0.8
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10557,7 +10557,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.018
+  m_MaxParticleSize: 0.036
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -10597,7 +10597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scale_factor: 0.03
-  Start_size: 0.4
+  Start_size: 0.5
   emitter: {fileID: 805066122919282108}
   mesh: {fileID: 0}
   simple_mesh: {fileID: 4432403852209524280}

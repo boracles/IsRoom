@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -40,6 +41,13 @@ public class FakeInteriorRoomController : MonoBehaviour
     public Color tint = Color.white;
     public float finalExposure = 1.0f;
 
+    [Header("Debug")]
+    [SerializeField] private int debugCurrentTextureIndex = -1;
+    [SerializeField] private string debugCurrentTextureName = "";
+    [SerializeField] private int debugRemainingBagCount = 0;
+    [SerializeField] private int debugValidTextureCount = 0;
+    [SerializeField] private int debugRandomSeed = 0;
+
     private static readonly int WorldToRoomID = Shader.PropertyToID("_WorldToRoom");
     private static readonly int RoomMinID = Shader.PropertyToID("_RoomMin");
     private static readonly int RoomMaxID = Shader.PropertyToID("_RoomMax");
@@ -52,8 +60,16 @@ public class FakeInteriorRoomController : MonoBehaviour
     private float currentExposure;
     private Coroutine revealCoroutine;
 
+    private List<int> textureBag = new List<int>();
+    private int lastTextureIndex = -1;
+    private int sequentialTextureIndex = -1;
+
+    private System.Random systemRandom;
+
     private void OnEnable()
     {
+        EnsureRandomReady();
+
         currentExposure = startBlack ? 0f : finalExposure;
         Apply();
     }
@@ -66,8 +82,15 @@ public class FakeInteriorRoomController : MonoBehaviour
         fadeDuration = Mathf.Max(0.01f, fadeDuration);
         finalExposure = Mathf.Max(0f, finalExposure);
 
-        // 여기서 exposure를 매번 0으로 되돌리지 않는다.
-        // 인스펙터 값을 바꿔도 현재 상태를 유지하게 하기 위함.
+        // 인스펙터에서 Texture 배열을 수정했을 가능성이 있으므로 다음 랜덤 라운드는 다시 섞도록 비움.
+        if (textureBag != null)
+        {
+            textureBag.Clear();
+        }
+
+        debugRemainingBagCount = 0;
+        debugValidTextureCount = CountValidTextures();
+
         Apply();
     }
 
@@ -78,16 +101,22 @@ public class FakeInteriorRoomController : MonoBehaviour
 
     public void RevealRandomInterior()
     {
-        if (interiorTextures == null || interiorTextures.Length == 0)
+        int index = GetNextTextureIndex();
+
+        if (!IsValidTextureIndex(index))
         {
-            Debug.LogWarning("[FakeInteriorRoomController] Interior Textures가 비어 있습니다.");
+            Debug.LogWarning("[FakeInteriorRoomController] 선택 가능한 Interior Texture가 없습니다.");
             return;
         }
 
-        int index = Random.Range(0, interiorTextures.Length);
-        currentTexture = interiorTextures[index];
+        SetCurrentTexture(index);
 
-        Debug.Log("[FakeInteriorRoomController] Random interior selected: " + currentTexture.name);
+        Debug.Log(
+            "[FakeInteriorRoomController] Random interior selected: index "
+            + index
+            + " / "
+            + currentTexture.name
+        );
 
         if (Application.isPlaying)
         {
@@ -124,18 +153,68 @@ public class FakeInteriorRoomController : MonoBehaviour
 
     public void PickRandomTextureOnly()
     {
-        if (interiorTextures == null || interiorTextures.Length == 0)
+        int index = GetNextTextureIndex();
+
+        if (!IsValidTextureIndex(index))
         {
-            Debug.LogWarning("[FakeInteriorRoomController] Interior Textures가 비어 있습니다.");
+            Debug.LogWarning("[FakeInteriorRoomController] 선택 가능한 Interior Texture가 없습니다.");
             return;
         }
 
-        int index = Random.Range(0, interiorTextures.Length);
-        currentTexture = interiorTextures[index];
+        SetCurrentTexture(index);
 
-        Debug.Log("[FakeInteriorRoomController] Texture picked only: " + currentTexture.name);
+        Debug.Log(
+            "[FakeInteriorRoomController] Texture picked only: index "
+            + index
+            + " / "
+            + currentTexture.name
+        );
 
+        currentExposure = finalExposure;
         Apply();
+    }
+
+    public void PickNextTextureOnly()
+    {
+        int index = GetNextSequentialTextureIndex();
+
+        if (!IsValidTextureIndex(index))
+        {
+            Debug.LogWarning("[FakeInteriorRoomController] 선택 가능한 Interior Texture가 없습니다.");
+            return;
+        }
+
+        SetCurrentTexture(index);
+
+        Debug.Log(
+            "[FakeInteriorRoomController] NEXT texture selected: index "
+            + index
+            + " / "
+            + currentTexture.name
+        );
+
+        currentExposure = finalExposure;
+        Apply();
+    }
+
+    public void ResetRandomBag()
+    {
+        if (textureBag != null)
+        {
+            textureBag.Clear();
+        }
+
+        lastTextureIndex = -1;
+        sequentialTextureIndex = -1;
+
+        EnsureRandomReady(true);
+
+        debugCurrentTextureIndex = -1;
+        debugCurrentTextureName = "";
+        debugRemainingBagCount = 0;
+        debugValidTextureCount = CountValidTextures();
+
+        Debug.Log("[FakeInteriorRoomController] Random bag reset.");
     }
 
     [ContextMenu("TEST / Reveal Random Interior")]
@@ -156,10 +235,22 @@ public class FakeInteriorRoomController : MonoBehaviour
         PickRandomTextureOnly();
     }
 
+    [ContextMenu("TEST / Pick Next Texture Only")]
+    private void TestPickNextTextureOnly()
+    {
+        PickNextTextureOnly();
+    }
+
     [ContextMenu("TEST / Show Current Immediately")]
     private void TestShowCurrentImmediately()
     {
         ShowCurrentImmediately();
+    }
+
+    [ContextMenu("TEST / Reset Random Bag")]
+    private void TestResetRandomBag()
+    {
+        ResetRandomBag();
     }
 
     private IEnumerator RevealRoutine()
@@ -174,7 +265,7 @@ public class FakeInteriorRoomController : MonoBehaviour
             elapsed += Time.deltaTime;
 
             float t = Mathf.Clamp01(elapsed / fadeDuration);
-            float curved = fadeCurve.Evaluate(t);
+            float curved = fadeCurve != null ? fadeCurve.Evaluate(t) : t;
 
             currentExposure = Mathf.Lerp(0f, finalExposure, curved);
             Apply();
@@ -186,6 +277,190 @@ public class FakeInteriorRoomController : MonoBehaviour
         Apply();
 
         revealCoroutine = null;
+    }
+
+    private void EnsureRandomReady(bool forceNewSeed = false)
+    {
+        if (systemRandom != null && !forceNewSeed)
+        {
+            return;
+        }
+
+        int seed = System.Guid.NewGuid().GetHashCode();
+        systemRandom = new System.Random(seed);
+        debugRandomSeed = seed;
+
+        Debug.Log("[FakeInteriorRoomController] Random seed: " + seed);
+    }
+
+    private int GetNextTextureIndex()
+    {
+        if (interiorTextures == null || interiorTextures.Length == 0)
+        {
+            return -1;
+        }
+
+        EnsureRandomReady();
+
+        if (textureBag == null)
+        {
+            textureBag = new List<int>();
+        }
+
+        if (textureBag.Count == 0)
+        {
+            RefillAndShuffleTextureBag();
+        }
+
+        if (textureBag.Count == 0)
+        {
+            Debug.LogWarning("[FakeInteriorRoomController] 유효한 Interior Texture가 없습니다. 배열에 None이 아닌 텍스처를 넣어주세요.");
+            return -1;
+        }
+
+        int textureIndex = textureBag[0];
+        textureBag.RemoveAt(0);
+
+        // 새 라운드 첫 번째가 직전 index와 같으면 뒤로 넘김.
+        if (
+            textureBag.Count > 0 &&
+            lastTextureIndex >= 0 &&
+            textureIndex == lastTextureIndex
+        )
+        {
+            textureBag.Add(textureIndex);
+            textureIndex = textureBag[0];
+            textureBag.RemoveAt(0);
+        }
+
+        lastTextureIndex = textureIndex;
+        debugRemainingBagCount = textureBag.Count;
+
+        Debug.Log(
+            "[FakeInteriorRoomController] Picked index: "
+            + textureIndex
+            + " / "
+            + interiorTextures[textureIndex].name
+            + " / Remaining: "
+            + textureBag.Count
+        );
+
+        return textureIndex;
+    }
+
+    private void RefillAndShuffleTextureBag()
+    {
+        textureBag.Clear();
+
+        for (int i = 0; i < interiorTextures.Length; i++)
+        {
+            if (interiorTextures[i] != null)
+            {
+                textureBag.Add(i);
+            }
+        }
+
+        debugValidTextureCount = textureBag.Count;
+
+        if (textureBag.Count == 0)
+        {
+            return;
+        }
+
+        // Fisher-Yates Shuffle
+        for (int i = textureBag.Count - 1; i > 0; i--)
+        {
+            int j = systemRandom.Next(0, i + 1);
+
+            int temp = textureBag[i];
+            textureBag[i] = textureBag[j];
+            textureBag[j] = temp;
+        }
+
+        // 새 라운드의 첫 번째가 직전 텍스처와 같으면 다른 위치와 교환.
+        if (textureBag.Count > 1 && lastTextureIndex >= 0 && textureBag[0] == lastTextureIndex)
+        {
+            int swapIndex = systemRandom.Next(1, textureBag.Count);
+
+            int temp = textureBag[0];
+            textureBag[0] = textureBag[swapIndex];
+            textureBag[swapIndex] = temp;
+        }
+
+        debugRemainingBagCount = textureBag.Count;
+
+        Debug.Log(
+            "[FakeInteriorRoomController] Texture bag shuffled. Count: "
+            + textureBag.Count
+        );
+    }
+
+    private int GetNextSequentialTextureIndex()
+    {
+        if (interiorTextures == null || interiorTextures.Length == 0)
+        {
+            return -1;
+        }
+
+        int safety = 0;
+
+        do
+        {
+            sequentialTextureIndex++;
+
+            if (sequentialTextureIndex >= interiorTextures.Length)
+            {
+                sequentialTextureIndex = 0;
+            }
+
+            safety++;
+
+            if (safety > interiorTextures.Length + 5)
+            {
+                return -1;
+            }
+
+        } while (interiorTextures[sequentialTextureIndex] == null);
+
+        return sequentialTextureIndex;
+    }
+
+    private bool IsValidTextureIndex(int index)
+    {
+        return interiorTextures != null &&
+               index >= 0 &&
+               index < interiorTextures.Length &&
+               interiorTextures[index] != null;
+    }
+
+    private int CountValidTextures()
+    {
+        if (interiorTextures == null)
+        {
+            return 0;
+        }
+
+        int count = 0;
+
+        for (int i = 0; i < interiorTextures.Length; i++)
+        {
+            if (interiorTextures[i] != null)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private void SetCurrentTexture(int index)
+    {
+        currentTexture = interiorTextures[index];
+
+        debugCurrentTextureIndex = index;
+        debugCurrentTextureName = currentTexture != null ? currentTexture.name : "";
+
+        Apply();
     }
 
     private void Apply()
@@ -238,6 +513,8 @@ public class FakeInteriorRoomController : MonoBehaviour
                 );
                 continue;
             }
+
+            propertyBlock.Clear();
 
             target.renderer.GetPropertyBlock(propertyBlock, target.materialIndex);
 

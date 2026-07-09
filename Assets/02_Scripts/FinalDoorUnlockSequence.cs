@@ -81,14 +81,14 @@ public class FinalDoorUnlockSequence : MonoBehaviour
     [Header("Motion")]
     public AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
-    private Vector3 innerDoorClosedPosition;
-    private Quaternion innerDoorClosedRotation;
+    private Vector3 innerDoorClosedLocalPosition;
+    private Quaternion innerDoorClosedLocalRotation;
 
-    private Vector3 outerDoorClosedPosition;
-    private Quaternion outerDoorClosedRotation;
+    private Vector3 outerDoorClosedLocalPosition;
+    private Quaternion outerDoorClosedLocalRotation;
 
-    private Vector3 topDoorClosedPosition;
-    private Quaternion topDoorClosedRotation;
+    private Vector3 topDoorClosedLocalPosition;
+    private Quaternion topDoorClosedLocalRotation;
 
     private bool closedPoseCached;
 
@@ -106,20 +106,20 @@ public class FinalDoorUnlockSequence : MonoBehaviour
 
         if (innerDoor != null)
         {
-            innerDoorClosedPosition = innerDoor.position;
-            innerDoorClosedRotation = innerDoor.rotation;
+            innerDoorClosedLocalPosition = innerDoor.localPosition;
+            innerDoorClosedLocalRotation = innerDoor.localRotation;
         }
 
         if (outerDoor != null)
         {
-            outerDoorClosedPosition = outerDoor.position;
-            outerDoorClosedRotation = outerDoor.rotation;
+            outerDoorClosedLocalPosition = outerDoor.localPosition;
+            outerDoorClosedLocalRotation = outerDoor.localRotation;
         }
 
         if (topDoor != null)
         {
-            topDoorClosedPosition = topDoor.position;
-            topDoorClosedRotation = topDoor.rotation;
+            topDoorClosedLocalPosition = topDoor.localPosition;
+            topDoorClosedLocalRotation = topDoor.localRotation;
         }
 
         closedPoseCached = true;
@@ -625,9 +625,9 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         // 2. 마지막으로 안쪽 문 닫힘
         if (innerDoor != null)
         {
-            yield return RotateTransformWorld(
+            yield return RotateTransformLocal(
                 innerDoor,
-                innerDoorClosedRotation,
+                innerDoorClosedLocalRotation,
                 innerDoorOpenDuration
             );
         }
@@ -635,24 +635,62 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         Debug.Log("[FinalDoorUnlockSequence] 마지막 방 닫힘 완료.");
     }
 
+    private IEnumerator RotateTransformLocal(
+    Transform target,
+    Quaternion targetLocalRotation,
+    float duration
+    )
+    {
+        if (target == null)
+            yield break;
+
+        Quaternion startRotation = target.localRotation;
+
+        if (duration <= 0.001f)
+        {
+            target.localRotation = targetLocalRotation;
+            yield break;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = Mathf.Clamp01(elapsed / duration);
+            float curvedT = moveCurve != null ? moveCurve.Evaluate(t) : t;
+
+            target.localRotation = Quaternion.Slerp(
+                startRotation,
+                targetLocalRotation,
+                curvedT
+            );
+
+            yield return null;
+        }
+
+        target.localRotation = targetLocalRotation;
+    }
+
     private IEnumerator CloseOuterAndTopTogether(bool hasOuterDoor, bool hasTopDoor)
     {
-        Vector3 outerStartPos = Vector3.zero;
-        Quaternion outerStartRot = Quaternion.identity;
+        Vector3 outerStartLocalPos = Vector3.zero;
+        Quaternion outerStartLocalRot = Quaternion.identity;
 
-        Vector3 topStartPos = Vector3.zero;
-        Quaternion topStartRot = Quaternion.identity;
+        Vector3 topStartLocalPos = Vector3.zero;
+        Quaternion topStartLocalRot = Quaternion.identity;
 
         if (hasOuterDoor)
         {
-            outerStartPos = outerDoor.position;
-            outerStartRot = outerDoor.rotation;
+            outerStartLocalPos = outerDoor.localPosition;
+            outerStartLocalRot = outerDoor.localRotation;
         }
 
         if (hasTopDoor)
         {
-            topStartPos = topDoor.position;
-            topStartRot = topDoor.rotation;
+            topStartLocalPos = topDoor.localPosition;
+            topStartLocalRot = topDoor.localRotation;
         }
 
         float duration = Mathf.Max(
@@ -664,14 +702,14 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         {
             if (hasOuterDoor)
             {
-                outerDoor.position = outerDoorClosedPosition;
-                outerDoor.rotation = outerDoorClosedRotation;
+                outerDoor.localPosition = outerDoorClosedLocalPosition;
+                outerDoor.localRotation = outerDoorClosedLocalRotation;
             }
 
             if (hasTopDoor)
             {
-                topDoor.position = topDoorClosedPosition;
-                topDoor.rotation = topDoorClosedRotation;
+                topDoor.localPosition = topDoorClosedLocalPosition;
+                topDoor.localRotation = topDoorClosedLocalRotation;
             }
 
             yield break;
@@ -688,15 +726,15 @@ public class FinalDoorUnlockSequence : MonoBehaviour
                 float tOuter = Mathf.Clamp01(elapsed / outerDoorOpenDuration);
                 float cOuter = moveCurve != null ? moveCurve.Evaluate(tOuter) : tOuter;
 
-                outerDoor.position = Vector3.Lerp(
-                    outerStartPos,
-                    outerDoorClosedPosition,
+                outerDoor.localPosition = Vector3.Lerp(
+                    outerStartLocalPos,
+                    outerDoorClosedLocalPosition,
                     cOuter
                 );
 
-                outerDoor.rotation = Quaternion.Slerp(
-                    outerStartRot,
-                    outerDoorClosedRotation,
+                outerDoor.localRotation = Quaternion.Slerp(
+                    outerStartLocalRot,
+                    outerDoorClosedLocalRotation,
                     cOuter
                 );
             }
@@ -706,15 +744,15 @@ public class FinalDoorUnlockSequence : MonoBehaviour
                 float tTop = Mathf.Clamp01(elapsed / topDoorOpenDuration);
                 float cTop = moveCurve != null ? moveCurve.Evaluate(tTop) : tTop;
 
-                topDoor.position = Vector3.Lerp(
-                    topStartPos,
-                    topDoorClosedPosition,
+                topDoor.localPosition = Vector3.Lerp(
+                    topStartLocalPos,
+                    topDoorClosedLocalPosition,
                     cTop
                 );
 
-                topDoor.rotation = Quaternion.Slerp(
-                    topStartRot,
-                    topDoorClosedRotation,
+                topDoor.localRotation = Quaternion.Slerp(
+                    topStartLocalRot,
+                    topDoorClosedLocalRotation,
                     cTop
                 );
             }
@@ -724,14 +762,14 @@ public class FinalDoorUnlockSequence : MonoBehaviour
 
         if (hasOuterDoor)
         {
-            outerDoor.position = outerDoorClosedPosition;
-            outerDoor.rotation = outerDoorClosedRotation;
+            outerDoor.localPosition = outerDoorClosedLocalPosition;
+            outerDoor.localRotation = outerDoorClosedLocalRotation;
         }
 
         if (hasTopDoor)
         {
-            topDoor.position = topDoorClosedPosition;
-            topDoor.rotation = topDoorClosedRotation;
+            topDoor.localPosition = topDoorClosedLocalPosition;
+            topDoor.localRotation = topDoorClosedLocalRotation;
         }
     }
 
