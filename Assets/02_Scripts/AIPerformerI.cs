@@ -12,6 +12,11 @@ public class AIPerformerI : MonoBehaviour
     public ParticleSystem absorbParticle;
     public ParticleSystem emitParticle;
 
+    [Header("Absorb Audio")]
+    public AudioSource absorbAudioSource;
+    public AudioClip absorbLoopClip;
+    public float absorbLoopVolume = 0.7f;
+
     [Header("Positions")]
     public Transform stairDoorPosition;
     public Transform waveDoorPosition;
@@ -215,6 +220,8 @@ public class AIPerformerI : MonoBehaviour
 
             absorbParticle.Play(true);
         }
+
+        PlayAbsorbLoopSound();
     }
 
     public void StopListening()
@@ -230,6 +237,35 @@ public class AIPerformerI : MonoBehaviour
 
             absorbParticle.gameObject.SetActive(false);
         }
+
+        StopAbsorbLoopSound();
+    }
+
+    private void PlayAbsorbLoopSound()
+    {
+        if (absorbAudioSource == null || absorbLoopClip == null)
+        {
+            return;
+        }
+
+        absorbAudioSource.clip = absorbLoopClip;
+        absorbAudioSource.loop = true;
+        absorbAudioSource.volume = absorbLoopVolume;
+
+        if (!absorbAudioSource.isPlaying)
+        {
+            absorbAudioSource.Play();
+        }
+    }
+
+    private void StopAbsorbLoopSound()
+    {
+        if (absorbAudioSource == null)
+        {
+            return;
+        }
+
+        absorbAudioSource.Stop();
     }
 
     public void ReleaseContraction()
