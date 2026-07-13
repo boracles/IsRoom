@@ -23,6 +23,13 @@ public class FinalSequenceController : MonoBehaviour
     public AudioSource transitionMusicSource;
     public AudioClip transitionToLivePianoClip;
 
+    [Header("Final Completed Music")]
+    public AudioSource finalCompletedMusicSource;
+    public AudioClip finalCompletedMusicClip;
+    public bool playFinalCompletedMusic = true;
+    public bool skipCompletedMusicListenTime = true;
+    public int finalCompletedMusicLoopCount = 2;
+
     [Header("UI")]
     public GameObject finalMessagePanel;
     public TMP_Text finalMessageText;
@@ -70,9 +77,35 @@ public class FinalSequenceController : MonoBehaviour
     private bool isRunning;
     private GameObject spawnedLetter;
 
+    private void Awake()
+    {
+        PrepareAudioSource(finalCompletedMusicSource);
+        PrepareAudioSource(transitionMusicSource);
+        PrepareAudioSource(guideVoiceSource);
+    }
+
+    private void PrepareAudioSource(AudioSource source)
+    {
+        if (source == null)
+        {
+            return;
+        }
+
+        source.playOnAwake = false;
+        source.loop = false;
+        source.Stop();
+    }
+
     public void StartFinalSequence()
     {
-        if (isRunning) return;
+        if (isRunning)
+        {
+            Debug.Log("[FinalSequenceController] 이미 FinalSequence가 실행 중이라 중복 호출을 무시합니다.");
+            return;
+        }
+
+        Debug.Log("[FinalSequenceController] StartFinalSequence 호출됨. 이제 final completed music 시퀀스를 시작합니다.");
+
         StartCoroutine(FinalRoutine());
     }
 
@@ -80,8 +113,16 @@ public class FinalSequenceController : MonoBehaviour
     {
         isRunning = true;
 
-        // 1. 마지막 레이어가 올라간 뒤 완성 음악 40초 감상
-        yield return new WaitForSeconds(completedMusicListenTime);
+        // 1. 기존 레이어링 음악 감상 구간은 필요하면 건너뛰고,
+        // 대신 별도의 final completed music을 지정 횟수만큼 재생한다.
+        if (playFinalCompletedMusic)
+        {
+            yield return StartCoroutine(PlayFinalCompletedMusicRoutine());
+        }
+        else if (!skipCompletedMusicListenTime)
+        {
+            yield return new WaitForSeconds(completedMusicListenTime);
+        }
 
         // 2. 마무리 멘트
         ShowMessage(finalMessage);
@@ -276,6 +317,52 @@ public class FinalSequenceController : MonoBehaviour
         transitionMusicSource.loop = false;
         transitionMusicSource.volume = 1f;
         transitionMusicSource.Play();
+    }
+
+    private IEnumerator PlayFinalCompletedMusicRoutine()
+    {
+        if (finalCompletedMusicSource == null || finalCompletedMusicClip == null)
+        {
+            Debug.LogWarning("[FinalSequenceController] Final Completed Music Source 또는 Clip이 없습니다.");
+
+            if (!skipCompletedMusicListenTime)
+            {
+                yield return new WaitForSeconds(completedMusicListenTime);
+            }
+
+            yield break;
+        }
+
+        int loopCount = Mathf.Max(1, finalCompletedMusicLoopCount);
+        float totalPlayTime = finalCompletedMusicClip.length * loopCount;
+
+        finalCompletedMusicSource.Stop();
+        finalCompletedMusicSource.clip = finalCompletedMusicClip;
+        finalCompletedMusicSource.playOnAwake = false;
+        finalCompletedMusicSource.loop = true;
+        finalCompletedMusicSource.volume = 1f;
+        finalCompletedMusicSource.time = 0f;
+        finalCompletedMusicSource.Play();
+
+        Debug.Log(
+            "[FinalSequenceController] Final Completed Music loop 재생 시작: "
+            + finalCompletedMusicClip.name
+            + " / clip length: "
+            + finalCompletedMusicClip.length.ToString("F2")
+            + "s / loop count: "
+            + loopCount
+            + " / total: "
+            + totalPlayTime.ToString("F2")
+            + "s"
+        );
+
+        yield return new WaitForSeconds(totalPlayTime);
+
+        finalCompletedMusicSource.Stop();
+        finalCompletedMusicSource.loop = false;
+        finalCompletedMusicSource.time = 0f;
+
+        Debug.Log("[FinalSequenceController] Final Completed Music loop 재생 완료.");
     }
 
     private void SpawnCompletedLetter()
