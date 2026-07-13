@@ -554,6 +554,8 @@ public class RoomStepController : MonoBehaviour
             pieceAudio = piece.GetComponentInChildren<AudioSource>(true);
         }
 
+        float listenDuration = musicListenDuration;
+
         if (pieceAudio != null)
         {
             pieceAudio.Stop();
@@ -561,23 +563,32 @@ public class RoomStepController : MonoBehaviour
 
             if (pieceAudio.clip != null)
             {
+                listenDuration = pieceAudio.clip.length;
+
                 pieceAudio.Play();
-                Debug.Log($"[RoomStepController] 조각 사운드 재생: {piece.name} / {pieceAudio.clip.name}");
+
+                Debug.Log(
+                    $"[RoomStepController] 조각 사운드 재생: {piece.name} / {pieceAudio.clip.name} / duration: {listenDuration:F2}s"
+                );
             }
             else
             {
-                Debug.LogWarning($"[RoomStepController] {piece.name} AudioSource에 AudioClip이 없습니다. 음악 없이 회전만 진행합니다.");
+                Debug.LogWarning(
+                    $"[RoomStepController] {piece.name} AudioSource에 AudioClip이 없습니다. 기본 감상 시간 {musicListenDuration:F2}s 사용."
+                );
             }
         }
         else
         {
-            Debug.LogWarning($"[RoomStepController] {piece.name} 프리팹 안에서 AudioSource를 찾지 못했습니다.");
+            Debug.LogWarning(
+                $"[RoomStepController] {piece.name} 프리팹 안에서 AudioSource를 찾지 못했습니다. 기본 감상 시간 {musicListenDuration:F2}s 사용."
+            );
         }
 
-        Transform pieceTransform = piece.transform;
         float elapsed = 0f;
+        Transform pieceTransform = piece.transform;
 
-        while (elapsed < musicListenDuration)
+        while (elapsed < listenDuration)
         {
             if (pieceTransform != null)
             {
