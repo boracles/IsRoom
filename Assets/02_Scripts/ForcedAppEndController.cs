@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ForcedAppEndController : MonoBehaviour
@@ -36,6 +37,14 @@ public class ForcedAppEndController : MonoBehaviour
     [Header("UI")]
     public GameObject forcedEndPanel;
     public TMP_Text forcedEndText;
+    public Button restartButton;
+
+    [Header("Elapsed Timer Start")]
+    [Tooltip("앱 실행과 동시에 카운트할지 여부. 시작 버튼 기준으로 재려면 false.")]
+    public bool startElapsedTimerAutomatically = false;
+
+    private bool elapsedTimerStarted = false;
+    private float elapsedTimerStartTime = 0f;
 
     [TextArea]
     public string forcedEndMessage = "이제 화면 밖의 소리를 들어볼 시간이에요.\n휴대폰을 내려주세요.";
@@ -63,11 +72,10 @@ public class ForcedAppEndController : MonoBehaviour
     private bool hasTriggered = false;
     private DateTime targetDateTime;
     private float appStartTime;
+    private bool restartButtonVisible = false;
 
     private void Start()
     {
-        appStartTime = Time.time;
-
         DateTime now = DateTime.Now;
 
         targetDateTime = new DateTime(
@@ -82,11 +90,23 @@ public class ForcedAppEndController : MonoBehaviour
         if (forcedEndPanel != null)
         {
             forcedEndPanel.SetActive(false);
+
+            if (restartButton != null)
+            {
+                restartButton.gameObject.SetActive(false);
+                restartButton.onClick.RemoveListener(RestartBeforeForcedEnd);
+                restartButton.onClick.AddListener(RestartBeforeForcedEnd);
+            }
+        }
+
+        if (forcedEndMode == ForcedEndMode.ElapsedAfterAppStart && startElapsedTimerAutomatically)
+        {
+            StartElapsedTimerFromNow();
         }
 
         Debug.Log($"[ForcedAppEndController] 강제 종료 모드: {forcedEndMode}");
         Debug.Log($"[ForcedAppEndController] 날짜/시각 기준: {targetDateTime:yyyy-MM-dd HH:mm:ss}");
-        Debug.Log($"[ForcedAppEndController] 앱 실행 후 종료 기준: {endAfterSeconds}초");
+        Debug.Log($"[ForcedAppEndController] 경과 시간 종료 기준: {endAfterSeconds}초");
     }
 
     private void Update()
@@ -136,11 +156,115 @@ public class ForcedAppEndController : MonoBehaviour
 
     private void CheckElapsedTimeEnd()
     {
-        float elapsed = Time.time - appStartTime;
+        if (!elapsedTimerStarted)
+        {
+            return;
+        }
+
+        float elapsed = Time.time - elapsedTimerStartTime;
 
         if (elapsed >= endAfterSeconds)
         {
             StartForcedEnd();
+        }
+    }
+
+    public void StartElapsedTimerFromNow()
+    {
+        if (elapsedTimerStarted)
+        {
+            Debug.Log("[ForcedAppEndController] 경과 시간 타이머가 이미 시작되어 기존 기준 시간을 유지합니다.");
+            return;
+        }
+
+        elapsedTimerStarted = true;
+        elapsedTimerStartTime = Time.time;
+
+        Debug.Log(
+            "[ForcedAppEndController] 경과 시간 타이머 시작. 기준 시간: "
+            + elapsedTimerStartTime
+            + " / 종료까지: "
+            + endAfterSeconds
+            + "초"
+        );
+    }
+
+    public void ShowRestartButton()
+    {
+        if (hasTriggered)
+        {
+            return;
+        }
+
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(true);
+            restartButtonVisible = true;
+        }
+    }
+
+    public void HideRestartButton()
+    {
+        if (restartButton != null)
+        {
+            restartButton.gameObject.SetActive(false);
+            restartButtonVisible = false;
+        }
+    }
+
+    public bool IsForcedEndTimeReached()
+    {
+        if (!elapsedTimerStarted)
+        {
+            return false;
+        }
+
+        float elapsed = Time.time - elapsedTimerStartTime;
+        return elapsed >= endAfterSeconds;
+    }
+
+    public void RestartBeforeForcedEnd()
+    {
+        if (hasTriggered)
+        {
+            return;
+        }
+
+        if (IsForcedEndTimeReached())
+        {
+            StartForcedEnd();
+            return;
+        }
+
+        Debug.Log("[ForcedAppEndController] 3분 30초 전이므로 처음으로 돌아갑니다.");
+
+        StopKnownSequences();
+        DisableInputAndDetection();
+        HideInteractionGuides();
+
+        if (finalSequenceController != null)
+        {
+            finalSequenceController.ResetFinalStateForRestart();
+        }
+
+        if (finalDoorUnlockSequence != null)
+        {
+            finalDoorUnlockSequence.ResetFinalDoorStateForRestart();
+        }
+
+        if (iRoomSequenceManager != null)
+        {
+            iRoomSequenceManager.ResetToBeginningForRestart();
+        }
+
+        EnableInputAndDetection();
+
+        HideRestartButton();
+
+        // 시작 버튼 화면이 아니라 AR 인식 흐름으로 복귀
+        if (roomStepController != null)
+        {
+            roomStepController.ResetToScanGuideForRestart();
         }
     }
 
@@ -158,12 +282,34 @@ public class ForcedAppEndController : MonoBehaviour
 
     private IEnumerator ForcedEndRoutine()
     {
-        StopKnownSequences();
+        HideRestartButton();
+
+        // FinalSequenceController는 직접 엔딩 연출을 해야 하므로 여기서 Stop하지 않음
+        if (iRoomSequenceManager != null)
+        {
+            iRoomSequenceManager.StopAllCoroutines();
+        }
+
+        if (roomStepController != null)
+        {
+            roomStepController.StopAllCoroutines();
+        }
+
+        if (finalDoorUnlockSequence != null)
+        {
+            finalDoorUnlockSequence.StopAllCoroutines();
+        }
 
         DisableInputAndDetection();
-
         HideInteractionGuides();
 
+        if (finalSequenceController != null)
+        {
+            finalSequenceController.StartForcedOutsideSoundEnding();
+            yield break;
+        }
+
+        // fallback: FinalSequenceController가 없을 때만 기존 방식
         ShowForcedEndMessage();
 
         yield return StartCoroutine(FadeOutAllAudio());
@@ -208,6 +354,19 @@ public class ForcedAppEndController : MonoBehaviour
         if (cubeFaceRoomDetector != null)
         {
             cubeFaceRoomDetector.enabled = false;
+        }
+    }
+
+    private void EnableInputAndDetection()
+    {
+        if (voiceInput != null)
+        {
+            voiceInput.enabled = true;
+        }
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.enabled = true;
         }
     }
 

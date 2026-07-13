@@ -71,6 +71,13 @@ public class RoomStepController : MonoBehaviour
     public TMP_Text questionText;
     public TMP_Text guideText;
 
+    [Header("Start UI")]
+    public GameObject startPanel;
+    public Button startButton;
+
+    [Header("Forced End")]
+    public ForcedAppEndController forcedAppEndController;
+
     [Header("Touch Guide UI")]
     public GameObject touchGuideObject;
 
@@ -122,6 +129,7 @@ public class RoomStepController : MonoBehaviour
     private Action<GameObject> onRoomFinished;
 
     private bool sequenceStarted = false;
+    private bool startButtonPressed = false;
 
     private Dictionary<RoomType, int> lastPieceIndexByRoom = new Dictionary<RoomType, int>();
     private System.Random pieceRandom;
@@ -138,11 +146,11 @@ public class RoomStepController : MonoBehaviour
     {
         yield return null;
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.3f);
 
         if (!sequenceStarted)
         {
-            ShowScanGuide();
+            ShowStartPanel();
         }
     }
     
@@ -152,6 +160,66 @@ public class RoomStepController : MonoBehaviour
         {
             scanGuideGroup.SetActive(visible);
         }
+    }
+
+    public void ShowStartPanel()
+    {
+        currentState = RoomState.Idle;
+
+        StopAllCoroutines();
+
+        SetScanGuide(false);
+        SetQuestion("");
+        SetGuide("");
+        HideRoomGuideImage();
+        SetTouchGuide(false);
+        SetKeyholeGuide(false);
+
+        if (startPanel != null)
+        {
+            startPanel.SetActive(true);
+        }
+
+        if (startButton != null)
+        {
+            startButton.gameObject.SetActive(true);
+            startButton.onClick.RemoveListener(OnStartButtonPressed);
+            startButton.onClick.AddListener(OnStartButtonPressed);
+        }
+
+        startButtonPressed = false;
+
+        Debug.Log("[RoomStepController] 시작 화면 표시: I의 방 들어보기 버튼 대기");
+    }
+
+    public void OnStartButtonPressed()
+    {
+        if (startButtonPressed)
+        {
+            return;
+        }
+
+        startButtonPressed = true;
+        sequenceStarted = true;
+
+        if (startPanel != null)
+        {
+            startPanel.SetActive(false);
+        }
+
+        if (startButton != null)
+        {
+            startButton.gameObject.SetActive(false);
+        }
+
+        Debug.Log("[RoomStepController] I의 방 들어보기 버튼 터치됨. 스캔 가이드 시작.");
+
+        if (forcedAppEndController != null)
+        {
+            forcedAppEndController.StartElapsedTimerFromNow();
+        }
+
+        ShowScanGuide();
     }
 
     public void ShowScanGuide()
@@ -1363,4 +1431,83 @@ public class RoomStepController : MonoBehaviour
         }
     }
 
+    public void ResetToScanGuideForRestart()
+    {
+        StopAllCoroutines();
+
+        sequenceStarted = true;
+        startButtonPressed = true;
+        currentState = RoomState.Idle;
+
+        if (performerI != null)
+        {
+            performerI.StopListening();
+        }
+
+        if (startPanel != null)
+        {
+            startPanel.SetActive(false);
+        }
+
+        if (startButton != null)
+        {
+            startButton.gameObject.SetActive(false);
+        }
+
+        SetScanGuide(false);
+        SetQuestion("");
+        SetGuide("");
+        HideRoomGuideImage();
+        SetTouchGuide(false);
+        SetKeyholeGuide(false);
+
+        ShowScanGuide();
+
+        StartCoroutine(RestartAwakenedSequenceAfterShortDelay());
+
+        Debug.Log("[RoomStepController] 처음으로 돌아가기: 시작 버튼 없이 스캔 가이드로 복귀.");
+    }
+
+    public void ResetToStartPanelForRestart()
+    {
+        StopAllCoroutines();
+
+        sequenceStarted = false;
+        startButtonPressed = false;
+        currentState = RoomState.Idle;
+
+        if (performerI != null)
+        {
+            performerI.StopListening();
+        }
+
+        SetScanGuide(false);
+        SetQuestion("");
+        SetGuide("");
+        HideRoomGuideImage();
+        SetTouchGuide(false);
+        SetKeyholeGuide(false);
+
+        ShowStartPanel();
+
+        Debug.Log("[RoomStepController] 처음으로 돌아가기: 시작 패널로 복귀.");
+    }
+
+    private IEnumerator RestartAwakenedSequenceAfterShortDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (forcedAppEndController != null && forcedAppEndController.IsForcedEndTimeReached())
+        {
+            yield break;
+        }
+
+        IRoomSequenceManager sequenceManager = FindObjectOfType<IRoomSequenceManager>();
+
+        if (sequenceManager != null)
+        {
+            Debug.Log("[RoomStepController] 처음으로 돌아가기 후 오브제가 이미 인식된 상태로 판단하여 I의 방 깨우기 시퀀스를 다시 시작합니다.");
+            sequenceManager.StartSequenceAfterIRoomAwakened();
+        }
+    }
 }

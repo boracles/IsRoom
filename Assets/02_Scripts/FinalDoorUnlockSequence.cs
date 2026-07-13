@@ -815,4 +815,56 @@ public class FinalDoorUnlockSequence : MonoBehaviour
         source.volume = closeSfxVolume;
         source.PlayOneShot(finalRoomCloseClip);
     }
+
+    public void ResetFinalDoorStateForRestart()
+    {
+        StopAllCoroutines();
+
+        isPlaying = false;
+
+        StopCircleRotation();
+
+        CacheClosedPoses();
+
+        if (innerDoor != null)
+        {
+            innerDoor.localPosition = innerDoorClosedLocalPosition;
+            innerDoor.localRotation = innerDoorClosedLocalRotation;
+        }
+
+        if (outerDoor != null)
+        {
+            outerDoor.localPosition = outerDoorClosedLocalPosition;
+            outerDoor.localRotation = outerDoorClosedLocalRotation;
+        }
+
+        if (topDoor != null)
+        {
+            topDoor.localPosition = topDoorClosedLocalPosition;
+            topDoor.localRotation = topDoorClosedLocalRotation;
+        }
+
+        if (keyDragGuideObject != null)
+        {
+            keyDragGuideObject.SetActive(false);
+        }
+
+        if (fakeInteriorController != null)
+        {
+            fakeInteriorController.SetBlack();
+        }
+
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>(true);
+
+        foreach (AudioSource audioSource in audioSources)
+        {
+            if (audioSource == null) continue;
+
+            audioSource.Stop();
+            audioSource.loop = false;
+        }
+
+        Debug.Log("[FinalDoorUnlockSequence] 처음으로 돌아가기: 문/벽/턴테이블 상태 초기화 완료.");
+    }
+
 }

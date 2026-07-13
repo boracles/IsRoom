@@ -30,6 +30,10 @@ public class FinalSequenceController : MonoBehaviour
     public bool skipCompletedMusicListenTime = true;
     public int finalCompletedMusicLoopCount = 2;
 
+    [Header("Forced End / Restart")]
+    public ForcedAppEndController forcedAppEndController;
+    public bool waitForForcedEndAfterFinalClose = true;
+
     [Header("UI")]
     public GameObject finalMessagePanel;
     public TMP_Text finalMessageText;
@@ -113,8 +117,6 @@ public class FinalSequenceController : MonoBehaviour
     {
         isRunning = true;
 
-        // 1. 기존 레이어링 음악 감상 구간은 필요하면 건너뛰고,
-        // 대신 별도의 final completed music을 지정 횟수만큼 재생한다.
         if (playFinalCompletedMusic)
         {
             yield return StartCoroutine(PlayFinalCompletedMusicRoutine());
@@ -150,6 +152,18 @@ public class FinalSequenceController : MonoBehaviour
         else
         {
             Debug.LogWarning("[FinalSequenceController] finalDoorUnlockSequence가 연결되지 않았습니다.");
+        }
+
+        // 문/벽/뚜껑이 완전히 닫힌 뒤에만 처음으로 돌아가기 버튼 표시
+        if (forcedAppEndController != null && !forcedAppEndController.IsForcedEndTimeReached())
+        {
+            forcedAppEndController.ShowRestartButton();
+        }
+
+        if (waitForForcedEndAfterFinalClose)
+        {
+            Debug.Log("[FinalSequenceController] Final close 완료. 강제 종료 타이머를 기다립니다.");
+            yield break;
         }
 
         // 7. 벽 emission off
@@ -455,6 +469,129 @@ public class FinalSequenceController : MonoBehaviour
             roomRoot.SetActive(false);
             Debug.Log("[FinalSequenceController] Room Root 비활성화 완료.");
         }
+    }
+
+    public void ResetFinalStateForRestart()
+    {
+        StopAllCoroutines();
+
+        isRunning = false;
+
+        if (spawnedLetter != null)
+        {
+            Destroy(spawnedLetter);
+            spawnedLetter = null;
+        }
+
+        if (finalCompletedMusicSource != null)
+        {
+            finalCompletedMusicSource.Stop();
+            finalCompletedMusicSource.loop = false;
+            finalCompletedMusicSource.time = 0f;
+        }
+
+        if (transitionMusicSource != null)
+        {
+            transitionMusicSource.Stop();
+            transitionMusicSource.loop = false;
+            transitionMusicSource.time = 0f;
+        }
+
+        if (guideVoiceSource != null)
+        {
+            guideVoiceSource.Stop();
+        }
+
+        if (finalMessagePanel != null)
+        {
+            finalMessagePanel.SetActive(false);
+        }
+
+        if (finalMessageText != null)
+        {
+            finalMessageText.text = "";
+        }
+
+        Debug.Log("[FinalSequenceController] 처음으로 돌아가기: Final 상태 초기화 완료.");
+    }
+
+    public void StartForcedOutsideSoundEnding()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ForcedOutsideSoundEndingRoutine());
+    }
+
+    private IEnumerator ForcedOutsideSoundEndingRoutine()
+    {
+        isRunning = true;
+
+        // 혹시 final 음악이 재생 중이면 정지
+        if (finalCompletedMusicSource != null)
+        {
+            finalCompletedMusicSource.Stop();
+            finalCompletedMusicSource.loop = false;
+            finalCompletedMusicSource.time = 0f;
+        }
+
+        // 완성 편지가 아직 없으면 생성
+        if (spawnedLetter == null)
+        {
+            SpawnCompletedLetter();
+        }
+
+        // 편지를 I에게 붙임
+        if (performerI != null && spawnedLetter != null && performerHoldPoint != null)
+        {
+            performerI.AttachObjectToPerformer(spawnedLetter.transform, performerHoldPoint);
+        }
+
+        // 안내 메시지/음성
+        ShowMessage(endingMessage);
+        PlayGuideVoiceClip(outsideSoundGuideClip);
+
+        yield return null;
+
+        if (outsideSoundGuideClip != null && guideVoiceSource != null)
+        {
+            yield return new WaitWhile(() => guideVoiceSource.isPlaying);
+        }
+        else
+        {
+            yield return new WaitForSeconds(endingMessageTime);
+        }
+
+        // 방/AR 오브젝트 숨김
+        if (roomRoot != null)
+        {
+            roomRoot.SetActive(false);
+            Debug.Log("[FinalSequenceController] Forced Ending: Room Root 비활성화.");
+        }
+
+        // I가 카메라에서 멀어지며 사라짐
+        if (performerI != null)
+        {
+            performerI.MoveAwayFromCamera(arCamera, performerDisappearDistance);
+
+            yield return new WaitUntil(() => performerI.HasArrivedAtCurrentTarget(0.05f));
+
+            yield return new WaitForSeconds(0.5f);
+
+            performerI.FadeOut(performerFadeOutTime);
+
+            yield return new WaitForSeconds(performerFadeOutTime);
+        }
+
+        // 전환음 재생
+        PlayTransitionMusic();
+
+        yield return null;
+
+        if (transitionToLivePianoClip != null && transitionMusicSource != null)
+        {
+            yield return new WaitWhile(() => transitionMusicSource.isPlaying);
+        }
+
+        QuitApplication();
     }
 
     private void QuitApplication()

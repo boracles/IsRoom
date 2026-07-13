@@ -366,6 +366,45 @@ public class IRoomSequenceManager : MonoBehaviour
         }
     }
 
+    public void ResetToBeginningForRestart()
+    {
+        StopAllCoroutines();
+
+        waitingForRoomTarget = false;
+        waitingForFinalRoomTarget = false;
+        currentRoomIndex = 0;
+
+        selectedInkColor = InkColorType.Blue;
+
+        if (lightRoomWindowEmission != null)
+        {
+            lightRoomWindowEmission.TurnOffEmission();
+        }
+
+        if (cubeFaceRoomDetector != null)
+        {
+            cubeFaceRoomDetector.ResetDetection();
+        }
+
+        // 기존 생성 조각 제거
+        if (generatedPieces != null)
+        {
+            foreach (GameObject piece in generatedPieces)
+            {
+                if (piece != null)
+                {
+                    Destroy(piece);
+                }
+            }
+
+            generatedPieces.Clear();
+        }
+
+        StopIRoomBaseLoop();
+
+        Debug.Log("[IRoomSequenceManager] 처음으로 돌아가기: 방 진행 상태와 생성 조각 초기화 완료.");
+    }
+
     [ContextMenu("Start From Stair")]
     public void StartFromStair()
     {
@@ -519,25 +558,38 @@ public class IRoomSequenceManager : MonoBehaviour
     {
         if (iRoomBaseLoopSource == null)
         {
+            Debug.LogWarning("[IRoomSequenceManager] I Room Base Loop Source가 없습니다.");
+            return;
+        }
+
+        if (iRoomBaseLoopSource.clip == null)
+        {
+            Debug.LogWarning("[IRoomSequenceManager] I Room Base Loop Source에 AudioClip이 없습니다.");
             return;
         }
 
         if (iRoomBaseLoopRoutine != null)
         {
             StopCoroutine(iRoomBaseLoopRoutine);
+            iRoomBaseLoopRoutine = null;
         }
 
         iRoomBaseLoopSource.loop = true;
+        iRoomBaseLoopSource.playOnAwake = false;
 
+        // 혹시 이전 페이드아웃 때문에 0으로 남아 있어도 다시 살아나도록 함
         if (!iRoomBaseLoopSource.isPlaying)
         {
             iRoomBaseLoopSource.volume = 0f;
+            iRoomBaseLoopSource.time = 0f;
             iRoomBaseLoopSource.Play();
         }
 
         iRoomBaseLoopRoutine = StartCoroutine(
             FadeAudio(iRoomBaseLoopSource, iRoomBaseLoopVolume, iRoomBaseLoopFadeInTime, false)
         );
+
+        Debug.Log("[IRoomSequenceManager] I Room Base Loop 재생 시작 / loop: " + iRoomBaseLoopSource.loop);
     }
 
     private void StopIRoomBaseLoop()
@@ -550,6 +602,13 @@ public class IRoomSequenceManager : MonoBehaviour
         if (iRoomBaseLoopRoutine != null)
         {
             StopCoroutine(iRoomBaseLoopRoutine);
+            iRoomBaseLoopRoutine = null;
+        }
+
+        if (!iRoomBaseLoopSource.isPlaying)
+        {
+            iRoomBaseLoopSource.volume = 0f;
+            return;
         }
 
         iRoomBaseLoopRoutine = StartCoroutine(
@@ -592,6 +651,7 @@ public class IRoomSequenceManager : MonoBehaviour
         if (stopAfterFade)
         {
             source.Stop();
+            source.time = 0f;
         }
     }
 }
