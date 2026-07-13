@@ -2913,7 +2913,7 @@ MonoBehaviour:
   finalCompletedMusicClip: {fileID: 8300000, guid: 0c021e7b564ca4f57be8213d2e78812c, type: 3}
   playFinalCompletedMusic: 1
   skipCompletedMusicListenTime: 1
-  finalCompletedMusicLoopCount: 2
+  finalCompletedMusicLoopCount: 1
   forcedAppEndController: {fileID: 2003864185}
   waitForForcedEndAfterFinalClose: 1
   finalMessagePanel: {fileID: 1495339860}
@@ -11033,7 +11033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IRoomSequenceManager
   autoStartOnPlay: 0
-  startRoom: 3
+  startRoom: 0
   roomStepController: {fileID: 2003864183}
   stairRoomConfig: {fileID: 11400000, guid: fcc8556cccf1c476eb1aedd2c5252221, type: 2}
   waveRoomConfig: {fileID: 11400000, guid: 4f274f35fd729451ca2671bc761f361f, type: 2}
